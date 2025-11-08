@@ -12,10 +12,13 @@
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.1.17",
+    "dayjs": "^1.11.19",
+    "framer-motion": "^12.23.24",
     "gsap": "^3.13.0",
     "lucide-react": "^0.553.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-router": "^7.9.5",
     "tailwindcss": "^4.1.17",
     "vite-plugin-svgr": "^4.5.0"
   },

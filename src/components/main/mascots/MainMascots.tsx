@@ -63,8 +63,8 @@ export default function MainMascots() {
 
       if (leftArmGroup) {
         const box = leftArmGroup.getBBox();
-        const pivotX = box.x + box.width * 0.88;
-        const pivotY = box.y + box.height * 0.42;
+        const pivotX = box.x + box.width * 0.8;
+        const pivotY = box.y + box.height * 0.58;
 
         gsap.set(leftArmGroup, {
           svgOrigin: `${pivotX} ${pivotY}`,
@@ -129,11 +129,11 @@ export default function MainMascots() {
     <div className="relative w-full h-full overflow-visible">
       <MascotTiny
         ref={tinySvgRef}
-        className="absolute top-6 left-6 w-[50px] h-auto select-none pointer-events-none z-20"
+        className="absolute top-40 left-1 w-[50px] h-auto select-none pointer-events-none z-20"
       />
       <MascotLarge
         ref={largeSvgRef}
-        className="w-[454px] h-[368px] select-none mt-20 ml-20 overflow-visible"
+        className="w-[454px] h-[550px] select-none mt-20 ml-20 overflow-visible"
       />
     </div>
   );
