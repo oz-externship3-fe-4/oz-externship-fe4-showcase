@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-
 import MascotLarge from "./cha1-all-12.svg?react";
 import MascotTiny from "./cha1-2-all.svg?react";
 
