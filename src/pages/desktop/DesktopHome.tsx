@@ -86,7 +86,7 @@ export default function DesktopHome() {
               rounded-full
               bg-[#FFC94A]
               shadow-[0_14px_40px_rgba(0,0,0,0.22)]
-              border-8 border-white
+              border-8 border-white cursor-pointer
               -ml-10 -mr-10
             "
           >
