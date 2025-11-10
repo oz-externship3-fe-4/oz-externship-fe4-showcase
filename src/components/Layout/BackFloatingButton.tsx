@@ -18,7 +18,7 @@ export function BackFloatingButton({
         absolute -left-13 top-1/2 -translate-y-1/2
         flex h-20 w-20 items-center justify-center
         rounded-full bg-[#FFC94A]
-        border-[5px] border-white
+        border-8 border-white
         text-white
         shadow-[0_14px_40px_rgba(0,0,0,0.22)]
         hover:shadow-[0_16px_40px_rgba(15,23,42,0.22)]

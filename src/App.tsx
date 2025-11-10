@@ -13,6 +13,7 @@ const Layout = lazy(() => import("./components/Layout/Layout"));
 const ProjectProgressPanel = lazy(
   () => import("./pages/desktop/ProjectProgressPanel")
 );
+const TechStackPage = lazy(() => import("./pages/desktop/TechStackPage"));
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -38,6 +39,14 @@ function AnimatedRoutes() {
             element={
               <Suspense fallback={<RouteFallback />}>
                 <ProjectProgressPanel />
+              </Suspense>
+            }
+          />
+          <Route
+            path="tech"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <TechStackPage />
               </Suspense>
             }
           />
