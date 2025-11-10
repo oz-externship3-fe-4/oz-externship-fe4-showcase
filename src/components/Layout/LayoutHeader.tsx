@@ -23,9 +23,6 @@ export function LayoutHeader({ activeItem }: LayoutHeaderProps) {
           </button>
         </div>
       </div>
-      <div className="text-[14px] text-slate-500 font-medium">
-        {activeItem.order}. {activeItem.label}
-      </div>
     </header>
   );
 }
