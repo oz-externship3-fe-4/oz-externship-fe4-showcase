@@ -4,6 +4,7 @@ import CountdownTicker from "../../components/main/countdown/CountdownTicker";
 import { countdownInlineTheme } from "../../theme/tokens";
 import { useRef } from "react";
 import { useHoverGsap } from "../../hooks/animations/useHoverGsap";
+import { useNavigate } from "react-router";
 
 const TARGET_DATE = "2025-11-17T00:00:00+09:00";
 
@@ -22,6 +23,7 @@ const softPaintBg = `
 export default function DesktopHome() {
   const arrowWrapperRef = useRef<HTMLDivElement | null>(null);
   const arrowCircleRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
 
   useHoverGsap(arrowWrapperRef, arrowCircleRef, {
     scale: 1.12,
@@ -80,6 +82,7 @@ export default function DesktopHome() {
         >
           <div
             ref={arrowCircleRef}
+            onClick={() => navigate("/overview")}
             className="
               flex h-20 w-20 md:h-24 md:w-24
               items-center justify-center
