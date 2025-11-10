@@ -129,7 +129,8 @@ export default function MainMascots() {
     <div className="relative w-full h-full overflow-visible">
       <MascotTiny
         ref={tinySvgRef}
-        className="absolute top-40 left-1 w-[50px] h-auto select-none pointer-events-none z-20"
+        className="
+        absolute top-40 left-1 w-[50px] h-auto select-none pointer-events-none z-20"
       />
       <MascotLarge
         ref={largeSvgRef}
