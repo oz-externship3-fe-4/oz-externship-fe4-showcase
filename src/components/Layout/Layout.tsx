@@ -16,9 +16,9 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-[#ECEFF3] py-5">
-      <div className="flex w-[98vw] max-w-[1800px] min-h-[95vh] rounded-[60px] bg-white overflow-hidden shadow-[0_18px_70px_rgba(15,23,42,0.1)]">
+      <div className="flex w-screen max-w-[1800px] min-h-[95vh] rounded-[60px] bg-white overflow-hidden shadow-[0_18px_70px_rgba(15,23,42,0.1)]">
         <section
-          className="flex-[0.7] px-16 py-5 flex flex-col overflow-hidden"
+          className="flex-[0.7] px-15 py-5 flex flex-col overflow-hidden"
           style={{ background: softPaintBg }}
         >
           <LayoutHeader activeItem={activeItem} />
@@ -28,7 +28,7 @@ export default function Layout() {
               visible={showBack}
               onClick={() => navigate("/")}
             />
-            <div className="h-full overflow-y-auto">
+            <div className="h-full overflow-y-auto scrollbar-hide">
               <Outlet />
             </div>
           </div>
