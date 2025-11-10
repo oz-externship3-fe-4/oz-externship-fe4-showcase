@@ -9,7 +9,10 @@ import { AnimatePresence, MotionConfig } from "framer-motion";
 import { RouteFallback } from "./components/spinner/RouteFallback";
 
 const Home = lazy(() => import("./pages/Home"));
-
+const Layout = lazy(() => import("./components/Layout/Layout"));
+const ProjectProgressPanel = lazy(
+  () => import("./pages/desktop/ProjectProgressPanel")
+);
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -23,6 +26,22 @@ function AnimatedRoutes() {
             </Suspense>
           }
         />
+        <Route
+          element={
+            <Suspense fallback={<RouteFallback />}>
+              <Layout />
+            </Suspense>
+          }
+        >
+          <Route
+            path="overview"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <ProjectProgressPanel />
+              </Suspense>
+            }
+          />
+        </Route>
       </Routes>
     </AnimatePresence>
   );
