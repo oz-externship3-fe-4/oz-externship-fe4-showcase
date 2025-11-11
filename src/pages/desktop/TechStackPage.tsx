@@ -15,13 +15,12 @@ export default function TechStackPage() {
             justify-items-center
           "
         >
-          {SKILLS.map((skill) => (
-            <SkillIconCard key={skill.name} skill={skill} />
+          {SKILLS.map((skill, index) => (
+            <SkillIconCard key={skill.name} skill={skill} index={index} />
           ))}
         </div>
       </section>
 
-      {/* 하단 대표 기술 카드 */}
       <section
         className="
           grid gap-6

@@ -14,6 +14,14 @@ const ProjectProgressPanel = lazy(
   () => import("./pages/desktop/ProjectProgressPanel")
 );
 const TechStackPage = lazy(() => import("./pages/desktop/TechStackPage"));
+const TeamIntroPage = lazy(() => import("./pages/desktop/TeamIntroPage"));
+const HomeLayout = lazy(() => import("./components/Layout/HomeLayout"));
+const RetrospectivePage = lazy(
+  () => import("./pages/desktop/RetrospectivePage")
+);
+const ProjectOverviewPage = lazy(
+  () => import("./pages/desktop/ProjectOverviewPage")
+);
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -30,23 +38,55 @@ function AnimatedRoutes() {
         <Route
           element={
             <Suspense fallback={<RouteFallback />}>
-              <Layout />
+              <HomeLayout />
             </Suspense>
           }
         >
           <Route
-            path="overview"
+            path="home"
             element={
               <Suspense fallback={<RouteFallback />}>
                 <ProjectProgressPanel />
               </Suspense>
             }
           />
+        </Route>
+        <Route
+          element={
+            <Suspense fallback={<RouteFallback />}>
+              <Layout />
+            </Suspense>
+          }
+        >
           <Route
             path="tech"
             element={
               <Suspense fallback={<RouteFallback />}>
                 <TechStackPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="intro"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <TeamIntroPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="retrospect"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <RetrospectivePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="overview"
+            element={
+              <Suspense fallback={<ProjectOverviewPage />}>
+                <ProjectOverviewPage />
               </Suspense>
             }
           />

@@ -1,15 +1,65 @@
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import type { Skill } from "./techStackConfig";
 
 interface SkillIconCardProps {
   skill: Skill;
+  index: number;
 }
 
-export function SkillIconCard({ skill }: SkillIconCardProps) {
+export function SkillIconCard({ skill, index }: SkillIconCardProps) {
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const iconCardElementRef = useRef<HTMLDivElement | null>(null);
   const reflectionImageElementRef = useRef<HTMLImageElement | null>(null);
 
+  useLayoutEffect(() => {
+    const iconElement = iconCardElementRef.current;
+    const reflectionElement = reflectionImageElementRef.current;
+
+    if (!iconElement) return;
+
+    const delay = 0.08 + index * 0.035;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        iconElement,
+        {
+          y: 18,
+          opacity: 0,
+          scale: 0.86,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.55,
+          delay,
+          ease: "power3.out",
+          clearProps: "transform,opacity",
+        }
+      );
+
+      if (reflectionElement) {
+        gsap.fromTo(
+          reflectionElement,
+          {
+            opacity: 0,
+            filter: "blur(4px)",
+          },
+          {
+            opacity: 0.8,
+            filter: "blur(1px)",
+            duration: 0.5,
+            delay: delay + 0.03,
+            ease: "power2.out",
+            clearProps: "opacity,filter",
+          }
+        );
+      }
+    });
+
+    return () => ctx.revert();
+  }, [index]);
   const handleMouseEnter = () => {
     if (iconCardElementRef.current) {
       gsap.to(iconCardElementRef.current, {
@@ -54,6 +104,7 @@ export function SkillIconCard({ skill }: SkillIconCardProps) {
 
   return (
     <div
+      ref={wrapperRef}
       className="flex flex-col items-center"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

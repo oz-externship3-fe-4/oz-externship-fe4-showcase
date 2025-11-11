@@ -8,7 +8,7 @@ interface ShineTextProps {
 export function ShineText({ text, duration = 2.6 }: ShineTextProps) {
   const gradient = `
     linear-gradient(
-      90deg,
+      270deg,
       #111827,
       #374151,
       #6B7280,

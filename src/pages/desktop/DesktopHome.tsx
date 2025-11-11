@@ -82,7 +82,7 @@ export default function DesktopHome() {
         >
           <div
             ref={arrowCircleRef}
-            onClick={() => navigate("/overview")}
+            onClick={() => navigate("/home")}
             className="
               flex h-20 w-20 md:h-24 md:w-24
               items-center justify-center
