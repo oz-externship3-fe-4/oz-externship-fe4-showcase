@@ -50,7 +50,7 @@ export default function GitConventionPage() {
                           shadow-[0_16px_40px_rgba(15,23,42,0.08)]
                         "
                       >
-                        <Icon className="h-24 w-24 text-slate-800" />
+                        <Icon className="h-18 w-18 text-slate-800" />
                       </div>
 
                       <p

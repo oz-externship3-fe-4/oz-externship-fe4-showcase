@@ -5,6 +5,7 @@ import type {
   IconName,
 } from "../../types/troubleshooting";
 import * as Lucide from "lucide-react";
+import { OWNER_STYLES } from "./owner";
 
 const ICONS: Record<IconName, Lucide.LucideIcon> = {
   Sun: Lucide.Sun,
@@ -33,38 +34,40 @@ export function TroubleCard({
 }) {
   const Icon = ICONS[item.icon ?? "Circle"];
 
+  const ownerName = pickText(item.owner, lang);
+  const style = OWNER_STYLES[ownerName] ?? OWNER_STYLES["윤경복"];
   return (
     <button
       onClick={onClick}
-      className="
-        group w-65 h-[225px]
+      className={`
+        group w-65 h-60
         rounded-[20px]
-        border border-white/80 bg-white/80
-        shadow-[0_10px_25px_rgba(15,23,42,0.08)]
+        border border-white/50 bg-white
         backdrop-blur-md
         text-left p-4
         transition-all
         hover:-translate-y-0.5
-        hover:shadow-[0_18px_40px_rgba(15,23,42,0.15)]
-        hover:bg-white
-      "
+        hover:shadow-[0_5px_10px_rgba(15,23,42,0.15)]
+      `}
     >
       <div className="flex flex-col h-full justify-between">
         <div
-          className="
+          className={`
             flex items-center justify-center
             w-full h-34
             rounded-xl border border-slate-100/70
             bg-linear-to-tr from-emerald-50 via-sky-50 to-amber-50
             shadow-inner
-          "
+            ${style.frameBg}
+          `}
         >
           <Icon
-            className="
+            className={`
             w-20 h-20 shrink-0
             text-slate-700/90
             transition-transform duration-300 group-hover:scale-110
-            "
+            ${style.iconColor}
+            `}
           />
         </div>
 

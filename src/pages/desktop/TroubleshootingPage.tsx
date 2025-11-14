@@ -34,12 +34,12 @@ export default function TroubleshootingPage() {
   }, []);
 
   return (
-    <div className="h-full px-10 pb-8flex flex-col overflow-hidden">
+    <div className="h-full pb-8 flex flex-col overflow-hidden">
       <div
         ref={scrollRef}
         className="flex-1 min-h-0 overflow-y-auto scrollbar-hide"
       >
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
           {TROUBLES.map((t) => (
             <TroubleCard
               key={t.id}

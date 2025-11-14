@@ -31,7 +31,7 @@ export default function Layout() {
         "
       >
         <section
-          className="flex-[0.99] px-10 py-5 flex flex-col overflow-hidden"
+          className="flex-1 px-10 py-5 flex flex-col overflow-hidden"
           style={{ background: softPaintBg }}
         >
           <LayoutHeader

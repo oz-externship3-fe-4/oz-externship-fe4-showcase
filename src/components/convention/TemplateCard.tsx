@@ -54,8 +54,8 @@ export function TemplateCard({ title, body }: TemplateCardProps) {
         className="
           mt-3 flex-1 overflow-auto
           whitespace-pre-wrap wrap-break-words
-          rounded-2xl bg-slate-900 text-[11px] md:text-[12px]
-          text-slate-100 leading-relaxed
+          rounded-2xl bg-slate-200 text-[11px] md:text-[12px]
+          text-slate-600 leading-relaxed
           px-3 py-3 md:px-4 md:py-4
           font-mono
         "

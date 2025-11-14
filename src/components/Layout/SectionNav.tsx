@@ -11,7 +11,7 @@ export function SectionNav({ activePath, lang }: SectionNavProps) {
   return (
     <aside
       className="
-        flex-[0.3]
+        flex-[0.2]
         px-10 py-12
         flex flex-col gap-4
         border-l border-white/40
