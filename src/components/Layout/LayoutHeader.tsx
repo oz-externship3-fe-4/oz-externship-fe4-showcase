@@ -36,7 +36,7 @@ export function LayoutHeader({
             ml-auto
             relative inline-flex items-center gap-1
             rounded-full bg-white/90
-            px-2 py-1.5
+            px-2 py-2
             shadow-[0_8px_24px_rgba(15,23,42,0.10)]
             border border-slate-100/70
           "

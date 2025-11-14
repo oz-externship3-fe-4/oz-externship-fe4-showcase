@@ -1,22 +1,6 @@
 import { useRef } from "react";
-import type { ComponentType } from "react";
 import { useHoverGsap } from "../../hooks/animations/useHoverGsap";
-
-export type CommitTypeId =
-  | "feat"
-  | "fix"
-  | "refactor"
-  | "chore"
-  | "docs"
-  | "build"
-  | "hotfix";
-
-export interface CommitType {
-  id: CommitTypeId;
-  icon: ComponentType<{ className?: string }>;
-  label: string;
-  desc: string;
-}
+import type { CommitType, CommitTypeId } from "../../constants/git/types";
 
 const ICON_COLORS: Record<CommitTypeId, string> = {
   feat: "text-amber-400",

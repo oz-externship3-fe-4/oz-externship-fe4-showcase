@@ -1,58 +1,11 @@
-import {
-  Sparkles,
-  Bug,
-  Recycle,
-  ClipboardList,
-  FileText,
-  Settings2,
-  Flame,
-} from "lucide-react";
 import { CommitTypeCard } from "../../components/convention/Card";
-
-const COMMIT_TYPES = [
-  {
-    id: "feat",
-    icon: Sparkles,
-    label: ": feat",
-    desc: "새로운 기능 추가",
-  },
-  {
-    id: "fix",
-    icon: Bug,
-    label: ": fix",
-    desc: "버그 · 오작동 수정",
-  },
-  {
-    id: "refactor",
-    icon: Recycle,
-    label: ": refactor",
-    desc: "코드 구조 개선 (기능 동일)",
-  },
-  {
-    id: "chore",
-    icon: ClipboardList,
-    label: ": chore",
-    desc: "오타 · 주석 · 단순 코드 정리",
-  },
-  {
-    id: "docs",
-    icon: FileText,
-    label: ": docs",
-    desc: "문서 수정",
-  },
-  {
-    id: "build",
-    icon: Settings2,
-    label: ": build",
-    desc: "빌드 / 환경 / 의존성 변경",
-  },
-  {
-    id: "hotfix",
-    icon: Flame,
-    label: ": hotfix",
-    desc: "긴급 수정 (장애 대응)",
-  },
-] as const;
+import { TemplateCard } from "../../components/convention/TemplateCard";
+import { COMMIT_TYPES } from "../../constants/git/commitTypes";
+import { GIT_RULE_CARDS } from "../../constants/git/gitRules";
+import {
+  ISSUE_TEMPLATE_TEXT,
+  PR_TEMPLATE_TEXT,
+} from "../../constants/git/templates";
 
 export default function GitConventionPage() {
   return (
@@ -76,36 +29,65 @@ export default function GitConventionPage() {
           <div className="flex h-full flex-1 flex-col gap-6">
             <section
               className="
-                flex-1 min-h-[180px]
+                flex-none
                 rounded-[30px]
-                bg-[#eef0f4]
-                border border-slate-100
-                px-6 py-5
+              bg-[#eef0f4]
+              border border-slate-100
+              px-6 py-2
               "
             >
-              {/* <h2 className="text-sm md:text-base font-semibold text-slate-800">
-                1. 주절주절
-              </h2>
-              <p className="mt-2 text-[11px] md:text-xs text-slate-500">
-                여긴 뭘 넣을까?
-              </p> */}
+              <div className="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {GIT_RULE_CARDS.map((rule) => {
+                  const Icon = rule.icon;
+                  return (
+                    <div key={rule.id} className="flex flex-col items-center">
+                      <div
+                        className="
+                          flex h-[150px] w-full max-w-[190px]
+                          items-center justify-center
+                          rounded-[28px]
+                          bg-[radial-gradient(circle_at_0%_0%,#f4f8ff,#ffffff)]
+                          shadow-[0_16px_40px_rgba(15,23,42,0.08)]
+                        "
+                      >
+                        <Icon className="h-24 w-24 text-slate-800" />
+                      </div>
+
+                      <p
+                        className="
+                          mt-3
+                          text-center text-[15px] leading-snug font-semibold
+                        text-slate-800 whitespace-pre-line
+                      "
+                      >
+                        {rule.label}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </section>
 
             <section
               className="
-                flex-1 min-h-[180px]
+                flex-1
                 rounded-[30px]
-                bg-[#eef0f4]
+              bg-[#EEF2F7]
                 border border-slate-100
                 px-6 py-5
+                flex flex-col
               "
             >
-              {/* <h2 className="text-sm md:text-base font-semibold text-slate-800">
-                2. 주절
-              </h2>
-              <p className="mt-2 text-[11px] md:text-xs text-slate-500">
-                여긴 어떤거?
-              </p> */}
+              <div className="mt-2 grid flex-1 grid-cols-1 gap-4 md:grid-cols-2">
+                <TemplateCard
+                  title="ISSUE_TEMPLATE.md"
+                  body={ISSUE_TEMPLATE_TEXT}
+                />
+                <TemplateCard
+                  title="PULL_REQUEST_TEMPLATE.md"
+                  body={PR_TEMPLATE_TEXT}
+                />
+              </div>
             </section>
           </div>
         </div>
