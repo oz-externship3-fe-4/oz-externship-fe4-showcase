@@ -28,6 +28,12 @@ export interface TS_Section {
   codeLang?: "bash" | "ts" | "tsx" | "js" | "json";
 }
 
+export interface TroubleVideo {
+  basePath: string; // base경로
+  poster?: string;
+  label?: LocalizedText;
+}
+
 export interface TroubleItem {
   id: string;
   icon?: IconName;
@@ -37,4 +43,5 @@ export interface TroubleItem {
   owner: LocalizedText;
   tags?: string[];
   sections: TS_Section[];
+  video?: TroubleVideo; // 옵션 있으면 렌더, 없으면 무시
 }
