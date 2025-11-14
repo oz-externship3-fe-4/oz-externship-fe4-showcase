@@ -18,6 +18,8 @@ const ICONS: Record<IconName, Lucide.LucideIcon> = {
   Shield: Lucide.Shield,
   MessageCircle: Lucide.MessageCircle,
   Circle: Lucide.Circle,
+  PieChart: Lucide.PieChart,
+  Code: Lucide.Code,
 };
 
 export function TroubleCard({

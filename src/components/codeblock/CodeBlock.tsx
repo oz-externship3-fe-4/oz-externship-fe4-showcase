@@ -42,7 +42,7 @@ export function CodeBlock({ language = "bash", code }: CodeBlockProps) {
         px-3 py-1 
         text-[11px] font-semibold tracking-wide
         text-emerald-300
-        rounded-br-xl
+        rounded-xl
         backdrop-blur-sm
         z-10
       "
@@ -73,7 +73,7 @@ export function CodeBlock({ language = "bash", code }: CodeBlockProps) {
         style={vscDarkPlus}
         customStyle={{
           padding: "20px 16px",
-          paddingTop: "40px",
+          paddingTop: "25px",
           margin: 0,
           background: "transparent",
           fontSize: "14px",

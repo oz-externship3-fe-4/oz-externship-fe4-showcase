@@ -172,6 +172,57 @@ export const TEAM_MEMBERS = [
           },
         ],
       },
+      jp: {
+        card: {
+          characterImg: "/images/pokemon/pikachu.png",
+          tagline: "共通コンポーネント·退会管理ページ",
+        },
+        intro: `誰もが使いやすい共通コンポーネントの設計および退会管理ページに集中しました。
+          共通コンポーネントの場合、ボタン、タブ、ブラッドクラム、ページネーション、公告添付ファイル、サポート履歴コンポーネントを開発し
+          他の開発者の開発効率を向上させました。`,
+        kpis: [
+          { label: "共通コンポーネント開発", value: "完成度90%" },
+          { label: "脱退管理ページの開発", value: "完成度90%" },
+        ],
+        experiences: [
+          {
+            period: "2025年9月 - 2025年10月",
+            title: "フロントエンド開発者 - OZ Externship FE3",
+            details: [
+              "ユーザー権限変更・削除フローを実装",
+              "共通テーブル・KPIカードコンポーネントを開発",
+            ],
+          },
+        ],
+        projects: [
+          {
+            name: "ユーザー管理ページ",
+            role: "メインフロントエンド",
+            summary: "ユーザー一覧、検索、権限変更、削除機能を実装しました。",
+            tech: ["React", "TypeScript", "TailwindCSS"],
+            bullets: [
+              "共通コンポーネント設計により重複コードを削減",
+              "UX改善のため非同期ローディングとデバウンス処理を追加",
+            ],
+          },
+        ],
+        skills: ["React", "TypeScript", "TailwindCSS", "Vite"],
+        education: [
+          {
+            school: "OZコーディングスクール",
+            degree: "フロントエンド外部研修",
+            period: "2025",
+          },
+        ],
+        certifications: [
+          {
+            name: "OZ FE修了証",
+            issuedBy: "OZコーディングスクール",
+            date: "2025-10",
+          },
+        ],
+        links: [{ href: "https://ozflix.vercel.app", label: "OZ Flix デモ" }],
+      },
     },
   },
   {
@@ -1094,13 +1145,15 @@ API連動部分:ページUIを任された部分をそのまま連動
       jp: {
         card: {
           characterImg: "/images/pokemon/pikachu.png",
-          tagline: "共通コンポーネント・ユーザー管理・権限制御",
+          tagline: "共通コンポーネント·退会管理ページ",
         },
-        intro:
-          "再利用可能なUIコンポーネントを実装し、ユーザー管理ダッシュボードを開発しました。保守性とUXの改善に注力しました。",
+        intro: `誰もが使いやすい共通コンポーネントの設計および退会管理ページ」に集中しました。 
+          共通コンポーネントの場合、ボタン、タブ、ブラッドクラム、ページネーション、
+          公告添付ファイル、サポート履歴コンポーネントを開発し
+          他の開発者の開発効率を向上させました。`,
         kpis: [
-          { label: "ユーザー管理ページ", value: "完成度95%" },
-          { label: "PRレビュー", value: "8回以上" },
+          { label: "共通コンポーネント開発", value: "完成度90%" },
+          { label: "脱退管理ページの開発", value: "完成度90%" },
         ],
         experiences: [
           {
@@ -1114,13 +1167,15 @@ API連動部分:ページUIを任された部分をそのまま連動
         ],
         projects: [
           {
-            name: "ユーザー管理ページ",
-            role: "メインフロントエンド",
-            summary: "ユーザー一覧、検索、権限変更、削除機能を実装しました。",
-            tech: ["React", "TypeScript", "TailwindCSS"],
+            name: "共通コンポーネント開発",
+            role: "フロントエンド開発者",
+            summary: `ボタン、タブ、ブラッドクラム、ページネーション、
+            公告添付ファイル、サポート履歴コンポーネントを開発し 
+            UI開発効率を向上させました。`,
+            tech: ["React", "TypeScript", "TailwindCSS, tanstack-query"],
             bullets: [
-              "共通コンポーネント設計により重複コードを削減",
-              "UX改善のため非同期ローディングとデバウンス処理を追加",
+              "共通コンポーネントの開発を通じて他の開発者の開発効率を向上",
+              "リユース性及びメンテナンス性の強化",
             ],
           },
         ],
@@ -1155,6 +1210,8 @@ API連動部分:ページUIを任された部分をそのまま連動
       en: "FRONTEND",
       jp: "フロントエンド開発者",
     },
+    github: "https://github.com/danbi-seo",
+    email: "sdb0504@naver.com / tjeksqlz@gmail.com",
     characterImg: "/images/pokemon/eevee.png",
     imageOffsetY: 20,
     description: {
@@ -1182,5 +1239,255 @@ API連動：Tanstack Queryで接続
 コードPRレビュー`,
     },
     imageScale: 1.5,
+    resume: {
+      ko: {
+        card: {
+          characterImg: "/images/pokemon/pikachu.png",
+          tagline: `공통 컴포넌트 · 강의/스터디 관리 · 코드 리뷰`,
+        },
+        intro: `이번 프로젝트에서 토스트 알림창, 뱃지, 진행률 표시 바, 아코디언 등 재사용 가능한 공통 컴포넌트를 설계하고,
+강의 관리 페이지와 스터디 그룹 관리 페이지를 처음부터 끝까지 구현했습니다.
+각 페이지의 상세 모달창 제작 및 TanStack Query를 활용한 API 연동을 담당했으며,
+코드 리뷰를 통해 중복 코드 상수화, 불필요한 코드 제거, 함수 최적화 등으로 코드 품질을 향상시켰습니다.
+더불어 포트폴리오 프로젝트의 전반적인 UI/UX 디자인을 총괄했습니다.`,
+        kpis: [
+          { label: "강의 관리 페이지", value: "완성도 100%" },
+          { label: "스터디그룹 관리 페이지", value: "완성도 100%" },
+          { label: "공통 컴포넌트", value: "4개 제작" },
+          { label: "PR 참여", value: "메인리뷰어" },
+        ],
+        experiences: [
+          {
+            period: "2025.09 - 2025.10",
+            title: "OZ Externship FE3 - Frontend Developer",
+            details: [
+              "토스트 알림창, 뱃지, 진행률 바, 아코디언 등 재사용 가능한 공통 컴포넌트 설계 및 구현",
+              "강의 관리 페이지 및 스터디 그룹 관리 페이지 전체 개발 (목록 조회, 필터링, 정렬 기능)",
+              "각 페이지의 상세 정보 모달창 구현 및 수정/삭제 기능 연동",
+              "TanStack Query를 활용한 서버 상태 관리 및 API 연동 구조 설계",
+              "코드 리뷰를 통한 중복 코드 상수화, 함수 최적화, 불필요한 코드 제거로 유지보수성 향상",
+              "프로젝트 전반의 UI/UX 디자인 총괄 및 일관된 디자인 시스템 구축",
+            ],
+          },
+        ],
+        projects: [
+          {
+            name: "공통 컴포넌트 라이브러리",
+            role: "메인 프론트엔드",
+            summary:
+              "프로젝트 전반에서 재사용할 수 있는 공통 UI 컴포넌트를 설계하고 구현하여 개발 효율성과 일관성을 높였습니다.",
+            tech: ["React", "TypeScript", "TailwindCSS"],
+            bullets: [
+              "토스트 알림창: 성공/실패/경고 등 상황별 알림 제공 및 자동 소멸 기능 구현",
+              "뱃지 컴포넌트: 상태별 색상 구분 및 다양한 변형(variant) 지원",
+              "진행률 표시 바: 퍼센트 기반 시각적 진행 상태 표시 컴포넌트",
+              "아코디언 목록: 확장/축소 가능한 리스트 UI 구현으로 공간 효율성 향상",
+              "모든 컴포넌트에 TypeScript 타입 안정성 및 재사용성 확보",
+            ],
+          },
+          {
+            name: "강의 관리 페이지",
+            role: "메인 프론트엔드",
+            summary:
+              "강의 목록 조회, 검색, 상세 정보 확인 및 수정/삭제 기능을 포함한 어드민 강의 관리 시스템을 구현했습니다.",
+            tech: ["React", "TypeScript", "TailwindCSS", "TanStack Query"],
+            bullets: [
+              "강의 목록 및 상세 정보 모달창 UI 구현",
+              "강의 목록 검색기능 구현",
+              "TanStack Query를 활용한 서버 상태 관리 및 캐싱 최적화",
+              "로딩 상태, 에러 핸들링, 중복 요청 방지 등을 컴포넌트로 관리해 재사용성을 높힘",
+              "페이지네이션 및 정렬 기능으로 많은 양의 데이터 효율적 관리",
+            ],
+          },
+          {
+            name: "스터디 그룹 관리 페이지",
+            role: "메인 프론트엔드",
+            summary:
+              "스터디 그룹 목록 조회, 상세 정보 확인, 관리 기능을 포함한 스터디 그룹 관리 시스템을 개발했습니다.",
+            tech: ["React", "TypeScript", "TailwindCSS", "TanStack Query"],
+            bullets: [
+              "스터디 그룹 목록 및 상세 정보 모달창 UI 구현",
+              "스터디 그룹 검색, 필터, 정렬 기능 구현",
+              "TanStack Query를 활용한 서버 상태 관리 및 캐싱 최적화",
+              "로딩 상태, 에러 핸들링, 중복 요청 방지 등을 컴포넌트로 관리해 재사용성을 높힘",
+              "페이지네이션 및 정렬 기능으로 많은 양의 데이터 효율적 관리",
+            ],
+          },
+          {
+            name: "코드 리뷰 및 코드 품질 개선",
+            role: "메인 프론트엔드",
+            summary:
+              "팀원들의 코드를 리뷰하며 중복 코드 제거, 상수화, 함수 최적화 등을 통해 프로젝트 전반의 코드 품질을 향상시켰습니다.",
+            tech: ["React", "TypeScript", "Code Review", "Refactoring"],
+            bullets: [
+              "중복되는 코드를 상수화하여 일관성과 재사용성 향상",
+              "불필요한 코드 및 중복 함수 제거로 코드 간결성 확보",
+              "타입 안정성 강화 및 에러 핸들링 개선 제안",
+              "컴포넌트 구조 최적화 및 성능 개선 사항 리뷰",
+              "코드 가독성 향상을 위한 네이밍 및 구조 개선 제안",
+            ],
+          },
+          {
+            name: "포트폴리오 사이트 UI/UX 디자인 총괄",
+            role: "메인 프론트엔드",
+            summary:
+              "프로젝트 전반의 UI/UX 디자인을 총괄하며 일관된 디자인 시스템과 사용자 친화적인 인터페이스를 구축했습니다.",
+            tech: ["Figma", "React", "TypeScript", "TailwindCSS"],
+            bullets: [
+              "전체 페이지의 레이아웃, 색상, 타이포그래피 등 디자인 가이드라인 수립",
+              "일관된 컴포넌트 스타일 및 인터랙션 패턴 정의",
+              "사용자 경험(UX) 개선을 위한 플로우 최적화",
+              "반응형 디자인 적용 및 접근성 고려",
+              "팀원들과의 디자인 협업 및 피드백 조율",
+            ],
+          },
+        ],
+        skills: [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Vite",
+          "TanStack Query",
+          "Figma",
+        ],
+        education: [
+          {
+            school: "OZ Coding School",
+            degree: "Frontend Externship",
+            period: "2025",
+          },
+        ],
+        certifications: [
+          {
+            name: "OZ FE Certification",
+            issuedBy: "OZ Coding School",
+            date: "2025-10",
+          },
+        ],
+        links: [
+          { href: "https://febok.vercel.app", label: "포트폴리오페이지" },
+        ],
+      },
+      en: {
+        card: {
+          characterImg: "/images/pokemon/pikachu.png",
+          tagline:
+            "Shared UI Components · KPI Card · User Management / Roles / Deletion",
+        },
+        intro: `I was responsible for shared UI components and the user management section. 
+          I focused on designing reusable components such as tables, lists, and KPI cards, 
+          and organized the API integration structure with long-term maintainability in mind.`,
+        kpis: [
+          { label: "User Management Page", value: "Completion 99%" },
+          { label: "Shared Components", value: "Completion 98%" },
+          { label: "PR Contributions", value: "20+" },
+        ],
+        experiences: [
+          {
+            period: "Sep 2025 – Oct 2025",
+            title: "Frontend Developer - OZ Externship FE3",
+            details: [
+              "Built user permission change and deletion workflows.",
+              "Developed reusable table and KPI card components.",
+            ],
+          },
+        ],
+        projects: [
+          {
+            name: "Shared Components",
+            role: "Lead Frontend Developer",
+            summary: `Developed shared table, KPI card, and list components to improve consistency 
+              and reusability across the project.`,
+            tech: ["React", "TypeScript", "TailwindCSS"],
+            bullets: [
+              "Enhanced component reusability by following consistent design rules",
+              "Proposed best practices for effectively utilizing shared components",
+            ],
+          },
+          {
+            name: "User Management Page",
+            role: "Lead Frontend Developer",
+            summary: `Built user management pages for viewing user lists, checking details, 
+              updating roles, and handling account deletion.`,
+            tech: ["React", "TypeScript", "TailwindCSS", "TanStack Query"],
+            bullets: [
+              "Minimized code duplication by reusing shared table components",
+              "Improved readability with React Query hooks for API integration",
+              "Enhanced UX with loading states and double-click prevention logic",
+            ],
+          },
+        ],
+        skills: ["React", "TypeScript", "TailwindCSS", "Vite"],
+        education: [
+          {
+            school: "OZ Coding School",
+            degree: "Frontend Externship",
+            period: "2025",
+          },
+        ],
+        certifications: [
+          {
+            name: "OZ FE Certification",
+            issuedBy: "OZ Coding School",
+            date: "Oct 20",
+          },
+        ],
+        links: [{ href: "https://ozflix.vercel.app", label: "OZ Flix Demo" }],
+      },
+      jp: {
+        card: {
+          characterImg: "/images/pokemon/pikachu.png",
+          tagline: "共通コンポーネント·退会管理ページ",
+        },
+        intro: `誰もが使いやすい共通コンポーネントの設計および退会管理ページ」に集中しました。 
+          共通コンポーネントの場合、ボタン、タブ、ブラッドクラム、ページネーション、
+          公告添付ファイル、サポート履歴コンポーネントを開発し
+          他の開発者の開発効率を向上させました。`,
+        kpis: [
+          { label: "共通コンポーネント開発", value: "完成度90%" },
+          { label: "脱退管理ページの開発", value: "完成度90%" },
+        ],
+        experiences: [
+          {
+            period: "2025年9月 - 2025年10月",
+            title: "フロントエンド開発者 - OZ Externship FE3",
+            details: [
+              "ユーザー権限変更・削除フローを実装",
+              "共通テーブル・KPIカードコンポーネントを開発",
+            ],
+          },
+        ],
+        projects: [
+          {
+            name: "共通コンポーネント開発",
+            role: "フロントエンド開発者",
+            summary: `ボタン、タブ、ブラッドクラム、ページネーション、
+            公告添付ファイル、サポート履歴コンポーネントを開発し 
+            UI開発効率を向上させました。`,
+            tech: ["React", "TypeScript", "TailwindCSS, tanstack-query"],
+            bullets: [
+              "共通コンポーネントの開発を通じて他の開発者の開発効率を向上",
+              "リユース性及びメンテナンス性の強化",
+            ],
+          },
+        ],
+        skills: ["React", "TypeScript", "TailwindCSS", "Vite"],
+        education: [
+          {
+            school: "OZコーディングスクール",
+            degree: "フロントエンド外部研修",
+            period: "2025",
+          },
+        ],
+        certifications: [
+          {
+            name: "OZ FE修了証",
+            issuedBy: "OZコーディングスクール",
+            date: "2025-10",
+          },
+        ],
+        links: [{ href: "https://ozflix.vercel.app", label: "OZ Flix デモ" }],
+      },
+    },
   },
 ] as const satisfies readonly MemberWithResume[];

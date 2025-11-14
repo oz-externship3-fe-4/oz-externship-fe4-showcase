@@ -17,7 +17,9 @@ export type IconName =
   | "AlertCircle" // validation
   | "Shield" // auth
   | "MessageCircle" // comment/review
-  | "Circle"; // default
+  | "Circle" // default
+  | "Code"
+  | "PieChart";
 
 export interface TS_Section {
   heading: LocalizedText;

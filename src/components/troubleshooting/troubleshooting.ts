@@ -374,24 +374,413 @@ export const logout = () => {
     ],
   },
   {
-    id: "auth-expire",
-    icon: "Shield",
+    id: "charts-query",
+    icon: "PieChart",
     title: {
-      ko: "토큰 만료 시 무한 리다이렉트",
+      ko: "React Query 캐싱으로 인한 차트 데이터 미갱신 문제",
       en: "Infinite redirect on token expire",
       jp: "トークン失効で無限リダイレクト",
     },
-    page: { ko: "유저 관리", en: "User admin", jp: "ユーザー管理" },
-    owner: { ko: "홍열", en: "Hongyeol", jp: "ホンヨル" },
-    tags: ["auth", "axios-interceptor"],
+    page: { ko: "대시보드", en: "DashBoard", jp: "ユーザー管理" },
+    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "ホンヨル" },
+    tags: ["charts", "TanStack Query"],
     sections: [
       {
-        heading: { ko: "해결", en: "Fix", jp: "解決" },
+        heading: { ko: "문제 상황", en: "Symptom", jp: "症状" },
         body: {
-          ko: "401에서 refresh→실패 시 once 플래그로 추가 시도 차단, navigate 전 글로벌 가드.",
-          en: "On 401 try refresh; if fails, block further tries with a flag, guard navigate.",
-          jp: "401でrefresh、失敗時はフラグで再試行ブロック。",
+          ko: [
+            "탈퇴 사유별 월별 추세 차트에서 드롭다운으로 사유를 변경해도 차트가 업데이트되지 않는 문제가 발생했습니다.",
+            "초기 렌더링 시에는 데이터가 정상적으로 표시되나, 사유 변경 시 이전 데이터가 그대로 유지되었습니다.",
+          ].join("\n"),
+          en: [
+            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
+            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+          ].join("\n"),
+          jp: [
+            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
+            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+          ].join("\n"),
         },
+        codeLang: "ts",
+        code: `const reasonCode = REASON_LABEL_TO_CODE[selectedReason] || 'OTHER';
+const { data: responseData } = useWithdrawalReasonTrend(reasonCode);`,
+      },
+      {
+        heading: { ko: "원인", en: "Cause", jp: "原因" },
+        body: {
+          ko: [
+            "`React Query`의 `queryKey`에 `reasonCode`가 포함되어 있지만, 컴포넌트가 리렌더링될 때 이전 캐시된 데이터를 사용하고 있었습니다..",
+            "`enabled` 옵션이 있어도 쿼리 키가 변경될 때 자동으로 새 데이터를 페칭하지 않는 경우가 있었습니다.",
+          ].join("\n"),
+          en: [
+            "Vercel does not have sufficient permission to access the GitHub Organization, so repository linking and auto-deploy setup are blocked.",
+            "For a Vite-based SPA, missing `rewrites`/`base` config can also cause 404 errors on refresh.",
+          ].join("\n"),
+          jp: [
+            "VercelにGitHub組織への十分な権限が付与されておらず、リポジトリ連携や自動デプロイ設定がブロックされていた。",
+            "また、ViteベースのSPAでは、`rewrites` や `base` 設定がないとリロード時に404が発生することがある。",
+          ].join("\n"),
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결방법 1. refetch() 함수를 호출하여 수동으로 데이터 갱신 시도",
+          en: "Step 1) Handle SPA routing via vercel.json",
+          jp: "手順1) vercel.jsonでSPAルーティングを設定",
+        },
+        body: {
+          ko: "코드 복잡도가 증가",
+          en: "Added `vercel.json` so that all routes rewrite to `index.html` for SPA behavior.",
+          jp: "`vercel.json` を追加し、リロード時も常に `index.html` にリライトされるようにした。",
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결 방법 2. staleTime을 0으로 설정",
+          en: "Step 2) Set base in vite.config.ts",
+          jp: "手順2) vite.config.tsでbaseを設定",
+        },
+        body: {
+          ko: "불필요한 API 호출 증가",
+          en: "To clarify the deployment base path, added `base: '/'` to Vite config.",
+          jp: "デプロイ時のパス基準を明確にするため、Vite設定に `base: '/'` を追加した。",
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결 방법 3. qurey Key에 추가 dependency 추가",
+          en: "Step 3) Deploy via Vercel CLI",
+          jp: "手順3) Vercel CLIで直接デプロイ",
+        },
+        body: {
+          ko: ["근본적인 해결 불가"].join("\n"),
+          en: [
+            "When blocked by Organization permission issues in the web dashboard, deployment was done directly via CLI.",
+          ].join("\n"),
+          jp: [
+            "ダッシュボード側で組織権限の問題によりブロックされたため、CLIから直接デプロイを行った。",
+          ].join("\n"),
+        },
+      },
+      {
+        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "症状" },
+        body: {
+          ko: [
+            "`queryKey`에 `reasonCode`를 명확히 포함시키고, `enabled` 옵션으로 유효한 값일 때만 쿼리가 실행되도록 설정했습니다.",
+            "초기 렌더링 시에는 데이터가 정상적으로 표시되나, 사유 변경 시 이전 데이터가 그대로 유지되었습니다.",
+          ].join("\n"),
+          en: [
+            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
+            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+          ].join("\n"),
+          jp: [
+            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
+            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+          ].join("\n"),
+        },
+        codeLang: "ts",
+        code: `
+        export const useWithdrawalReasonTrend = (reasonCode: string) => {
+          return useQuery({
+            queryKey: ['withdrawalReasonTrend', reasonCode],
+            queryFn: () => fetchWithdrawalReasonTrend(reasonCode),
+            staleTime: 5 * 60 * 1000,
+            gcTime: 10 * 60 * 1000,
+            enabled: !!reasonCode, // reasonCode가 있을 때만 쿼리 실행
+          });
+        };`,
+      },
+    ],
+  },
+  {
+    id: "charts",
+    icon: "PieChart",
+    title: {
+      ko: "Recharts PieChart의 activeIndex 상태 동기화 문제",
+      en: "Infinite redirect on token expire",
+      jp: "トークン失効で無限リダイレクト",
+    },
+    page: { ko: "대시보드", en: "DashBoard", jp: "ユーザー管理" },
+    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "ホンヨル" },
+    tags: ["charts", "Recharts"],
+    sections: [
+      {
+        heading: { ko: "문제 상황", en: "Symptom", jp: "症状" },
+        body: {
+          ko: [
+            "도넛 차트와 범례에 모두 `onMouseEnter/onMouseLeave` 이벤트를 설정했지만,마우스를 빠르게 이동하면 `activeIndex` 상태가 꼬이는 문제가 발생했습니다.",
+            "차트에서 마우스를 떼어도 여전히 활성화된 상태로 표시되거나, 범례와 차트의 활성화 상태가 일치하지 않았습니다..",
+          ].join("\n"),
+          en: [
+            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
+            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+          ].join("\n"),
+          jp: [
+            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
+            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+          ].join("\n"),
+        },
+        codeLang: "ts",
+        code: `<Pie
+  onMouseEnter={(_, index) => setActiveIndex(index)}
+  onMouseLeave={() => setActiveIndex(null)}
+/>
+{data.map((item, index) => (
+  <div
+    onMouseEnter={() => setActiveIndex(index)}
+    onMouseLeave={() => setActiveIndex(null)}
+  />
+))}`,
+      },
+      {
+        heading: { ko: "원인", en: "Cause", jp: "原因" },
+        body: {
+          ko: [
+            "차트 영역과 범례 영역 사이에 마우스가 이동할 때 `onMouseLeave`와 `onMouseEnter`가 거의 동시에 발생하여 상태 업데이트 순서가 보장되지 않았습니다.",
+            "`React`의 비동기 상태 업데이트 특성상 마지막 상태가 예측 불가능하게 되었습니다.",
+          ].join("\n"),
+          en: [
+            "Vercel does not have sufficient permission to access the GitHub Organization, so repository linking and auto-deploy setup are blocked.",
+            "For a Vite-based SPA, missing `rewrites`/`base` config can also cause 404 errors on refresh.",
+          ].join("\n"),
+          jp: [
+            "VercelにGitHub組織への十分な権限が付与されておらず、リポジトリ連携や自動デプロイ設定がブロックされていた。",
+            "また、ViteベースのSPAでは、`rewrites` や `base` 設定がないとリロード時に404が発生することがある。",
+          ].join("\n"),
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결방법 1. setTimeout으로 setActiveIndex(null) 지연 실행",
+          en: "Step 1) Handle SPA routing via vercel.json",
+          jp: "手順1) vercel.jsonでSPAルーティングを設定",
+        },
+        body: {
+          ko: "`UX`가 부자연스러워짐",
+          en: "Added `vercel.json` so that all routes rewrite to `index.html` for SPA behavior.",
+          jp: "`vercel.json` を追加し、リロード時も常に `index.html` にリライトされるようにした。",
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결 방법 2. 별도의 ref를 사용한 debounce 구현",
+          en: "Step 2) Set base in vite.config.ts",
+          jp: "手順2) vite.config.tsでbaseを設定",
+        },
+        body: {
+          ko: "코드 복잡도 과다 증가",
+          en: "To clarify the deployment base path, added `base: '/'` to Vite config.",
+          jp: "デプロイ時のパス基準を明確にするため、Vite設定に `base: '/'` を追加した。",
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결 방법 3. 차트와 범례 중 하나에만 이벤트 적용",
+          en: "Step 3) Deploy via Vercel CLI",
+          jp: "手順3) Vercel CLIで直接デプロイ",
+        },
+        body: {
+          ko: ["사용자 경험 저하"].join("\n"),
+          en: [
+            "When blocked by Organization permission issues in the web dashboard, deployment was done directly via CLI.",
+          ].join("\n"),
+          jp: [
+            "ダッシュボード側で組織権限の問題によりブロックされたため、CLIから直接デプロイを行った。",
+          ].join("\n"),
+        },
+      },
+      {
+        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "症状" },
+        body: {
+          ko: [
+            "이벤트 핸들러를 함수로 분리하여 동일한 로직을 적용했습니다.",
+            "`activeIndex`를 `Pie` 컴포넌트의 `prop`으로 명시적으로 전달하여 상태와 UI 동기화를 보장했습니다.",
+          ].join("\n"),
+          en: [
+            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
+            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+          ].join("\n"),
+          jp: [
+            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
+            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+          ].join("\n"),
+        },
+        codeLang: "ts",
+        code: `const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+// 차트와 범례 모두에 동일한 이벤트 핸들러 사용
+const handleMouseEnter = (index: number) => {
+  setActiveIndex(index);
+};
+
+const handleMouseLeave = () => {
+  setActiveIndex(null);
+};
+
+return (
+  <>
+    <Pie
+      activeIndex={activeIndex ?? undefined}
+      onMouseEnter={(_, index) => handleMouseEnter(index)}
+      onMouseLeave={handleMouseLeave}
+    />
+
+    {data.map((item, index) => (
+      <div
+        key={index}
+        onMouseEnter={() => handleMouseEnter(index)}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* 범례 내용 */}
+      </div>
+    ))}
+  </>
+);
+`,
+      },
+    ],
+  },
+  {
+    id: "charts-type",
+    icon: "Code",
+    title: {
+      ko: "TypeScript 타입 안정성 문제 - DTO와 Chart Data 매핑 오류",
+      en: "Infinite redirect on token expire",
+      jp: "トークン失効で無限リダイレクト",
+    },
+    page: { ko: "대시보드", en: "DashBoard", jp: "ユーザー管理" },
+    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "ホンヨル" },
+    tags: ["TypeScript", "Mapping"],
+    sections: [
+      {
+        heading: { ko: "문제 상황", en: "Symptom", jp: "症状" },
+        body: {
+          ko: [
+            "`API`에서 받아온 데이터를 차트 형식으로 변환하는 과정에서 런타임 에러가 발생했습니다.",
+            "`items` 배열이 `undefined`일 때 `.map()`을 호출하여 애플리케이션이 크래시되었습니다.",
+          ].join("\n"),
+          en: [
+            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
+            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+          ].join("\n"),
+          jp: [
+            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
+            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+          ].join("\n"),
+        },
+        codeLang: "ts",
+        code: `export const mapDtoToWithdrawalReasonDistribution = (
+  dto: WithdrawalReasonDistributionDTO
+): WithdrawalReasonDistribution => ({
+  chartData: dto.data.items.map((item) => ({
+    reason: item.reason_label,
+    count: item.count,
+    percentage: item.percentage,
+  })),
+});`,
+      },
+      {
+        heading: { ko: "원인", en: "Cause", jp: "原因" },
+        body: {
+          ko: [
+            "백엔드 `API`에서 데이터가 없는 경우 `items`를 빈 배열 대신 `undefined`로 반환하고 있었습니다.",
+            "`TypeScript` 타입 정의는 `items: WithdrawalReasondoughnutItemDTO[]`로 되어 있지만, 실제 런타임에서는 옵셔널한 값이 올 수 있었습니다.",
+            "타입 정의와 실제 `API` 응답 스펙의 불일치가 문제였습니다.",
+          ].join("\n"),
+          en: [
+            "Vercel does not have sufficient permission to access the GitHub Organization, so repository linking and auto-deploy setup are blocked.",
+            "For a Vite-based SPA, missing `rewrites`/`base` config can also cause 404 errors on refresh.",
+          ].join("\n"),
+          jp: [
+            "VercelにGitHub組織への十分な権限が付与されておらず、リポジトリ連携や自動デプロイ設定がブロックされていた。",
+            "また、ViteベースのSPAでは、`rewrites` や `base` 設定がないとリロード時に404が発生することがある。",
+          ].join("\n"),
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결방법 1. 컴포넌트 레벨에서 if (!data?.items) 체크 ",
+          en: "Step 1) Handle SPA routing via vercel.json",
+          jp: "手順1) vercel.jsonでSPAルーティングを設定",
+        },
+        body: {
+          ko: "모든 컴포넌트에 중복 발생",
+          en: "Added `vercel.json` so that all routes rewrite to `index.html` for SPA behavior.",
+          jp: "`vercel.json` を追加し、リロード時も常に `index.html` にリライトされるようにした。",
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결 방법 2. API 응답을 받은 직후 필터링 ",
+          en: "Step 2) Set base in vite.config.ts",
+          jp: "手順2) vite.config.tsでbaseを設定",
+        },
+        body: {
+          ko: "타입 안전성 여전히 보장 안 됨",
+          en: "To clarify the deployment base path, added `base: '/'` to Vite config.",
+          jp: "デプロイ時のパス基準を明確にするため、Vite設定に `base: '/'` を追加した。",
+        },
+      },
+      {
+        heading: {
+          ko: "시도한 해결 방법 3. DTO 타입을 옵셔널로 변경 → 기존 코드 대량 수정 필요",
+          en: "Step 3) Deploy via Vercel CLI",
+          jp: "手順3) Vercel CLIで直接デプロイ",
+        },
+        body: {
+          ko: ["기존 코드 대량 수정 필요"].join("\n"),
+          en: [
+            "When blocked by Organization permission issues in the web dashboard, deployment was done directly via CLI.",
+          ].join("\n"),
+          jp: [
+            "ダッシュボード側で組織権限の問題によりブロックされたため、CLIから直接デプロイを行った。",
+          ].join("\n"),
+        },
+      },
+      {
+        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "症状" },
+        body: {
+          ko: [
+            "매핑 함수에서 `Optional chaining (?.)`과 `nullish coalescing (|| [])`을 사용하여 안전한 변환을 보장했습니다.",
+            "컴포넌트에서 빈 배열 케이스를 명시적으로 처리하여 사용자에게 적절한 메시지를 표시했습니다.",
+            "타입 안정성과 런타임 안정성을 모두 확보했습니다.",
+          ].join("\n"),
+          en: [
+            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
+            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+          ].join("\n"),
+          jp: [
+            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
+            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+          ].join("\n"),
+        },
+        codeLang: "ts",
+        code: `export const mapDtoToWithdrawalReasonDistribution = (
+  dto: WithdrawalReasonDistributionDTO
+): WithdrawalReasonDistribution => ({
+  interval: dto.data.interval,
+  fromDate: dto.data.from_date,
+  toDate: dto.data.to_date,
+  totalWithdrawals: dto.data.total_withdrawals,
+  chartData:
+    dto.data.items?.map((item) => ({
+      reason: item.reason_label,
+      count: item.count,
+      percentage: item.percentage,
+    })) || [], // Optional chaining과 fallback 배열 사용
+});
+
+if (!statistics.chartData || statistics.chartData.length === 0) {
+  return (
+    <div
+      className="flex items-center justify-center"
+      style={{ height: "500px" }}
+    >
+      <p className="text-gray-500">탈퇴 사유 데이터가 없습니다.</p>
+    </div>
+  );
+}
+`,
       },
     ],
   },
