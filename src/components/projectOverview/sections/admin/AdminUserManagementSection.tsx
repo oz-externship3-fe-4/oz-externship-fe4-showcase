@@ -13,7 +13,7 @@ const LABEL_BY_LANG: Record<RetrospectiveLang, string> = {
 const TITLE_BY_LANG: Record<RetrospectiveLang, string> = {
   ko: "유저 관리 페이지",
   en: "User Management Page",
-  jp: "ユーザー管理ページ",
+  jp: "ユーザ管理ページ",
 };
 
 const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
@@ -46,56 +46,55 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
   en: (
     <div className="space-y-2">
       <p>
-        A page where admins can{" "}
+        A centralized page for{" "}
         <span className="font-semibold">
-          view and manage all registered users at a glance
+          viewing and managing all registered users
         </span>
         .
       </p>
 
       <p>
-        Admins can check basic information such as{" "}
+        Admins can review user details such as{" "}
         <span className="font-semibold">
-          email, nickname, name, date of birth, join date, and status
+          email, nickname, name, date of birth, join date, and account status
         </span>
         .
       </p>
 
       <p>
         <span className="font-semibold text-amber-600">
-          User role and status can be updated
+          They can also update
         </span>
         ,
         <br />
-        and accounts that do not comply with the service policy can be cleaned
-        up using the{" "}
-        <span className="font-semibold">user deletion feature</span>.
+        user roles and statuses, and delete accounts that violate{" "}
+        <span className="font-semibold">service policies.</span>.
       </p>
     </div>
   ),
   jp: (
     <div className="space-y-2">
       <p>
-        サービスに登録したすべてのユーザー情報を{" "}
-        <span className="font-semibold">一目で確認・管理</span>
+        サービスに加入したすべてのユーザーの情報を{" "}
+        <span className="font-semibold">一目で確認して管理</span>
         できるページです。
       </p>
 
       <p>
-        メールアドレス、ニックネーム、氏名、生年月日などの基本情報に加え、
-        <span className="font-semibold">登録日やステータス</span>
-        も確認できます。
+        Eメール、ニックネーム、名前、生年月日など基本情報の照会が可能で、
+        <span className="font-semibold"> 加入日の状態確認</span>
+        が可能です。
       </p>
 
       <p>
         <span className="font-semibold text-amber-600">
-          ユーザーの権限およびステータス変更
+          ユーザーの権限及び状態変更
         </span>
-        が可能で、
+        が可能であり、
         <br />
-        運営ポリシーに合わないアカウントは{" "}
-        <span className="font-semibold">削除機能</span>
-        を通じて整理できるように実装しました。
+        ユーザー削除機能を通じて運営ポリシーに合わないアカウントを{" "}
+        <span className="font-semibold"> 整理</span>
+        できるように実装しました。
       </p>
     </div>
   ),

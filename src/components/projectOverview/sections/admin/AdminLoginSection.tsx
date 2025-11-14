@@ -39,40 +39,41 @@ const DESC: Record<RetrospectiveLang, ReactNode> = {
   en: (
     <div className="space-y-2">
       <p>
-        An Admin-only login page designed to block unauthorized access and
-        ensure
-        <span className="font-semibold"> security and data integrity</span>.
+        An admin-only login page designed to block unauthorized access and
+        maintain
+        <span className="font-semibold"> security and data integrity.</span>.
       </p>
 
       <p>
-        Using a{" "}
+        Using an{" "}
         <span className="font-semibold text-amber-600">
-          AccessToken / RefreshToken
+          AccessToken/RefreshToken-based
         </span>{" "}
         authentication flow,
         <br />
-        admin sessions remain stable, and users without permissions cannot
-        access any admin menus.
+        admin sessions remain stable, and unauthorized users are restricted from
+        accessing admin menus.
       </p>
     </div>
   ),
   jp: (
     <div className="space-y-2">
       <p>
-        管理者専用のログインページで、
+        管理者（Admin）専用ログインページで、運用権限のないユーザーのアクセスを
         <br />
-        権限のないユーザーのアクセスを遮断し、
-        <span className="font-semibold"> セキュリティとデータ整合性</span>
+        ブロックし、セキュリティとデータの整合性を確保しました。
         を確保しています。
       </p>
 
       <p>
         <span className="font-semibold text-amber-600">
-          AccessToken / RefreshToken 認証構造
+          AccessToken / RefreshToken ベースの認証
         </span>
-        によりログイン状態を安定的に維持し、
+        を実装し、ログイン状態を安定的に維持しました。
         <br />
-        権限のないユーザーは管理者メニューにアクセスできません。
+        また、権限のないユーザーは管理者ページのどのメニューにも
+        <br />
+        アクセスできないように実装しました。
       </p>
     </div>
   ),
