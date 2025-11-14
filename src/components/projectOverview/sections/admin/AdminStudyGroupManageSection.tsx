@@ -13,7 +13,7 @@ const LABEL_BY_LANG: Record<RetrospectiveLang, string> = {
 const TITLE_BY_LANG: Record<RetrospectiveLang, string> = {
   ko: "스터디 그룹 관리 페이지",
   en: "Study Group Management Page",
-  jp: "スタディグループ管理ページ",
+  jp: "勉強会管理ページ",
 };
 
 const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
@@ -63,45 +63,19 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
   en: (
     <div className="space-y-2">
       <p>
-        A page where admins can see{" "}
-        <span className="font-extrabold">all study groups</span> created or
-        joined by users at a glance.
+        A page where admins can{" "}
+        <span className="font-extrabold">check all study groups</span> that
+        users have created or joined.
       </p>
 
       <p>
+        It supports{" "}
         <span className="font-semibold text-amber-600">
-          Study group list overview
-        </span>
-        <br />
-        Key information such as study name, status, leader, and headcount
-        <br className="hidden md:block" />
-        is displayed in a structured table.
-      </p>
-
-      <p>
-        <span className="font-semibold text-amber-600">
-          Search & status filtering
-        </span>
-        <br />
-        Admins can search by study group name and filter by{" "}
-        <span className="font-semibold">
-          status (in progress, recruiting, closed, etc.)
-        </span>
-        .
-      </p>
-
-      <p>
-        Detailed information for each group is available via a modal, allowing
-        admins to{" "}
-        <span className="font-semibold">
-          monitor the overall study operation in a read-only manner
-        </span>
-        .
-      </p>
-
-      <p className="text-[13px] text-slate-500">
-        ※ Due to API policy, this page works as read-only and does not modify
-        study group data.
+          search by study group name
+        </span>{" "}
+        and <br />
+        <span className="font-semibold">status-based filtering</span>, and
+        allows viewing detailed group information as well.
       </p>
     </div>
   ),
@@ -109,42 +83,17 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
   jp: (
     <div className="space-y-2">
       <p>
-        ユーザーが作成または参加している
-        <span className="font-extrabold">全てのスタディグループ状況</span>
-        を一目で確認できるページです。
+        ユーザーが作成または参加しているすべてのスタディグループの現況を確認できるページです。
       </p>
 
       <p>
+        スタディグループ名検索および
         <span className="font-semibold text-amber-600">
-          スタディグループ一覧の確認
+          ステータスフィルタリング
         </span>
         <br />
-        スタディ名、状態、リーダー、人数などの主要情報を
-        <br className="hidden md:block" />
-        テーブル形式で確認できるように構成しました。
-      </p>
-
-      <p>
-        <span className="font-semibold text-amber-600">
-          検索と状態フィルタリング
-        </span>
-        <br />
-        グループ名で検索できるほか、
-        <span className="font-semibold">進行中・募集中・終了</span>
-        などの状態別フィルタリングにも対応しています。
-      </p>
-
-      <p>
-        各スタディグループの詳細情報はモーダルで確認でき、
-        <span className="font-semibold">
-          管理者は閲覧ベースで全体のスタディ運営状況を把握
-        </span>
-        できるように設計しました。
-      </p>
-
-      <p className="text-[13px] text-slate-500">
-        ※ APIポリシー上、このページは閲覧専用として動作し、スタディ
-        グループデータは変更しません。
+        機能を提供し、
+        スタディグループの詳細情報も確認できるように実装しました。
       </p>
     </div>
   ),

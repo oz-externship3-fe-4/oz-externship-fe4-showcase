@@ -55,18 +55,23 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
   en: (
     <div className="space-y-2">
       <p>
-        A visualization-based{" "}
-        <span className="font-extrabold">admin dashboard</span> that allows
-        operators to monitor the service status in real time.
+        A visualization <span className="font-extrabold">dashboard</span> that
+        allows administrators <br />
+        to grasp the overall service status at a glance.
       </p>
 
       <p>
+        It provides insights into{" "}
         <span className="font-semibold text-amber-600">
-          Signup & Withdrawal Trends
+          signup and withdrawal trends
         </span>
+        <br />, as well as{" "}
+        <span className="font-semibold">
+          withdrawal reason distribution and tracking
+        </span>
+        , visualizing the reasons for user churn through intuitive,
         <br />
-        Admins can analyze user growth by comparing new signups and withdrawals
-        over time.
+        graph-based analytics.
       </p>
 
       <p>
@@ -89,33 +94,14 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
   jp: (
     <div className="space-y-2">
       <p>
-        運営者がサービス状況をリアルタイムで把握できる
-        <span className="font-extrabold">可視化ダッシュボード</span>です。
+        オペレーターがサービスの現状を一目で把握できるように構成した視覚化ページです。
       </p>
 
       <p>
-        <span className="font-semibold text-amber-600">
-          会員登録・退会の推移
-        </span>
+        会員登録及び退会傾向の確認が可能で、退会理由の分布及び追跡も可能なので、
         <br />
-        時間の経過に伴う新規登録者数と退会者数を比較・分析し、
-        サービスの成長傾向を直感的に確認できます。
-      </p>
-
-      <p>
-        <span className="font-semibold text-amber-600">
-          退会理由の分布および理由追跡
-        </span>
-        <br />
-        ユーザーが離脱した理由をグラフで可視化し、
-        詳細データに基づいてサービス改善の方向性を導き出すことができます。
-      </p>
-
-      <p>
-        すべてのデータは
-        <span className="font-semibold">読み取り専用API</span>
-        によって安全に提供され、
-        運営者がサービスの流れを正確に把握できるよう設計されています。
+        どのような理由でユーザーが離脱したかについて
+        グラフベースで視覚化し、一目で把握できるように実装しました。
       </p>
     </div>
   ),

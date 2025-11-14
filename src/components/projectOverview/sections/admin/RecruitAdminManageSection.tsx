@@ -12,8 +12,8 @@ const LABEL_BY_LANG: Record<RetrospectiveLang, string> = {
 
 const TITLE_BY_LANG: Record<RetrospectiveLang, string> = {
   ko: "구인 공고 관리 페이지",
-  en: "Recruitment Management Page",
-  jp: "求人公告管理ページ",
+  en: "Recruitment Post Management Page",
+  jp: "求人広告管理ページ",
 };
 
 const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
@@ -49,51 +49,51 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
     <div className="space-y-2">
       <p>
         A page for managing{" "}
-        <span className="font-semibold">study recruitment posts</span> shown to
-        users.
+        <span className="font-semibold">study recruitment posts</span> visible
+        to users.
       </p>
 
       <p>
-        Admins can check each post’s title, tech stack, deadline, view count,
-        and more, <br />
-        and use <span className="font-semibold">search and filter</span> options
-        to quickly find specific postings.
-      </p>
-
-      <p>
-        <span className="font-semibold">Inappropriate or outdated posts</span>{" "}
-        that no longer meet the service policy can be deleted by admins,
-        <br />
-        helping maintain the{" "}
+        Admins can view{" "}
         <span className="font-semibold">
-          overall quality and reliability
-        </span>{" "}
-        of the recruitment board.
+          post title, tech stack, deadline, and view count
+        </span>
+        , and use{" "}
+        <span className="font-semibold">search and filter features</span> to
+        quickly find posts.
+      </p>
+
+      <p>
+        Outdated or inappropriate posts that violate policy can be{" "}
+        <span className="font-semibold">
+          cleaned up through admin privileges
+        </span>
+        , helping maintain the overall{" "}
+        <span className="font-semibold">quality and credibility</span> of the
+        recruitment board.
       </p>
     </div>
   ),
   jp: (
     <div className="space-y-2">
       <p>
-        ユーザーに表示される{" "}
+        ユーザーに露出される
         <span className="font-semibold">スタディ募集公告</span>
         を管理するページです。
       </p>
 
       <p>
-        公告タイトル、技術スタック、締切日、閲覧数などを一目で確認でき、 <br />
+        公告のタイトル、技術スタック、締め切り日、再生回数などを確認でき、
         <span className="font-semibold">検索・フィルタリング機能</span>
-        を使って、目的の公告を素早く探すことができます。
+        で希望する公告を素早く見つけることができます。
       </p>
 
       <p>
-        サービス運営ポリシーに合わない不適切な公告や、
-        すでに募集が終了しているのに残っている
-        <span className="font-semibold">古い公告を管理者権限で削除</span>
-        できるようにし、 <br />
-        求人掲示板全体の
-        <span className="font-semibold">品質と信頼性</span>
-        を維持できるよう設計しました。
+        運営方針に合わない不適切な公告や既に募集が終了したものの、残っている
+        <span className="font-semibold">古い公告を管理者権限で整理</span>
+        することで、
+        <span className="font-semibold">全求人掲示板の品質と信頼性</span>
+        を維持するように実装しました。
       </p>
     </div>
   ),

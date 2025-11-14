@@ -12,8 +12,8 @@ const LABEL_BY_LANG: Record<RetrospectiveLang, string> = {
 
 const TITLE_BY_LANG: Record<RetrospectiveLang, string> = {
   ko: "리뷰 관리 페이지",
-  en: "Study Review Management Page",
-  jp: "スタディレビュー管理ページ",
+  en: "Review Management Page",
+  jp: "レビュー管理ページ",
 };
 
 const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
@@ -51,58 +51,42 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
 
   en: (
     <div className="space-y-2">
-      <p>
-        An admin-only page for{" "}
-        <span className="font-extrabold">viewing user study reviews</span>.
-      </p>
+      <p>An admin space for managing user-submitted study reviews.</p>
 
       <p>
-        Key information such as review content, rating, author, and date
-        <br />
-        is displayed in a clear and accessible layout.
-      </p>
-
-      <p>
-        <span className="font-semibold text-amber-600">
-          Keyword-based search
+        Admins can view key information such as{" "}
+        <span className="font-semibold">
+          review content, rating, author, and creation date
         </span>
-        <br />
-        Admins can filter reviews by content, target study, or author
-        <br className="hidden md:block" />
-        to monitor user feedback efficiently.
+        , and utilize{" "}
+        <span className="font-semibold">keyword-based search</span> to find
+        specific reviews efficiently.
       </p>
 
       <p className="text-[13px] text-slate-500">
-        ※ Due to API policy, review editing/deleting is not supported. Admins
-        can view reviews for monitoring purposes only.
+        Editing or deleting reviews is not supported due to API policy; admins
+        can monitor reviews in a{" "}
+        <span className="font-semibold">read-only</span> capacity.
       </p>
     </div>
   ),
 
   jp: (
     <div className="space-y-2">
-      <p>
-        ユーザーが残した{" "}
-        <span className="font-extrabold">スタディレビューを閲覧</span>
-        できる管理者専用ページです。
-      </p>
+      <p>ユーザーが残したスタディレビューを管理できる空間です。</p>
 
       <p>
-        レビュー内容、評価、作成者、作成日など
-        <span className="font-semibold">主要情報を一目で確認</span>
-        できるように構成しました。
-      </p>
-
-      <p>
-        <span className="font-semibold text-amber-600">キーワード検索機能</span>
-        <br />
-        レビュー内容を基準に検索でき、
-        特定のスタディや特定ユーザーのレビューのみ表示することもできます。
+        <span className="font-semibold">
+          レビュー内容や評点、作成者、作成日
+        </span>
+        を照会することができ、
+        <span className="font-semibold">キーワードベースの検索機能</span>
+        も提供しています。
       </p>
 
       <p className="text-[13px] text-slate-500">
-        ※ APIポリシー上、レビューの修正・削除機能は提供されず、
-        管理者は閲覧およびモニタリング目的で使用します。
+        レビューの修正・削除はAPIポリシー上提供されておらず、
+        運営者は照会ベースでモニタリングできます。
       </p>
     </div>
   ),

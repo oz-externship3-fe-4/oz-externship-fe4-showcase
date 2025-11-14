@@ -49,60 +49,46 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
   en: (
     <div className="space-y-2">
       <p>
-        A <span className="font-extrabold">Lecture Management Page</span> where
-        admins can view lecture data linked to study groups.
+        A page for viewing <span className="font-extrabold">lecture data</span>{" "}
+        linked to study groups.
       </p>
 
       <p>
+        Admins can check key information such as{" "}
         <span className="font-semibold text-amber-600">
-          Lecture Information
+          lecture title, instructor, and thumbnail,
         </span>
         <br />
-        Admins can check key details such as lecture title, instructor, and
-        thumbnail image.
+        <span className="font-semibold">pagination</span>.
       </p>
 
       <p>
-        <span className="font-semibold text-amber-600">Search & Filtering</span>
-        <br />
-        Keyword and title-based search is supported, and pagination enables
-        efficient navigation of large lecture lists.
-      </p>
-
-      <p>
-        This page operates as <span className="font-semibold">read-only</span>{" "}
-        based on API policy, ensuring safe access to lecture data.
+        Search functionality allows <br />
+        <span className="font-semibold">
+          keyword or title-based lookups
+        </span>{" "}
+        for easy access to desired lectures.
       </p>
     </div>
   ),
 
   jp: (
     <div className="space-y-2">
-      <p>
-        スタディ運営に必要な講義データを閲覧できる
-        <span className="font-extrabold">講義管理ページ</span>
-        です。
-      </p>
-
-      <p>
-        <span className="font-semibold text-amber-600">講義情報の確認</span>
-        <br />
-        講義名、講師名、サムネイルなどの主要情報を 一画面で確認できます。
-      </p>
+      <p>スタディに関連する講義データを照会するページです。</p>
 
       <p>
         <span className="font-semibold text-amber-600">
-          検索とフィルタリング
+          講義名、講師名、サムネイル
         </span>
         <br />
-        講義名またはキーワード検索に対応しており、
-        ページネーションで多くの講義データを効率的に探せます。
+        など核心情報の照会が可能で、
+        <br />
+        <span className="font-semibold">ページネーション</span>
+        ベースのリスト探索が可能です。
       </p>
 
       <p>
-        APIポリシー上、このページは
-        <span className="font-semibold">閲覧専用</span>
-        として動作し、安全に講義データを確認できます。
+        検索を通じて講義名またはキーワード検索もサポートできるように実装しました。
       </p>
     </div>
   ),

@@ -12,7 +12,7 @@ const LABEL_BY_LANG: Record<RetrospectiveLang, string> = {
 
 const TITLE_BY_LANG: Record<RetrospectiveLang, string> = {
   ko: "탈퇴 관리 페이지",
-  en: "User Withdrawal Management",
+  en: "Withdrawn User Management Page",
   jp: "退会管理ページ",
 };
 
@@ -44,21 +44,20 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
   en: (
     <div className="space-y-2">
       <p>
-        An admin page for viewing and managing{" "}
-        <span className="font-semibold">users who have withdrawn</span>.
+        An admin page for managing{" "}
+        <span className="font-semibold">users who have withdrawn.</span>.
       </p>
 
       <p>
-        Admins can check the user's basic information as well as their{" "}
-        <span className="font-semibold">reason for withdrawal</span>.
+        It displays each user’s basic information and{" "}
+        <span className="font-semibold"> reason for withdrawal</span>.
         <br />
-        Users who left by mistake or wish to return can be{" "}
-        <span className="font-semibold">restored easily</span> using the
-        recovery feature.
+        Users who accidentally left or wish to return can be easily restored via
+        the <span className="font-semibold">recovery feature</span>
       </p>
 
       <p>
-        This page is designed to help admins{" "}
+        This page helps admins{" "}
         <span className="font-semibold">understand user flow</span>
         and safely restore accounts when necessary.
       </p>
@@ -67,24 +66,23 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
 
   jp: (
     <div className="space-y-2">
-      <p>
-        退会したユーザーの一覧を確認・管理できる
-        <span className="font-semibold">運営者向けページ</span>です。
-      </p>
+      <p>退会したユーザーのリストを確認して管理できるページです。</p>
 
       <p>
-        ユーザーの基本情報に加え、{" "}
-        <span className="font-semibold">退会理由</span>も確認でき、
+        退会したユーザーの情報を照会し、{" "}
+        <span className="font-semibold">退会理由</span>を確認することもでき
         <br />
-        誤って退会した場合や復帰を希望するユーザーは{" "}
-        <span className="font-semibold">復元機能</span>
-        で簡単に戻すことができます。
+        誤って退会したり、再度復帰しようとするユーザーを{" "}
+        <span className="font-semibold">簡単に戻すことができる復旧機能</span>
+        も実装しました。
       </p>
 
       <p>
-        このページは運営者が
-        <span className="font-semibold">ユーザーの流れを正確に把握</span>し、
-        必要に応じて安全にアカウントを復元できるよう設計されています。
+        このページは、
+        <span className="font-semibold">
+          オペレーターがユーザーの流れを正確に理解
+        </span>
+        し、必要に応じてアカウントを復旧できるように設計されています。
       </p>
     </div>
   ),

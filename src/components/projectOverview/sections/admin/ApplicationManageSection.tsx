@@ -13,7 +13,7 @@ const LABEL_BY_LANG: Record<RetrospectiveLang, string> = {
 const TITLE_BY_LANG: Record<RetrospectiveLang, string> = {
   ko: "지원 내역 관리 페이지",
   en: "Application Management Page",
-  jp: "応募履歴管理ページ",
+  jp: "サポート履歴管理ページ",
 };
 
 const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
@@ -43,43 +43,41 @@ const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
   en: (
     <div className="space-y-2">
       <p>
-        A page where administrators can{" "}
-        <span className="font-semibold">view application information</span>{" "}
-        submitted by users for study recruitment posts.
+        A page where administrators can view user applications for study
+        recruitment posts.
       </p>
 
       <p>
-        Not only applicant details but also the recruitment post information,
-        application status, and the written{" "}
-        <span className="font-semibold">self-introduction and motivation</span>{" "}
-        can all be viewed in a detailed modal.
+        In addition to applicant details, admins can check the{" "}
+        <span className="font-semibold">
+          related post, application status, self-introduction, and motivation
+        </span>
+        , all displayed within a detailed modal view.
       </p>
 
       <p>
         This page is designed as{" "}
-        <span className="font-semibold">view-only</span>, allowing
-        administrators to safely and reliably manage user-submitted application
-        data.
+        <span className="font-semibold">read-only</span>, ensuring safe and
+        reliable management of user-submitted application data.
       </p>
     </div>
   ),
+
   jp: (
     <div className="space-y-2">
       <p>
-        ユーザーがスタディ募集公告に提出した{" "}
-        <span className="font-semibold">応募情報を確認</span>できるページです。
+        スタディ求人公告に対してユーザーが提出した支援情報を照会できるページです。
       </p>
 
       <p>
-        応募者の情報だけでなく、応募した公告の詳細、応募ステータス、 記入された{" "}
-        <span className="font-semibold">自己紹介・志望動機</span>
-        まで、すべて詳細モーダルで一画面に表示できます。
+        志願者情報だけでなく、志願した公告情報および志願状態、 作成された{" "}
+        <span className="font-semibold">自己紹介および志望動機</span>
+        を詳細モーダルを通じてすべて一つの画面で確認できます。
       </p>
 
       <p>
-        このページは <span className="font-semibold">閲覧専用</span>{" "}
-        として設計されており、
-        運営者が提出された応募データを安全に管理できるように実装しています。
+        このページは <span className="font-semibold">照会専用</span>
+        として実装され、運営過程でユーザーが提出したサポートデータを安全に管理できます。
       </p>
     </div>
   ),
