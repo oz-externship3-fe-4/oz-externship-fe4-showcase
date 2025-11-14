@@ -3,9 +3,12 @@ import { useState } from "react";
 import { DemoVideoModal } from "../../components/demo/DemoVideoModal";
 import { DEMO_CARDS } from "../../components/demo/demoCardData";
 import { DemoCard } from "../../components/demo/DemoCard";
-import type { DemoId } from "../../components/demo/demoCardData";
+import type { DemoId, DemoLang } from "../../components/demo/demoCardData";
+import { useOutletContext } from "react-router";
+import type { LayoutContext } from "../../components/Layout/Layout";
 
 export default function DemoShowcasePage() {
+  const { lang } = useOutletContext<LayoutContext>();
   const [activeDemoId, setActiveDemoId] = useState<DemoId | null>(null);
 
   return (
@@ -18,6 +21,7 @@ export default function DemoShowcasePage() {
           <DemoCard
             key={demo.id}
             demo={demo}
+            lang={lang as DemoLang}
             onClick={() => setActiveDemoId(demo.id as DemoId)}
           />
         ))}
@@ -26,6 +30,7 @@ export default function DemoShowcasePage() {
       <DemoVideoModal
         open={!!activeDemoId}
         demoId={activeDemoId}
+        lang={lang as DemoLang}
         onClose={() => setActiveDemoId(null)}
         onChangeDemo={(id) => setActiveDemoId(id)}
       />

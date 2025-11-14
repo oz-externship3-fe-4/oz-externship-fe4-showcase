@@ -1,8 +1,14 @@
 import { Download, Play } from "lucide-react";
 import { DEMO_CARDS } from "../demoCardData";
-import type { DemoId } from "../demoCardData";
+import type { DemoId, DemoLang } from "../demoCardData";
 
-export function DemoModalBody({ demoId }: { demoId: DemoId }) {
+export function DemoModalBody({
+  demoId,
+  lang,
+}: {
+  demoId: DemoId;
+  lang: DemoLang;
+}) {
   const demo = DEMO_CARDS.find((d) => d.id === demoId);
   if (!demo) return null;
 
@@ -39,18 +45,18 @@ export function DemoModalBody({ demoId }: { demoId: DemoId }) {
 
       <div className="bg-[#0B2858] px-6 py-5 md:px-8 md:py-6 text-white">
         <h2 className="text-lg md:text-xl font-bold tracking-tight">
-          {demo.name}
+          {demo.name[lang]}
         </h2>
 
         {demo.desc && (
           <p className="mt-2 text-[11px] md:text-xs leading-relaxed text-slate-100/85">
-            {demo.desc}
+            {demo.desc[lang]}
           </p>
         )}
 
         <div className="mt-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="flex flex-wrap gap-1.5">
-            {demo.tags.map((t) => (
+            {demo.tags[lang].map((t) => (
               <span
                 key={t}
                 className="

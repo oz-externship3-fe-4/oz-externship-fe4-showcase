@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import type { DemoId } from "./demoCardData";
+import type { DemoId, DemoLang } from "./demoCardData";
 
 import { DemoModalBody } from "./modal/DemoModalBody";
 import { DemoModalFooter } from "./modal/DemoModalFooter";
@@ -7,6 +7,7 @@ import { DemoModalFooter } from "./modal/DemoModalFooter";
 interface DemoVideoModalProps {
   open: boolean;
   demoId: DemoId | null;
+  lang: DemoLang;
   onClose: () => void;
   onChangeDemo: (id: DemoId) => void;
 }
@@ -14,6 +15,7 @@ interface DemoVideoModalProps {
 export function DemoVideoModal({
   open,
   demoId,
+  lang,
   onClose,
   onChangeDemo,
 }: DemoVideoModalProps) {
@@ -46,9 +48,13 @@ export function DemoVideoModal({
               flex flex-col gap-4
             "
           >
-            <DemoModalBody demoId={demoId} />
+            <DemoModalBody demoId={demoId} lang={lang} />
 
-            <DemoModalFooter demoId={demoId} onChangeDemo={onChangeDemo} />
+            <DemoModalFooter
+              demoId={demoId}
+              lang={lang}
+              onChangeDemo={onChangeDemo}
+            />
           </motion.div>
         </motion.div>
       )}

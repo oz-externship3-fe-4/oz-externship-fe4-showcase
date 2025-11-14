@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
-import type { DemoCardItem } from "./demoCardData";
+import type { DemoCardItem, DemoLang } from "./demoCardData";
 import { Clapperboard } from "lucide-react";
 
 interface DemoCardProps {
   demo: DemoCardItem;
+  lang: DemoLang;
   onClick: () => void;
 }
 
-export function DemoCard({ demo, onClick }: DemoCardProps) {
+export function DemoCard({ demo, lang, onClick }: DemoCardProps) {
   return (
     <motion.button
       whileHover={{ y: -4 }}
@@ -33,7 +34,7 @@ export function DemoCard({ demo, onClick }: DemoCardProps) {
         <div className="relative w-full aspect-video bg-black">
           <img
             src={`/videos/${demo.id}.png`}
-            alt={`${demo.name} 썸네일`}
+            alt={`${demo.name[lang]} 썸네일`}
             className="absolute inset-0 w-full h-full object-contain"
           />
         </div>
@@ -47,12 +48,11 @@ export function DemoCard({ demo, onClick }: DemoCardProps) {
         >
           <div>
             <h3 className="text-sm md:text-base font-bold text-white">
-              {demo.name}
+              {demo.name[lang]}
             </h3>
 
-            {/* 가로 해시태그 리스트 */}
             <div className="mt-2 flex flex-wrap gap-1.5">
-              {demo.tags.slice(0, 3).map((t) => (
+              {demo.tags[lang].slice(0, 3).map((t) => (
                 <span
                   key={t}
                   className="
@@ -80,7 +80,7 @@ export function DemoCard({ demo, onClick }: DemoCardProps) {
               "
             >
               <Clapperboard className="h-3.5 w-3.5" />
-              데모보기
+              Demo
             </span>
           </div>
         </div>
