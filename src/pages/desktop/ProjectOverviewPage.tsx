@@ -8,20 +8,22 @@ import {
 import { motion } from "framer-motion";
 import { softPaintBg } from "../../components/Layout/layoutConfig";
 
-import { OverviewIntroSection } from "../../components/projectOverview/sections/OverviewIntroSection";
-import { UserStudyManageSection } from "../../components/projectOverview/sections/UserStudyManageSection";
-import { RecruitManageSection } from "../../components/projectOverview/sections/RecruitManageSection";
-import { UserStudyDetailSection } from "../../components/projectOverview/sections/UserStudyDetailSection";
-import { UserMyPageSection } from "../../components/projectOverview/sections/UserMyPageSection";
-import { AdminLoginSection } from "../../components/projectOverview/sections/admin/AdminLoginSection";
-import { AdminUserManagementSection } from "../../components/projectOverview/sections/admin/AdminUserManagementSection";
-import { AdminUserWithdrawalSection } from "../../components/projectOverview/sections/admin/AdminUserWithdrawalSection";
-import { AdminDashboardSection } from "../../components/projectOverview/sections/admin/AdminDashboardSection";
-import { AdminLectureManageSection } from "../../components/projectOverview/sections/admin/AdminLectureManageSection";
-import { AdminStudyGroupManageSection } from "../../components/projectOverview/sections/admin/AdminStudyGroupManageSection";
-import { AdminReviewManageSection } from "../../components/projectOverview/sections/admin/AdminReviewManageSection";
-import { ApplicationManageSection } from "../../components/projectOverview/sections/admin/ApplicationManageSection";
-import { RecruitAdminManageSection } from "../../components/projectOverview/sections/admin/RecruitAdminManageSection";
+import {
+  OverviewIntroSection,
+  UserStudyManageSection,
+  RecruitManageSection,
+  UserStudyDetailSection,
+  UserMyPageSection,
+  AdminLoginSection,
+  AdminUserManagementSection,
+  AdminUserWithdrawalSection,
+  AdminDashboardSection,
+  AdminLectureManageSection,
+  AdminStudyGroupManageSection,
+  AdminReviewManageSection,
+  ApplicationManageSection,
+  RecruitAdminManageSection,
+} from "../../components/projectOverview/sections";
 
 const SECTIONS = [
   { id: "overview", label: "개요", Component: OverviewIntroSection },
