@@ -34,7 +34,7 @@ export default function TroubleshootingPage() {
   }, []);
 
   return (
-    <div className="h-full px-10 pb-10 flex flex-col overflow-hidden">
+    <div className="h-full px-10 pb-8flex flex-col overflow-hidden">
       <div
         ref={scrollRef}
         className="flex-1 min-h-0 overflow-y-auto scrollbar-hide"

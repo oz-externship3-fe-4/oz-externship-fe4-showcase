@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import type { DemoCardItem, DemoLang } from "./demoCardData";
 import { Clapperboard } from "lucide-react";
+import { useRef } from "react";
+import { useHoverGsap } from "../../hooks/animations/useHoverGsap";
 
 interface DemoCardProps {
   demo: DemoCardItem;
@@ -9,20 +11,26 @@ interface DemoCardProps {
 }
 
 export function DemoCard({ demo, lang, onClick }: DemoCardProps) {
+  const cardRef = useRef<HTMLButtonElement | null>(null);
+
+  useHoverGsap(cardRef, cardRef, {
+    scale: 1.03,
+    translateY: 1.5,
+    rotate: 0,
+    iconTranslateX: 3,
+    duration: 0.12,
+  });
+
   return (
     <motion.button
-      whileHover={{ y: -4 }}
-      whileTap={{ scale: 0.98 }}
+      ref={cardRef}
+      whileTap={{ scale: 0.96 }}
       onClick={onClick}
       className="
         group relative overflow-hidden
         rounded-3xl text-left outline-none
-        ring-1 ring-white/10 transition
+        transition mt-2 mr-2 ml-2
       "
-      style={{
-        background:
-          "linear-gradient(140deg, rgba(124,58,237,.4), rgba(236,72,153,.35))",
-      }}
     >
       <div
         className="

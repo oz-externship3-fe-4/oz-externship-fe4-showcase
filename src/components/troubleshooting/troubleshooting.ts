@@ -1425,7 +1425,7 @@ const user = detail.user
       jp: "デバウンスが効かない",
     },
     page: { ko: "리뷰 관리", en: "Review admin", jp: "レビュー管理" },
-    owner: { ko: "홍열", en: "Hongyeol", jp: "ホンヨル" },
+    owner: { ko: "홍엽", en: "HongYeop", jp: "ホンヨル" },
     tags: ["useCallback", "stale-closure"],
     sections: [
       {

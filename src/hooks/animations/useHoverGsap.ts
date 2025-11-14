@@ -1,9 +1,12 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, type RefObject } from "react";
 import gsap from "gsap";
 
-export function useHoverGsap<T extends HTMLElement = HTMLElement>(
-  hoverAreaRef: React.RefObject<T | null>,
-  animatedTargetRef: React.RefObject<T | null>,
+export function useHoverGsap<
+  THover extends HTMLElement = HTMLElement,
+  TTarget extends HTMLElement = HTMLElement
+>(
+  hoverAreaRef: RefObject<THover | null>,
+  animatedTargetRef: RefObject<TTarget | null>,
   options?: {
     scale?: number;
     translateY?: number;
@@ -27,15 +30,12 @@ export function useHoverGsap<T extends HTMLElement = HTMLElement>(
       translateY = -4,
       rotate = 8,
       iconTranslateX = 4,
-      shadowStart = "0 14px 40px rgba(0,0,0,0.22)",
-      shadowEnd = "0 18px 48px rgba(0,0,0,0.28)",
       duration = 0.25,
     } = options || {};
 
     gsap.set(animatedTarget, {
       scale: 1,
       y: 0,
-      boxShadow: shadowStart,
     });
 
     if (iconElement) {
@@ -47,7 +47,6 @@ export function useHoverGsap<T extends HTMLElement = HTMLElement>(
     hoverTimeline.to(animatedTarget, {
       scale,
       y: translateY,
-      boxShadow: shadowEnd,
       duration,
       ease: "power3.out",
     });
