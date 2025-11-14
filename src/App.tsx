@@ -26,6 +26,9 @@ const TroubleshootingPage = lazy(
   () => import("./pages/desktop/TroubleshootingPage")
 );
 const DemoShowcasePage = lazy(() => import("./pages/desktop/DemoShowcasePage"));
+const GitConventionPage = lazy(
+  () => import("./pages/desktop/GitConventionPage")
+);
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -89,7 +92,7 @@ function AnimatedRoutes() {
           <Route
             path="overview"
             element={
-              <Suspense fallback={<ProjectOverviewPage />}>
+              <Suspense fallback={<RouteFallback />}>
                 <ProjectOverviewPage />
               </Suspense>
             }
@@ -97,7 +100,7 @@ function AnimatedRoutes() {
           <Route
             path="troubleshooting"
             element={
-              <Suspense fallback={<TroubleshootingPage />}>
+              <Suspense fallback={<RouteFallback />}>
                 <TroubleshootingPage />
               </Suspense>
             }
@@ -105,8 +108,16 @@ function AnimatedRoutes() {
           <Route
             path="demo"
             element={
-              <Suspense fallback={<DemoShowcasePage />}>
+              <Suspense fallback={<RouteFallback />}>
                 <DemoShowcasePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="convention"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <GitConventionPage />
               </Suspense>
             }
           />
