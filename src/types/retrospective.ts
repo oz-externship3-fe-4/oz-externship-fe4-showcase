@@ -4,7 +4,11 @@ export type RetrospectiveLang = ResumeLang;
 
 export type MemberRetrospective = {
   id: MemberWithResume["id"];
-  name: string;
+  name: {
+    ko: string;
+    en: string;
+    jp: string;
+  };
   role: string;
   characterImg: string;
   message: {

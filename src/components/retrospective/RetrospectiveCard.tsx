@@ -32,7 +32,7 @@ export function RetrospectiveCard({ member, lang }: Props) {
       >
         <div className="pt-10 text-center">
           <div className="text-[17px] font-semibold text-slate-900">
-            {member.name}
+            {member.name[lang] ?? member.name.ko}
           </div>
           <div className="mt-1 text-[11px] font-medium tracking-[0.16em] text-slate-500">
             {member.role}
@@ -42,7 +42,7 @@ export function RetrospectiveCard({ member, lang }: Props) {
         <div className="flex-1 flex items-center justify-center">
           <img
             src={member.characterImg}
-            alt={member.name}
+            alt={member.name[lang] ?? member.name.ko}
             className="h-40 object-contain pointer-events-none select-none"
           />
         </div>

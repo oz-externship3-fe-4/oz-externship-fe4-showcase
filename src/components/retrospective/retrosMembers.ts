@@ -3,7 +3,11 @@ import type { MemberRetrospective } from "../../types/retrospective";
 export const TEAM_RETROSPECTIVES: MemberRetrospective[] = [
   {
     id: "bulbasaur",
-    name: "윤경복",
+    name: {
+      ko: "윤경복",
+      en: "YOON KYUNG BOK",
+      jp: "イ・ウォニ",
+    },
     role: "FRONTEND",
     characterImg: "/images/pokemon/bulbasaur.png",
     comment: {
@@ -38,7 +42,11 @@ I hope we all continue to grow into great developers, and I genuinely look forwa
   },
   {
     id: "pikachu",
-    name: "이원희",
+    name: {
+      ko: "이원희",
+      en: "string",
+      jp: "string",
+    },
     role: "FRONTEND",
     characterImg: "/images/pokemon/pikachu.png",
     comment: {
@@ -88,7 +96,11 @@ development becomes not only more efficient, but genuinely more enjoyable.`,
   },
   {
     id: "squirtle",
-    name: "홍엽",
+    name: {
+      ko: "홍엽",
+      en: "string",
+      jp: "string",
+    },
     role: "FRONTEND",
     characterImg: "/images/pokemon/squirtle.png",
     comment: {
@@ -132,7 +144,11 @@ but also supports the growth of others and contributes to improving the team’s
   },
   {
     id: "eevee",
-    name: "서단비",
+    name: {
+      ko: "서단비",
+      en: "string",
+      jp: "string",
+    },
     role: "FRONTEND",
     characterImg: "/images/pokemon/eevee.png",
     comment: {
@@ -170,7 +186,11 @@ of TypeScript and the value of close collaboration with the backend team.`,
   },
   {
     id: "yveltal",
-    name: "김현진",
+    name: {
+      ko: "김현진",
+      en: "string",
+      jp: "string",
+    },
     role: "FRONTEND",
     characterImg: "/images/pokemon/3287f802e7f5855a.png",
     comment: {

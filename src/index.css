@@ -10,8 +10,14 @@
   scrollbar-width: none !important;
 }
 
-/* * {
-  font-family: "Jua", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-} */
+html {
+  font-family: "Pretendard Rounded", sans-serif;
+}
+
+[lang="jp"] {
+  font-family: "Zen Maru Gothic", sans-serif;
+}
+
+[lang="en"] {
+  font-family: "Zen Maru Gothic", "Inter", sans-serif;
+}

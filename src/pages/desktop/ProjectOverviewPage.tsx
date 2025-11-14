@@ -11,17 +11,41 @@ import { softPaintBg } from "../../components/Layout/layoutConfig";
 import { OverviewIntroSection } from "../../components/projectOverview/sections/OverviewIntroSection";
 import { UserStudyManageSection } from "../../components/projectOverview/sections/UserStudyManageSection";
 import { RecruitManageSection } from "../../components/projectOverview/sections/RecruitManageSection";
-// import { DashboardSection } from "../../components/projectOverview/sections/DashboardSection";
 import { UserStudyDetailSection } from "../../components/projectOverview/sections/UserStudyDetailSection";
 import { UserMyPageSection } from "../../components/projectOverview/sections/UserMyPageSection";
+import { AdminLoginSection } from "../../components/projectOverview/sections/admin/AdminLoginSection";
+import { AdminUserManagementSection } from "../../components/projectOverview/sections/admin/AdminUserManagementSection";
+import { AdminUserWithdrawalSection } from "../../components/projectOverview/sections/admin/AdminUserWithdrawalSection";
+import { AdminDashboardSection } from "../../components/projectOverview/sections/admin/AdminDashboardSection";
+import { AdminLectureManageSection } from "../../components/projectOverview/sections/admin/AdminLectureManageSection";
+import { AdminStudyGroupManageSection } from "../../components/projectOverview/sections/admin/AdminStudyGroupManageSection";
+import { AdminReviewManageSection } from "../../components/projectOverview/sections/admin/AdminReviewManageSection";
+import { ApplicationManageSection } from "../../components/projectOverview/sections/admin/ApplicationManageSection";
+import { RecruitAdminManageSection } from "../../components/projectOverview/sections/admin/RecruitAdminManageSection";
 
 const SECTIONS = [
   { id: "overview", label: "개요", Component: OverviewIntroSection },
   { id: "user-study", label: "사용자", Component: UserStudyManageSection },
   { id: "detail", label: "디테일", Component: UserStudyDetailSection },
   { id: "recruit", label: "모집", Component: RecruitManageSection },
-  // { id: "dashboard", label: "대시보드", Component: DashboardSection },
   { id: "mypage", label: "마이페이지", Component: UserMyPageSection },
+  { id: "login", label: "로그인", Component: AdminLoginSection },
+  { id: "user", label: "유저관리", Component: AdminUserManagementSection },
+  {
+    id: "withdrawal",
+    label: "탈퇴관리",
+    Component: AdminUserWithdrawalSection,
+  },
+  { id: "dashboard", label: "대시보드", Component: AdminDashboardSection },
+  { id: "lecture", label: "강의관리", Component: AdminLectureManageSection },
+  {
+    id: "study",
+    label: "스터디그룹",
+    Component: AdminStudyGroupManageSection,
+  },
+  { id: "review", label: "리뷰", Component: AdminReviewManageSection },
+  { id: "app", label: "지원관리", Component: ApplicationManageSection },
+  { id: "recruit", label: "구인공고", Component: RecruitAdminManageSection },
 ];
 
 export default function ProjectOverviewPage() {

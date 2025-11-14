@@ -1,11 +1,13 @@
 import { NavLink } from "react-router";
 import { NAV_ITEMS, STRIP_COLORS, softPaintBg } from "./layoutConfig";
+import type { RetrospectiveLang } from "../../types/retrospective";
 
 interface SectionNavProps {
   activePath: string;
+  lang: RetrospectiveLang;
 }
 
-export function SectionNav({ activePath }: SectionNavProps) {
+export function SectionNav({ activePath, lang }: SectionNavProps) {
   return (
     <aside
       className="
@@ -47,7 +49,7 @@ export function SectionNav({ activePath }: SectionNavProps) {
               <span className="text-xs font-bold text-slate-700">
                 {item.order}
               </span>
-              <span className="ml-3">{item.label}</span>
+              <span className="ml-3">{item.label[lang]}</span>
             </NavLink>
           );
         })}

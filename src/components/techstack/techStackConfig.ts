@@ -1,3 +1,5 @@
+import type { LocalizedText } from "../../types/troubleshooting";
+
 export type Skill = {
   name: string;
   src: string;
@@ -9,7 +11,7 @@ export type HighlightTech = {
   name: string;
   color: string;
   icon: string;
-  desc: string;
+  desc: LocalizedText;
 };
 
 export const SKILLS: Skill[] = [
@@ -93,27 +95,43 @@ export const HIGHLIGHT_TECHS: HighlightTech[] = [
     name: "React",
     color: "#61DAFB",
     icon: "images/React-Dark.svg",
-    desc: "SPA 기반 UI를 컴포넌트 단위로 설계하여 재사용성과 유지보수성을 극대화했습니다. 페이지 전환, 상태 공유, 성능 최적화까지 전반에 활용했습니다.",
+    desc: {
+      ko: "SPA 기반 UI를 컴포넌트 단위로 설계하여 재사용성과 유지보수성을 극대화했습니다. 페이지 전환, 상태 공유, 성능 최적화까지 전반에 활용했습니다.",
+      en: "We designed the SPA-based UI in terms of reusable components to maximize reusability and maintainability. It was used across page transitions, shared state, and performance optimizations.",
+      jp: "SPAベースのUIをコンポーネント単位で設計し、再利用性とメンテナンス性を最大化しました。ページ切り替え、状態共有、パフォーマンス最適化まで全般的に活用しました。",
+    },
   },
   {
     key: "ts",
     name: "TypeScript",
     color: "#3178C6",
     icon: "images/TypeScript.svg",
-    desc: "도메인 모델과 API 타입을 명확히 정의해 런타임 에러를 줄이고, 협업 시에도 코드 변경 영향을 쉽게 추적할 수 있도록 했습니다.",
+    desc: {
+      ko: "도메인 모델과 API 타입을 명확히 정의해 런타임 에러를 줄이고, 협업 시에도 코드 변경 영향을 쉽게 추적할 수 있도록 했습니다.",
+      en: "By clearly defining domain models and API types, we reduced runtime errors and made it easier to track the impact of code changes during collaboration.",
+      jp: "ドメインモデルとAPIタイプを明確に定義してランタイムエラーを減らし、協業時にもコード変更の影響を簡単に追跡できるようにしました。",
+    },
   },
   {
     key: "vite",
     name: "Vite",
     color: "#646CFF",
     icon: "images/Vite-Light.svg",
-    desc: "초고속 HMR과 번들링 환경을 기반으로 디자인·기능 실험을 빠르게 반복하며, 실제 개발 속도와 피드백 루프를 크게 단축했습니다.",
+    desc: {
+      ko: "초고속 HMR과 번들링 환경을 기반으로 디자인·기능 실험을 빠르게 반복하며, 실제 개발 속도와 피드백 루프를 크게 단축했습니다.",
+      en: "With ultra-fast HMR and bundling, we were able to rapidly iterate on design and feature experiments, significantly shortening development speed and feedback loops.",
+      jp: "超高速HMRとバンドル環境をベースにデザイン・機能実験を素早く繰り返し、実際の開発速度とフィードバックループを大幅に短縮しました。",
+    },
   },
   {
     key: "tailwind",
     name: "Tailwind CSS",
     color: "#38BDF8",
     icon: "images/TailwindCSS-Light.svg",
-    desc: "공통 라운딩, 컬러, 섀도우 토큰을 정의하고 유틸리티 클래스로 캡슐화하여, 전체 페이지가 하나의 디자인 시스템 위에서 일관되게 동작하도록 구성했습니다.",
+    desc: {
+      ko: "공통 라운딩, 컬러, 섀도우 토큰을 정의하고 유틸리티 클래스로 캡슐화하여, 전체 페이지가 하나의 디자인 시스템 위에서 일관되게 동작하도록 구성했습니다.",
+      en: "We defined shared rounding, color, and shadow tokens and encapsulated them into utility classes so that all pages behave consistently on top of a single design system.",
+      jp: "共通のラウンディング、カラー、シャドウトークンを定義し、ユーティリティクラスでカプセル化して、全体のページが1つのデザインシステム上で一貫して動作するように構成しました。",
+    },
   },
 ];

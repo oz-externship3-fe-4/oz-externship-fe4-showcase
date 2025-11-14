@@ -2,6 +2,7 @@ import type { NavItem } from "./layoutConfig";
 import { ShineText } from "./ShineText";
 import type { RetrospectiveLang } from "../../types/retrospective";
 import { motion } from "framer-motion";
+import { pickText } from "../../utils/i18n";
 
 const LANG_LABEL: Record<RetrospectiveLang, string> = {
   ko: "한국어",
@@ -22,10 +23,10 @@ export function LayoutHeader({
   lang,
   onChangeLang,
 }: LayoutHeaderProps) {
-  const title = activeItem.title || activeItem.label;
+  const title = pickText(activeItem.title ?? activeItem.label, lang);
 
   return (
-    <header className="mb-10">
+    <header className="mb-5">
       <div className="flex justify-between items-center mb-3">
         <h2 className="text-[35px] font-extrabold select-none">
           <ShineText text={title} />

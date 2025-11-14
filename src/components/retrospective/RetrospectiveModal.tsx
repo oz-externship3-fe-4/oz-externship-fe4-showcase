@@ -75,15 +75,14 @@ export function RetrospectiveModal({
       overlay={overlay}
       panel={panel}
     >
-      {/* 🩰 헤더 */}
       <div className="px-10 pt-8 pb-6 flex flex-col items-center text-center bg-[linear-gradient(180deg,#fff8f3_0%,#fff_45%,#fdf6f0_100%)] rounded-t-3xl">
         <img
           src={member.characterImg}
-          alt={member.name}
+          alt={member.name[lang] ?? member.name.ko}
           className="w-[120px] h-[120px] object-contain mb-3 drop-shadow-[0_8px_24px_rgba(255,176,123,0.4)]"
         />
         <h2 className="text-[22px] font-extrabold text-slate-900 tracking-tight">
-          {member.name}
+          {member.name[lang] ?? member.name.ko}
         </h2>
         <p className="mt-1 text-[12px] font-semibold text-amber-500 tracking-[0.16em]">
           {member.role}

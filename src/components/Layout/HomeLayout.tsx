@@ -4,7 +4,7 @@ import { LayoutHeader } from "./LayoutHeader";
 import { NAV_ITEMS, softPaintBg } from "./layoutConfig";
 import { BackFloatingButton } from "./BackFloatingButton";
 import type { RetrospectiveLang } from "../../types/retrospective";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export interface LayoutContext {
   lang: RetrospectiveLang;
@@ -18,6 +18,10 @@ export default function HomeLayout() {
   const activeItem =
     NAV_ITEMS.find((item) => location.pathname.startsWith(item.path)) ??
     NAV_ITEMS[0];
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-[#ECEFF3] py-5">
@@ -41,7 +45,7 @@ export default function HomeLayout() {
           </div>
         </section>
 
-        <SectionNav activePath={location.pathname} />
+        <SectionNav activePath={location.pathname} lang={lang} />
       </div>
     </div>
   );

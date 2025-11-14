@@ -22,6 +22,10 @@ const RetrospectivePage = lazy(
 const ProjectOverviewPage = lazy(
   () => import("./pages/desktop/ProjectOverviewPage")
 );
+const TroubleshootingPage = lazy(
+  () => import("./pages/desktop/TroubleshootingPage")
+);
+const DemoShowcasePage = lazy(() => import("./pages/desktop/DemoShowcasePage"));
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -87,6 +91,22 @@ function AnimatedRoutes() {
             element={
               <Suspense fallback={<ProjectOverviewPage />}>
                 <ProjectOverviewPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="troubleshooting"
+            element={
+              <Suspense fallback={<TroubleshootingPage />}>
+                <TroubleshootingPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="demo"
+            element={
+              <Suspense fallback={<DemoShowcasePage />}>
+                <DemoShowcasePage />
               </Suspense>
             }
           />

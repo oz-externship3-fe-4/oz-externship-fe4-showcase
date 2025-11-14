@@ -1,0 +1,127 @@
+import type { ReactNode } from "react";
+import { useOutletContext } from "react-router";
+import type { LayoutContext } from "../../../Layout/Layout";
+import type { RetrospectiveLang } from "../../../../types/retrospective";
+import { ProjectOverviewSectionLayout } from "../../ProjectOverviewSectionLayout";
+
+const LABEL_BY_LANG: Record<RetrospectiveLang, string> = {
+  ko: "기능 07",
+  en: "Feature 07",
+  jp: "機能 07",
+};
+
+const TITLE_BY_LANG: Record<RetrospectiveLang, string> = {
+  ko: "탈퇴 관리 페이지",
+  en: "User Withdrawal Management",
+  jp: "退会管理ページ",
+};
+
+const DESCRIPTION_BY_LANG: Record<RetrospectiveLang, ReactNode> = {
+  ko: (
+    <div className="space-y-2">
+      <p>
+        탈퇴한 사용자의 목록을 조회하고 관리할 수 있는{" "}
+        <span className="font-semibold">운영자용 페이지</span>입니다.
+      </p>
+
+      <p>
+        탈퇴한 유저의 기본 정보와 함께,{" "}
+        <span className="font-semibold">탈퇴 사유</span>도 확인할 수 있으며
+        <br />
+        실수로 계정을 삭제했거나, 다시 복귀하고자 하는 사용자는{" "}
+        <span className="font-semibold">복구 기능</span>을 통해 간단히 되돌릴 수
+        있습니다.
+      </p>
+
+      <p>
+        이 페이지는 운영자가{" "}
+        <span className="font-semibold">유저 흐름을 정확히 이해</span>하고, 필요
+        시 계정을 안전하게 복구할 수 있도록 설계되었습니다.
+      </p>
+    </div>
+  ),
+
+  en: (
+    <div className="space-y-2">
+      <p>
+        An admin page for viewing and managing{" "}
+        <span className="font-semibold">users who have withdrawn</span>.
+      </p>
+
+      <p>
+        Admins can check the user's basic information as well as their{" "}
+        <span className="font-semibold">reason for withdrawal</span>.
+        <br />
+        Users who left by mistake or wish to return can be{" "}
+        <span className="font-semibold">restored easily</span> using the
+        recovery feature.
+      </p>
+
+      <p>
+        This page is designed to help admins{" "}
+        <span className="font-semibold">understand user flow</span>
+        and safely restore accounts when necessary.
+      </p>
+    </div>
+  ),
+
+  jp: (
+    <div className="space-y-2">
+      <p>
+        退会したユーザーの一覧を確認・管理できる
+        <span className="font-semibold">運営者向けページ</span>です。
+      </p>
+
+      <p>
+        ユーザーの基本情報に加え、{" "}
+        <span className="font-semibold">退会理由</span>も確認でき、
+        <br />
+        誤って退会した場合や復帰を希望するユーザーは{" "}
+        <span className="font-semibold">復元機能</span>
+        で簡単に戻すことができます。
+      </p>
+
+      <p>
+        このページは運営者が
+        <span className="font-semibold">ユーザーの流れを正確に把握</span>し、
+        必要に応じて安全にアカウントを復元できるよう設計されています。
+      </p>
+    </div>
+  ),
+};
+
+export function AdminUserWithdrawalSection() {
+  const { lang } = useOutletContext<LayoutContext>();
+
+  return (
+    <ProjectOverviewSectionLayout
+      label={LABEL_BY_LANG[lang]}
+      title={TITLE_BY_LANG[lang]}
+      imagePosition="right"
+      description={DESCRIPTION_BY_LANG[lang]}
+    >
+      <div
+        className="
+          relative
+          w-[520px] h-[720px]
+          rounded-xl bg-white
+          border border-white/90
+          shadow-[0_20px_40px_rgba(15,23,42,0.25)]
+          overflow-hidden
+        "
+      >
+        <img
+          src="/images/pages/admin/withdrawal.png"
+          alt={
+            lang === "jp"
+              ? "退会管理ページ画面"
+              : lang === "en"
+              ? "User withdrawal management page screen"
+              : "탈퇴 관리 페이지 화면"
+          }
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </ProjectOverviewSectionLayout>
+  );
+}
