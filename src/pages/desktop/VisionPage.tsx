@@ -1,95 +1,105 @@
-import { useOutletContext } from "react-router";
-import type { LayoutContext } from "../../components/Layout/Layout";
-import { VisionCodeCard } from "../../components/vision/VisionCodeCard";
+import {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  type WheelEvent,
+} from "react";
+import { motion } from "framer-motion";
+import { softPaintBg } from "../../components/Layout/layoutConfig";
+import {
+  VisionGrowthSection,
+  FutureVisionSection,
+  VisionRoadmapSection,
+} from "../../components/vision";
 
-const VISION_COPY = {
-  ko: {
-    subtitle: `끊임없이 배우고 성장하는 개발자로서 더 나은 코드, 
-    더 나은 사용자 경험을 만들어가고 있습니다.`,
-    growthComment: "// 지속적인 성장",
-  },
-  en: {
-    subtitle:
-      "As a constantly learning developer, I strive to write better code and craft better user experiences.",
-    growthComment: "// Continuous growth",
-  },
-  jp: {
-    subtitle:
-      "絶えず学び成長する開発者として、より良いコードとより良いユーザー体験を目指しています。",
-    growthComment: "// 継続的な成長",
-  },
-} as const;
-
-const CODE_1 = `const developer = {
-  status: 'learning',
-  passion: 'infinite',
-}`;
-
-const CODE_2_KO = `// 지속적인 성장
-while (true) {
-  learn()
-  build()
-  improve()
-}`;
+const VISION_SECTIONS = [
+  { id: "growth", label: "성장", Component: VisionGrowthSection },
+  { id: "roadmap", label: "로드맵", Component: VisionRoadmapSection },
+  { id: "future", label: "비전", Component: FutureVisionSection },
+];
 
 export default function VisionPage() {
-  const { lang } = useOutletContext<LayoutContext>();
-  const t = VISION_COPY[lang];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const wheelLockRef = useRef(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const clampIndex = useCallback((next: number) => {
+    if (next < 0) return 0;
+    if (next >= VISION_SECTIONS.length) return VISION_SECTIONS.length - 1;
+    return next;
+  }, []);
+
+  useEffect(() => {
+    const measure = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      setContainerWidth(rect.width);
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const handleWheel = (event: WheelEvent<HTMLDivElement>) => {
+    if (wheelLockRef.current || containerWidth === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    const { deltaY, deltaX } = event;
+    const amount = Math.abs(deltaY) > Math.abs(deltaX) ? deltaY : deltaX;
+    if (Math.abs(amount) < 16) return;
+
+    event.preventDefault();
+
+    setActiveIndex((prev) => clampIndex(prev + (amount > 0 ? 1 : -1)));
+
+    wheelLockRef.current = true;
+    setTimeout(() => {
+      wheelLockRef.current = false;
+    }, 520);
+  };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
+        setActiveIndex((prev) => clampIndex(prev + 1));
+      }
+      if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        setActiveIndex((prev) => clampIndex(prev - 1));
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [clampIndex]);
 
   return (
-    <div className="flex h-full w-full items-center justify-center px-50 py-12">
-      <div
-        className="
-          grid w-full max-w-[1320px]
-          grid-cols-[minmax(0,1.1fr)_minmax(0,0.95fr)]
-          gap-20 items-center
-        "
+    <div
+      ref={containerRef}
+      className="relative h-full overflow-hidden pt-6 pb-10"
+      style={{ background: softPaintBg }}
+      onWheel={handleWheel}
+    >
+      <motion.div
+        className="flex h-full"
+        animate={{
+          x: -activeIndex * (containerWidth || 0),
+        }}
+        transition={{ type: "spring", stiffness: 90, damping: 20 }}
       >
-        <section className="space-y-2 space-x-6">
-          <div className="space-y-3">
-            <h1 className="leading-[0.9] tracking-tight text-slate-700 font-extrabold">
-              <span className="block">
-                <span className="text-[100px]">G</span>
-                <span className="text-[72px]">rowth</span>
-              </span>
-
-              <span className="block">
-                {" "}
-                <span className="text-[100px]">J</span>
-                <span className="text-[72px]">ourney</span>
-              </span>
-            </h1>
+        {VISION_SECTIONS.map(({ id, Component }) => (
+          <div
+            key={id}
+            className="h-full w-screen shrink-0"
+            style={{ width: containerWidth || "100%" }}
+          >
+            <Component />
           </div>
-
-          <p className="max-w-xl text-[20px] whitespace-pre-line leading-relaxed text-slate-700">
-            {t.subtitle}
-          </p>
-        </section>
-
-        <section className="flex flex-col gap-7 items-start">
-          <VisionCodeCard code={CODE_1} />
-
-          <VisionCodeCard
-            code={
-              lang === "ko"
-                ? CODE_2_KO
-                : lang === "en"
-                ? `// Continuous growth
-while (true) {
-  learn()
-  build()
-  improve()
-}`
-                : `// 継続的な成長
-while (true) {
-  learn()
-  build()
-  improve()
-}`
-            }
-          />
-        </section>
-      </div>
+        ))}
+      </motion.div>
     </div>
   );
 }

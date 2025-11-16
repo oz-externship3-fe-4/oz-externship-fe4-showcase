@@ -111,16 +111,16 @@ export function AdminStudyGroupManageSection() {
     >
       <div
         className="
-          relative
-          w-[600px] h-[750px]
+          relative -ml-20
+          w-[650px] h-[520px]
           rounded-xl bg-white
-          border border-white/90 -ml-10
-          shadow-[0_18px_35px_rgba(15,23,42,0.24)]
+          border border-white/90
+          shadow-[0_5px_5px_rgba(15,23,42,0.25)]
           overflow-hidden
         "
       >
         <img
-          src="/images/pages/admin/study-group.png"
+          src="/images/pages/overview/studygroups.JPG"
           alt={
             lang === "jp"
               ? "スタディグループ管理ページ画面"

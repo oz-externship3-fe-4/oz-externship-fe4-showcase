@@ -119,16 +119,16 @@ export function AdminDashboardSection() {
     >
       <div
         className="
-          relative
-          w-[600px] h-[750px]
+          relative -ml-20
+          w-[700px] h-[700px]
           rounded-xl bg-white
           border border-white/90
-          shadow-[0_18px_35px_rgba(15,23,42,0.25)]
+          shadow-[0_5px_5px_rgba(15,23,42,0.25)]
           overflow-hidden
         "
       >
         <img
-          src="/images/pages/admin/dashboard.png"
+          src="/images/pages/overview/dashboard1.JPG"
           alt={
             lang === "jp"
               ? "管理者ダッシュボード画面"
@@ -136,7 +136,7 @@ export function AdminDashboardSection() {
               ? "Admin dashboard screen"
               : "관리자 대시보드 화면"
           }
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
         />
       </div>
     </ProjectOverviewSectionLayout>

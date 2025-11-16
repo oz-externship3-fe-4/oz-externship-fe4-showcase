@@ -27,7 +27,7 @@ export default function HomeLayout() {
     <div className="min-h-screen flex justify-center items-center bg-[#ECEFF3] py-5">
       <div className="flex w-screen max-w-[1800px] min-h-[95vh] rounded-[60px] bg-white overflow-hidden shadow-[0_18px_70px_rgba(15,23,42,0.1)]">
         <section
-          className="flex-[0.99] px-15 py-5 flex flex-col overflow-hidden relative"
+          className="flex-1 px-15 py-5 flex flex-col overflow-hidden relative"
           style={{ background: softPaintBg }}
         >
           <LayoutHeader
@@ -39,7 +39,7 @@ export default function HomeLayout() {
           <div className="relative flex-1">
             <BackFloatingButton visible={true} onClick={() => navigate("/")} />
 
-            <div className="h-full overflow-y-auto scrollbar-hide">
+            <div className="h-full overflow-hidden overflow-y-auto scrollbar-hide relative z-10">
               <Outlet />
             </div>
           </div>

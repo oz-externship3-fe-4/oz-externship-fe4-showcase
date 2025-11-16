@@ -95,16 +95,16 @@ export function ApplicationManageSection() {
     >
       <div
         className="
-          relative
-          w-[560px] h-[720px]
+          relative -ml-20
+          w-[650px] h-[480px]
           rounded-xl bg-white
           border border-white/90
-          shadow-[0_22px_30px_rgba(15,23,42,0.20)]
+          shadow-[0_5px_5px_rgba(15,23,42,0.25)]
           overflow-hidden
         "
       >
         <img
-          src="/images/pages/overview/application.png"
+          src="/images/pages/overview/applications.JPG"
           alt={
             lang === "jp"
               ? "応募履歴管理ページ画面"
@@ -112,7 +112,7 @@ export function ApplicationManageSection() {
               ? "Application management page screen"
               : "지원 내역 관리 페이지 화면"
           }
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
     </ProjectOverviewSectionLayout>

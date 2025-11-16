@@ -26,6 +26,7 @@ export interface TS_Section {
   body: LocalizedText;
   code?: string;
   codeLang?: "bash" | "ts" | "tsx" | "js" | "json";
+  video?: TroubleVideo;
 }
 
 export interface TroubleVideo {
