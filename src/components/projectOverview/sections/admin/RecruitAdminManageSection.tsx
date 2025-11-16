@@ -111,17 +111,16 @@ export function RecruitAdminManageSection() {
     >
       <div
         className="
-          relative
-          w-[520px] h-[700px]
-          rounded-xl
-          bg-white
+          relative -ml-20
+          w-[650px] h-[430px]
+          rounded-xl bg-white
           border border-white/90
-          shadow-[0_22px_30px_rgba(15,23,42,0.20)]
+          shadow-[0_5px_5px_rgba(15,23,42,0.25)]
           overflow-hidden
         "
       >
         <img
-          src="/images/pages/overview/admin-recruit.png"
+          src="/images/pages/overview/recuitments1.JPG"
           alt={
             lang === "jp"
               ? "求人公告管理ページ画面"
@@ -129,7 +128,7 @@ export function RecruitAdminManageSection() {
               ? "Recruitment management page screen"
               : "구인 공고 관리 페이지 화면"
           }
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-linear-to-t from-white/85 to-transparent" />

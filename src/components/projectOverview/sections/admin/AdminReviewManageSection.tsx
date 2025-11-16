@@ -104,17 +104,16 @@ export function AdminReviewManageSection() {
     >
       <div
         className="
-          relative
-          w-[580px] h-[720px]
-          rounded-xl
-          bg-white
+          relative -ml-20
+          w-[650px] h-[500px]
+          rounded-xl bg-white
           border border-white/90
-          shadow-[0_20px_35px_rgba(15,23,42,0.22)]
+          shadow-[0_5px_5px_rgba(15,23,42,0.25)]
           overflow-hidden
         "
       >
         <img
-          src="/images/pages/admin/review.png"
+          src="/images/pages/overview/review22.JPG"
           alt={
             lang === "jp"
               ? "スタディレビュー管理ページ画面"
@@ -122,7 +121,7 @@ export function AdminReviewManageSection() {
               ? "Study review management page screen"
               : "리뷰 관리 페이지 화면"
           }
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
     </ProjectOverviewSectionLayout>

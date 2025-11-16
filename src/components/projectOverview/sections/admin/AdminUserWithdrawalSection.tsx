@@ -100,16 +100,16 @@ export function AdminUserWithdrawalSection() {
     >
       <div
         className="
-          relative
-          w-[520px] h-[720px]
+          relative -ml-20
+          w-[700px] h-[500px]
           rounded-xl bg-white
           border border-white/90
-          shadow-[0_20px_40px_rgba(15,23,42,0.25)]
+          shadow-[0_5px_5px_rgba(15,23,42,0.25)]
           overflow-hidden
         "
       >
         <img
-          src="/images/pages/admin/withdrawal.png"
+          src="/images/pages/overview/withdrawal.JPG"
           alt={
             lang === "jp"
               ? "退会管理ページ画面"
@@ -117,7 +117,7 @@ export function AdminUserWithdrawalSection() {
               ? "User withdrawal management page screen"
               : "탈퇴 관리 페이지 화면"
           }
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
     </ProjectOverviewSectionLayout>

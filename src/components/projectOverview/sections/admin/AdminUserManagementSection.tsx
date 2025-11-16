@@ -112,16 +112,16 @@ export function AdminUserManagementSection() {
     >
       <div
         className="
-          relative
-          w-[540px] h-[720px]
+          relative -ml-30
+          w-[700px] h-[680px]
           rounded-xl bg-white
           border border-white/90
-          shadow-[0_18px_45px_rgba(15,23,42,0.20)]
+          shadow-[0_5px_5px_rgba(15,23,42,0.25)]
           overflow-hidden
         "
       >
         <img
-          src="/images/pages/admin/user-management.png"
+          src="/images/pages/overview/users.JPG"
           alt={
             lang === "jp"
               ? "ユーザー管理ページ画面"
@@ -129,7 +129,7 @@ export function AdminUserManagementSection() {
               ? "User management page screen"
               : "유저 관리 페이지 화면"
           }
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
     </ProjectOverviewSectionLayout>

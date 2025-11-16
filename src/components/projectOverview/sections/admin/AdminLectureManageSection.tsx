@@ -106,16 +106,16 @@ export function AdminLectureManageSection() {
     >
       <div
         className="
-          relative
-          w-[600px] h-[750px]
+          relative -ml-20
+          w-[700px] h-[700px]
           rounded-xl bg-white
           border border-white/90
-          shadow-[0_18px_35px_rgba(15,23,42,0.25)]
+          shadow-[0_5px_5px_rgba(15,23,42,0.25)]
           overflow-hidden
         "
       >
         <img
-          src="/images/pages/admin/lecture.png"
+          src="/images/pages/overview/lectures.JPG"
           alt={
             lang === "jp"
               ? "講義管理ページ画面"
