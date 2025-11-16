@@ -29,6 +29,10 @@ const DemoShowcasePage = lazy(() => import("./pages/desktop/DemoShowcasePage"));
 const GitConventionPage = lazy(
   () => import("./pages/desktop/GitConventionPage")
 );
+const DevProcessSection = lazy(
+  () => import("./pages/desktop/DevProcessSection")
+);
+const VisionPage = lazy(() => import("./pages/desktop/VisionPage"));
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -118,6 +122,22 @@ function AnimatedRoutes() {
             element={
               <Suspense fallback={<RouteFallback />}>
                 <GitConventionPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="plan"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <DevProcessSection />
+              </Suspense>
+            }
+          />
+          <Route
+            path="vision"
+            element={
+              <Suspense fallback={<VisionPage />}>
+                <VisionPage />
               </Suspense>
             }
           />

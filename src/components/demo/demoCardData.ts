@@ -28,13 +28,13 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     tags: {
       ko: ["공통 검색창", "공통 폼"],
       en: ["Shared Search Bar", "Shared Form"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["共通検索窓」、「共通フォーム"],
     },
     videos: 1,
     desc: {
       ko: "여러 페이지에서 재사용되는 검색창과 입력 폼을 공통 컴포넌트로 설계해, 유지보수성과 일관성을 높였습니다.",
       en: "Developed shared UI components commonly used on the page.",
-      jp: "複数ページで再利用される検索フォームや入力フォームを共通コンポーネントとして設計し、保守性とUIの一貫性を高めました。",
+      jp: "ページで共通して使用する要素を制作しました。",
     },
   },
   {
@@ -52,13 +52,13 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     tags: {
       ko: ["모달", "테이블", "KPI카드"],
       en: ["Modal", "Table", "KPI Card"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["モーダル", "テーブル", "KPIカード"],
     },
     videos: 1,
     desc: {
       ko: "모달, 테이블, KPI 카드 등을 공통 컴포넌트로 제작해, 관리자 페이지 전반에서 일관된 UI를 제공합니다.",
       en: "Developed shared UI components commonly used on the page.",
-      jp: "モーダル、テーブル、KPIカードなどを共通コンポーネントとして実装し、管理画面全体で一貫したUIを提供します。",
+      jp: "ページで共通して使用する要素を制作しました。",
     },
   },
   {
@@ -66,23 +66,23 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     name: {
       ko: "공통 컴포넌트 | 홍엽",
       en: "Shared UI Components | Hong Yeop",
-      jp: "共通コンポーネント | ホンヨプ",
+      jp: "通コンポーネント | ホンヨプ",
     },
     tag: {
       ko: "공통 컴포넌트 | 홍엽",
       en: "Shared UI Components | Hong Yeop",
-      jp: "共通コンポーネント | ホンヨプ",
+      jp: "通コンポーネント | ホンヨプ",
     },
     tags: {
       ko: ["NAVIGATION", "지원관리", "첨부파일"],
       en: ["NAVIGATION", "Application Management", "Attached File"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["NAVIGATION", "サポート管理", "添付ファイル"],
     },
     videos: 1,
     desc: {
       ko: "네비게이션, 지원 관리, 첨부파일 영역에서 공통으로 사용하는 UI를 정리해 사용자 흐름을 더 명확하게 구성했습니다.",
       en: "Developed shared UI components commonly used on the page.",
-      jp: "ナビゲーション、応募管理、添付ファイルエリアで共通して使用するUIを整理し、ユーザーフローをより明確にしました。",
+      jp: "ページで共通して使用する要素を制作しました。",
     },
   },
   {
@@ -100,13 +100,13 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     tags: {
       ko: ["토스트알림", "아코디언", "배지", "ProgressBar"],
       en: ["Toast Notification", "Accordion", "Badge", "ProgressBar"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["トースト通知", "アコーディオン", "バッジ", "ProgressBar"],
     },
     videos: 1,
     desc: {
       ko: "토스트 알림, 아코디언, 배지, 진행률 표시 바를 공통 컴포넌트로 구현해 여러 페이지에서 재사용할 수 있도록 설계했습니다.",
       en: "Developed shared UI components commonly used on the page.",
-      jp: "トースト通知、アコーディオン、バッジ、進行率バーを共通コンポーネントとして実装し、複数ページで再利用できるように設計しました。",
+      jp: "ページで共通して使用する要素を制作しました。",
     },
   },
   {
@@ -124,13 +124,13 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     tags: {
       ko: ["툴팁", "모달", "팝오버"],
       en: ["Tooltip", "Modal", "Popover"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["ツールチップ」、「モーダル」、「ポップオーバー"],
     },
     videos: 1,
     desc: {
       ko: "툴팁, 모달, 팝오버 컴포넌트를 제작하여 사용자 인터랙션에 맞는 보조 정보를 자연스럽게 제공할 수 있도록 했습니다.",
       en: "Developed shared UI components commonly used on the page.",
-      jp: "ツールチップ、モーダル、ポップオーバーコンポーネントを実装し、ユーザー操作に応じて補助情報を自然に表示できるようにしました。",
+      jp: "ページで共通して使用する要素を制作しました。",
     },
   },
   {
@@ -138,23 +138,23 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     name: {
       ko: "로그인 페이지 | 경복",
       en: "Admin Login Page | Kyungbok",
-      jp: "管理者ログインページ | キョンボク",
+      jp: "ログインページ | キョンボク",
     },
     tag: {
       ko: "로그인 페이지 | 경복",
       en: "Admin Login Page | Kyungbok",
-      jp: "管理者ログインページ | キョンボク",
+      jp: "ログインページ | キョンボク",
     },
     tags: {
       ko: ["관리자 로그인", "프로텍트 라우터"],
       en: ["Admin Login", "Protected Route"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["管理者ログイン", "プロテクトルータ"],
     },
     videos: 1,
     desc: {
       ko: "관리자 권한을 인증한 사용자만 페이지에 접근할 수 있도록 프로텍트 라우터를 적용하여 보안성을 강화했습니다.",
       en: "Enhanced security by applying protected routing to allow access only for authenticated admins.",
-      jp: "管理者権限を認証したユーザーのみページにアクセスできるよう、プロテクトルートを適用してセキュリティを強化しました。",
+      jp: "管理者権限を認証したユーザーだけがページにアクセスできるようにプロテクトルータを適用し、セキュリティを強化しました",
     },
   },
   {
