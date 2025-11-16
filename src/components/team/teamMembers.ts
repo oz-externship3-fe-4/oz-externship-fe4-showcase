@@ -1372,52 +1372,112 @@ API連動：Tanstack Queryで接続
         card: {
           characterImg: "/images/pokemon/pikachu.png",
           tagline:
-            "Shared UI Components · KPI Card · User Management / Roles / Deletion",
+            "Shared UI Components · Lecture/Study Management · Code Review",
         },
-        intro: `I was responsible for shared UI components and the user management section. 
-          I focused on designing reusable components such as tables, lists, and KPI cards, 
-          and organized the API integration structure with long-term maintainability in mind.`,
+        intro: `In this project, I designed and implemented reusable shared UI components such as toast notifications, badges, progress bars, and accordions. 
+I also developed the Lecture Management and Study Group Management pages from start to finish, including detailed modal implementations and API integration using TanStack Query. 
+Through active code reviews, I improved overall code quality by consolidating constants, removing redundant logic, and optimizing functions.
+Additionally, I led the overall UI/UX design of the portfolio project, ensuring a consistent and user-centered design system.`,
         kpis: [
-          { label: "User Management Page", value: "Completion 99%" },
-          { label: "Shared Components", value: "Completion 98%" },
-          { label: "PR Contributions", value: "20+" },
+          { label: "Lecture Management Page", value: "Completion 100%" },
+          { label: "Study Group Management Page", value: "Completion 100%" },
+          { label: "Shared Components", value: "4 Developed" },
+          { label: "Code Review", value: "Main Reviewer" },
         ],
         experiences: [
           {
-            period: "Sep 2025 – Oct 2025",
-            title: "Frontend Developer - OZ Externship FE3",
+            period: "Sep 2025 - Oct 2025",
+            title: "OZ Externship FE3 - Frontend Developer",
             details: [
-              "Built user permission change and deletion workflows.",
-              "Developed reusable table and KPI card components.",
+              "Designed and implemented reusable shared components including toast notifications, badges, progress bars, and accordions.",
+              "Developed the Lecture Management and Study Group Management pages with full CRUD flow, including list, filter, and sort features.",
+              "Implemented detailed modal windows and integrated edit/delete functionalities.",
+              "Used TanStack Query for API integration, server-state management, and caching optimization.",
+              "Enhanced maintainability through code reviews—refactoring duplicate logic, defining constants, and improving function performance.",
+              "Directed UI/UX design across the entire project, building a cohesive and accessible design system.",
             ],
           },
         ],
         projects: [
           {
-            name: "Shared Components",
+            name: "Shared Component Library",
             role: "Lead Frontend Developer",
-            summary: `Developed shared table, KPI card, and list components to improve consistency 
-              and reusability across the project.`,
+            summary:
+              "Designed and implemented a reusable shared UI component library to improve development efficiency and visual consistency across the project.",
             tech: ["React", "TypeScript", "TailwindCSS"],
             bullets: [
-              "Enhanced component reusability by following consistent design rules",
-              "Proposed best practices for effectively utilizing shared components",
+              "Toast Notification: Implemented contextual alerts (success, error, warning) with auto-dismiss behavior.",
+              "Badge Component: Supported multiple variants and color states based on user status.",
+              "Progress Bar: Visualized completion rate using percentage-based indicators.",
+              "Accordion List: Implemented expandable/collapsible list UI for efficient content display.",
+              "Ensured TypeScript type safety and reusability across all shared components.",
             ],
           },
           {
-            name: "User Management Page",
+            name: "Lecture Management Page",
             role: "Lead Frontend Developer",
-            summary: `Built user management pages for viewing user lists, checking details, 
-              updating roles, and handling account deletion.`,
+            summary:
+              "Built an admin lecture management system that supports lecture listing, search, detailed view, and update/delete operations.",
             tech: ["React", "TypeScript", "TailwindCSS", "TanStack Query"],
             bullets: [
-              "Minimized code duplication by reusing shared table components",
-              "Improved readability with React Query hooks for API integration",
-              "Enhanced UX with loading states and double-click prevention logic",
+              "Developed lecture list and detail modals with intuitive UI design.",
+              "Implemented keyword search and sorting functionalities.",
+              "Optimized API integration using TanStack Query with caching and state synchronization.",
+              "Handled loading, error, and duplicate-request states through shared logic components.",
+              "Enabled efficient handling of large data via pagination and sort utilities.",
+            ],
+          },
+          {
+            name: "Study Group Management Page",
+            role: "Lead Frontend Developer",
+            summary:
+              "Developed an admin system for managing study groups, including listing, filtering, and detailed management features.",
+            tech: ["React", "TypeScript", "TailwindCSS", "TanStack Query"],
+            bullets: [
+              "Implemented study group list and detailed modal UI.",
+              "Developed search, filter, and sort features for study group management.",
+              "Used TanStack Query for optimized caching and server-state synchronization.",
+              "Centralized loading, error, and request-handling logic for reusability.",
+              "Implemented pagination and sorting for managing large-scale datasets.",
+            ],
+          },
+          {
+            name: "Code Review & Quality Improvement",
+            role: "Lead Frontend Developer",
+            summary:
+              "Reviewed team code and improved project-wide code quality by removing redundancies, defining constants, and optimizing logic.",
+            tech: ["React", "TypeScript", "Code Review", "Refactoring"],
+            bullets: [
+              "Centralized duplicated code into constants to improve maintainability.",
+              "Removed redundant logic and functions for cleaner, more efficient code.",
+              "Improved type safety and enhanced error handling practices.",
+              "Optimized component structure for better performance and readability.",
+              "Proposed consistent naming conventions and improved code clarity.",
+            ],
+          },
+          {
+            name: "Portfolio UI/UX Design Direction",
+            role: "Lead Frontend Developer",
+            summary:
+              "Oversaw the overall UI/UX design of the portfolio project, establishing a unified and accessible design system.",
+            tech: ["Figma", "React", "TypeScript", "TailwindCSS"],
+            bullets: [
+              "Defined design guidelines for layout, color palette, and typography.",
+              "Established consistent component styles and interaction patterns.",
+              "Optimized user flow for better overall experience and navigation.",
+              "Implemented responsive design and accessibility considerations.",
+              "Collaborated with team members for visual alignment and feedback refinement.",
             ],
           },
         ],
-        skills: ["React", "TypeScript", "TailwindCSS", "Vite"],
+        skills: [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Vite",
+          "TanStack Query",
+          "Figma",
+        ],
         education: [
           {
             school: "OZ Coding School",
@@ -1429,49 +1489,123 @@ API連動：Tanstack Queryで接続
           {
             name: "OZ FE Certification",
             issuedBy: "OZ Coding School",
-            date: "Oct 20",
+            date: "Oct 2025",
           },
         ],
-        links: [{ href: "https://ozflix.vercel.app", label: "OZ Flix Demo" }],
+        links: [{ href: "https://febok.vercel.app", label: "Portfolio Page" }],
       },
       jp: {
         card: {
           characterImg: "/images/pokemon/pikachu.png",
-          tagline: "共通コンポーネント·退会管理ページ",
+          tagline: "共通コンポーネント·講義/スタディ管理·コードレビュー",
         },
-        intro: `誰もが使いやすい共通コンポーネントの設計および退会管理ページ」に集中しました。 
-          共通コンポーネントの場合、ボタン、タブ、ブラッドクラム、ページネーション、
-          公告添付ファイル、サポート履歴コンポーネントを開発し
-          他の開発者の開発効率を向上させました。`,
+        intro: `今回のプロジェクトでトースト通知ウィンドウ、バッジ、進行率表示バー、
+          アコーディオンなど再利用可能な共通コンポーネントを設計し、
+          講義管理ページと勉強会管理ページを最初から最後まで実装しました。
+          各ページの詳細モーダルウィンドウの制作やTanStack Queryを活用したAPIの連動を担当し、
+          コードレビューを通じて重複コード定数化、
+          不要なコード除去、関数最適化などでコード品質を向上させました。
+          さらに、ポートフォリオプロジェクトの全般的なUI/UXデザインを総括しました。`,
         kpis: [
-          { label: "共通コンポーネント開発", value: "完成度90%" },
-          { label: "脱退管理ページの開発", value: "完成度90%" },
+          { label: "講義管理ページ", value: "完成度100%" },
+          { label: "スタディグループ管理ページ", value: "完成度100%" },
+          { label: "共通コンポーネント", value: "4つ製作" },
+          { label: "PR参加", value: "メインレビューアー" },
         ],
         experiences: [
           {
             period: "2025年9月 - 2025年10月",
-            title: "フロントエンド開発者 - OZ Externship FE3",
+            title: "フロントエンド·デベロッパー - OZ Externship FE3",
             details: [
-              "ユーザー権限変更・削除フローを実装",
-              "共通テーブル・KPIカードコンポーネントを開発",
+              "トースト通知ウィンドウ、バッジ、進行率バー、アコーディオンなど再利用可能な共通コンポーネントの設計と実装",
+              "講義管理ページおよびスタディグループ管理ページ全体の開発（リスト照会、フィルタリング、ソート機能）",
+              "各ページの詳細情報モダールウィンドウの実装および修正/削除機能の連動",
+              "TanStack Queryを活用したサーバー状態管理及びAPI連動構造設計",
+              "コードレビューによる重複コード定数化、関数最適化、不要なコード除去による保守性向上",
+              "プロジェクト全般のUI/UXデザイン総括及び一貫したデザインシステム構築",
             ],
           },
         ],
         projects: [
           {
-            name: "共通コンポーネント開発",
-            role: "フロントエンド開発者",
-            summary: `ボタン、タブ、ブラッドクラム、ページネーション、
-            公告添付ファイル、サポート履歴コンポーネントを開発し 
-            UI開発効率を向上させました。`,
-            tech: ["React", "TypeScript", "TailwindCSS, tanstack-query"],
+            name: "共通コンポーネントライブラリ",
+            role: "メイン フロントエンド",
+            summary:
+              "プロジェクト全般で再利用できる共通UIコンポーネントを設計·実装し、開発効率性と一貫性を高めました。",
+            tech: ["React", "TypeScript", "TailwindCSS"],
             bullets: [
-              "共通コンポーネントの開発を通じて他の開発者の開発効率を向上",
-              "リユース性及びメンテナンス性の強化",
+              "トースト通知ウィンドウ:成功/失敗/警告など状況別の通知を提供し、自動消滅機能を実現",
+              "バッジコンポーネント:状態別の色分けと多様な変形(variant)対応",
+              "進行率表示バー:パーセントベースの視覚的進行状態表示コンポーネント",
+              "アコーディオンリスト:拡張/縮小可能なリストUIの実装により空間効率が向上",
+              "すべてのコンポーネントにTypeScriptタイプの安定性および再使用性を確保",
+            ],
+          },
+          {
+            name: "講義管理ページ",
+            role: "メイン フロントエンド",
+            summary:
+              "講義リストの照会、検索、詳細情報の確認および修正/削除機能を含むアドミン講義管理システムを実装しました。",
+            tech: ["React", "TypeScript", "TailwindCSS", "TanStack Query"],
+            bullets: [
+              "講義リストと詳細情報のモダルウィンドウUIの実装",
+              "講義リスト検索機能の実装",
+              "TanStack Queryを活用したサーバー状態管理およびキャッシング最適化",
+              "ローディング状態、エラーハンドリング、重複要請防止などをコンポーネントとして管理し、再使用性を高める",
+              "ページネーションとソート機能で大量のデータを効率的に管理",
+            ],
+          },
+          {
+            name: "スタディグループ管理ページ",
+            role: "メイン フロントエンド",
+            summary:
+              "スタディーグループリストの照会、詳細情報の確認、管理機能を含むスタディーグループ管理システムを開発しました",
+            tech: ["React", "TypeScript", "TailwindCSS", "TanStack Query"],
+            bullets: [
+              "スタディグループリストおよび詳細情報モダルウィンドウUIの実装",
+              "スタディーグループ検索、フィルター、整列機能の実装",
+              "TanStack Queryを活用したサーバー状態管理およびキャッシング最適化",
+              "ローディング状態、エラーハンドリング、重複要請防止などをコンポーネントとして管理し、再使用性を高める",
+              "ページネーションとソート機能で大量のデータを効率的に管理",
+            ],
+          },
+          {
+            name: "コードレビューとコード品質の改善",
+            role: "メイン フロントエンド",
+            summary:
+              "チームメンバーのコードをレビューし、重複コードの除去、定数化、関数最適化などを通じてプロジェクト全般のコード品質を向上させました",
+            tech: ["React", "TypeScript", "Code Review", "Refactoring"],
+            bullets: [
+              "重複するコードを定数化し、一貫性と再使用性を向上させる",
+              "不要なコード及び重複関数の除去でコードの簡潔性を確保",
+              "タイプ安定性強化及びエラーハンドリング改善提案",
+              "コンポーネント構造の最適化と性能改善事項のレビュー",
+              "コード可読性向上のためのネーミング及び構造改善提案",
+            ],
+          },
+          {
+            name: "ポートフォリオサイトUI/UXデザイン総括",
+            role: "メイン フロントエンド",
+            summary:
+              "プロジェクト全般のUI/UXデザインを総括し、一貫したデザインシステムとユーザーフレンドリーなインターフェースを構築しました。",
+            tech: ["Figma", "React", "TypeScript", "TailwindCSS"],
+            bullets: [
+              "全ページのレイアウト、色、タイポグラフィなどのデザインガイドラインの策定",
+              "一貫したコンポーネント スタイルとインタラクション パターン定義",
+              "ユーザーエクスペリエンス（UX）改善のためのフロー最適化",
+              "反応型デザインの適用とアクセシビリティの考慮",
+              "チームメンバーとのデザイン協業とフィードバック調整",
             ],
           },
         ],
-        skills: ["React", "TypeScript", "TailwindCSS", "Vite"],
+        skills: [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Vite",
+          "TanStack Query",
+          "Figma",
+        ],
         education: [
           {
             school: "OZコーディングスクール",

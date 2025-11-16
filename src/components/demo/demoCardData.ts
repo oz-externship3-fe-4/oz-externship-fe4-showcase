@@ -162,23 +162,28 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     name: {
       ko: "유저관리 페이지 | 원희",
       en: "User Management Page | WonHee",
-      jp: "ユーザー管理ページ | ウォニ",
+      jp: "ユーザー管理ページ|ウォニ",
     },
     tag: {
       ko: "유저관리 페이지 | 원희",
       en: "User Management Page | WonHee",
-      jp: "ユーザー管理ページ | ウォニ",
+      jp: "ユーザー管理ページ|ウォニ",
     },
     tags: {
       ko: ["유저정보", "유저 정보수정", "유저권한수정", "유저삭제"],
       en: ["User Info", "Edit Info", "Edit Permission", "Delete User"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: [
+        "ユーザー情報",
+        "ユーザー情報修正",
+        "ユーザー権限修正",
+        "ユーザー削除",
+      ],
     },
     videos: 1,
     desc: {
       ko: "회원 정보를 확인하고, 상태나 권한을 수정하거나 필요에 따라 계정을 삭제할 수 있는 페이지입니다.",
       en: "A page for viewing, editing, and managing user information, roles, and account status.",
-      jp: "会員情報を確認し、状態や権限を変更したり、必要に応じてアカウントを削除できるページです。",
+      jp: "会員情報を確認し、状態や権限を修正したり、必要に応じてアカウントを削除できるページです。",
     },
   },
   {
@@ -186,23 +191,23 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     name: {
       ko: "탈퇴관리 페이지 | 홍엽",
       en: "Withdrawal Management Page | Hong Yeop",
-      jp: "退会管理ページ | ホンヨプ",
+      jp: "脱退管理ページ | ホンヨプ",
     },
     tag: {
       ko: "탈퇴관리 페이지 | 홍엽",
       en: "Withdrawal Management Page | Hong Yeop",
-      jp: "退会管理ページ | ホンヨプ",
+      jp: "脱退管理ページ | ホンヨプ",
     },
     tags: {
       ko: ["탈퇴관리", "탈퇴유저 복구"],
       en: ["Withdrawal Management", "User Recovery"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["脱退管理", "脱退ユーザーの復旧"],
     },
     videos: 1,
     desc: {
       ko: "탈퇴한 회원 목록을 조회하고, 요청 시 계정을 복구해 다시 활성화할 수 있는 페이지입니다.",
       en: "A page to view and manage withdrawn users and restore accounts when needed.",
-      jp: "退会したユーザーの一覧を確認し、復帰を希望するユーザーのアカウントを復元できるページです。",
+      jp: "脱退した会員リストを照会し、リクエスト時にアカウントを復旧して再活性化できるページです。",
     },
   },
   {
@@ -210,23 +215,23 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     name: {
       ko: "대시보드 페이지 | 현진",
       en: "Dashboard Page | Hyunjin",
-      jp: "ダッシュボードページ | ヒョンジン",
+      jp: "ダッシュボード ページ | ヒョンジン",
     },
     tag: {
       ko: "대시보드 페이지 | 현진",
       en: "Dashboard Page | Hyunjin",
-      jp: "ダッシュボードページ | ヒョンジン",
+      jp: "ダッシュボード ページ | ヒョンジン",
     },
     tags: {
       ko: ["데이터 시각화", "회원가입/탈퇴 추세"],
       en: ["Data Visualization", "Signup/Withdrawal Trends"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["データの視覚化", "会員登録/脱退傾向"],
     },
     videos: 1,
     desc: {
       ko: "회원가입·탈퇴 추세와 주요 지표들을 시각화하여 서비스 운영 현황을 한눈에 파악할 수 있는 대시보드입니다.",
       en: "A dashboard visualizing signup and withdrawal trends to help admins understand service performance at a glance.",
-      jp: "会員登録・退会の推移や主要指標を可視化し、サービス運営状況を一目で把握できるダッシュボードです。",
+      jp: "会員加入·脱退傾向と主要指標を視覚化してサービス運営現況をひと目で把握できるダッシュボードです。",
     },
   },
   {
@@ -244,7 +249,7 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     tags: {
       ko: ["강의 관리", "강의 상세정보"],
       en: ["Lecture Management", "Lecture Details"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["講義管理", "講義の詳細情報"],
     },
     videos: 1,
     desc: {
@@ -268,13 +273,13 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     tags: {
       ko: ["스터디 그룹관리", "스터디 그룹상태 확인"],
       en: ["Study Group Management", "Status Monitoring"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["スタディグループ管理", "スタディグループステータス確認"],
     },
     videos: 1,
     desc: {
       ko: "운영 중인 스터디 그룹들의 상태와 구성원을 확인하고 진행 상황을 파악할 수 있는 관리 페이지입니다.",
       en: "A page for monitoring study group members, progress, and overall group activity.",
-      jp: "運営中のスタディグループの状態やメンバーを確認し、進行状況を把握できる管理ページです。",
+      jp: "運営中のスタディグループの状態とメンバーを確認し、進行状況を把握できる管理ページです。",
     },
   },
   {
@@ -282,23 +287,23 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     name: {
       ko: "스터디리뷰관리 페이지 | 경복",
       en: "Study Review Management Page | Kyungbok",
-      jp: "スタディレビュー管理ページ | キョンボク",
+      jp: "スタディレビュー管理ページ | ギョンボク",
     },
     tag: {
       ko: "스터디리뷰관리 페이지 | 경복",
       en: "Study Review Management Page | Kyungbok",
-      jp: "スタディレビュー管理ページ | キョンボク",
+      jp: "スタディレビュー管理ページ | ギョンボク",
     },
     tags: {
       ko: ["리뷰확인"],
       en: ["Review Monitoring"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["レビュー確認"],
     },
     videos: 1,
     desc: {
       ko: "사용자들이 남긴 스터디 리뷰를 확인하고 검토할 수 있는 페이지입니다.",
       en: "A page for viewing and reviewing user-submitted study feedback.",
-      jp: "ユーザーが残したスタディレビューを閲覧・確認できるページです。",
+      jp: "ユーザーが残したスタディレビューを確認して検討できるページです。",
     },
   },
   {
@@ -306,23 +311,23 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     name: {
       ko: "지원내역관리 페이지 | 경복",
       en: "Application Management Page | Kyungbok",
-      jp: "応募履歴管理ページ | キョンボク",
+      jp: "サポート履歴管理ページ | ギョンボク",
     },
     tag: {
       ko: "지원내역관리 페이지 | 경복",
       en: "Application Management Page | Kyungbok",
-      jp: "応募履歴管理ページ | キョンボク",
+      jp: "サポート履歴管理ページ | ギョンボク",
     },
     tags: {
       ko: ["지원내역관리"],
       en: ["Application Management"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["サポート履歴管理"],
     },
     videos: 1,
     desc: {
       ko: "각 공고에 지원된 내역을 확인하고 지원자의 상세 정보를 살펴볼 수 있는 관리 페이지입니다.",
       en: "A page for reviewing user applications and applicant details for each recruitment post.",
-      jp: "各募集公告に対して応募された履歴を確認し、応募者の詳細情報も閲覧できる管理ページです。",
+      jp: "各公告に応募された内訳を確認し、応募者の詳細情報を確認できる管理ページです。",
     },
   },
   {
@@ -330,23 +335,23 @@ export const DEMO_CARDS: readonly DemoCardItem[] = [
     name: {
       ko: "구인공고관리 페이지 | 현진, 경복",
       en: "Recruitment Management Page | Hyunjin, Kyungbok",
-      jp: "求人公告管理ページ | ヒョンジン・キョンボク",
+      jp: "求人広告管理ページ | ヒョンジン,ギョンボク",
     },
     tag: {
       ko: "구인공고관리 페이지 | 현진, 경복",
       en: "Recruitment Management Page | Hyunjin, Kyungbok",
-      jp: "求人公告管理ページ | ヒョンジン・キョンボク",
+      jp: "求人広告管理ページ | ヒョンジン,ギョンボク",
     },
     tags: {
       ko: ["태그필터", "구인공고확인", "공고 삭제"],
       en: ["Tag Filter", "Post Review", "Post Deletion"],
-      jp: ["共通検索フォーム", "共通フォーム"],
+      jp: ["タグフィルター", "求人公告確認", "公告削除"],
     },
     videos: 1,
     desc: {
       ko: "등록된 구인 공고를 확인하고, 태그를 이용해 원하는 공고를 빠르게 찾을 수 있으며 운영 기준에 맞지 않는 공고나 이미 종료된 공고는 삭제할 수 있는 관리 페이지입니다.",
       en: "A page for managing recruitment posts, featuring tag-based filtering and post deletion to maintain board quality.",
-      jp: "登録されたスタディ募集公告を管理し、タグフィルタで目的の公告を素早く探せるほか、ポリシーに合わない公告や終了済みの公告を削除できる管理ページです。",
+      jp: "登録された求人公告を確認し、タグを利用して希望する公告を素早く探すことができ、運営基準に合わない公告やすでに終了した公告は削除できる管理ページです。",
     },
   },
 ] as const;
