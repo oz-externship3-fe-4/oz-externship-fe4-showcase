@@ -25,12 +25,6 @@ export function TroubleModal({
   useBodyScrollLock(open);
   if (!open || !item) return null;
 
-  const video = item.video;
-  const videoBase = video?.basePath;
-  const poster = video?.poster ?? (videoBase ? `${videoBase}.png` : undefined);
-  const webm = videoBase ? `${videoBase}.webm` : undefined;
-  const mp4 = videoBase ? `${videoBase}.mp4` : undefined;
-
   return (
     <AnimatePresence>
       <motion.div
@@ -66,49 +60,20 @@ export function TroubleModal({
               bg-linear-to-b from-[#F7FAFF] via-[#FFFFFF] to-[#FFF7FB]
             "
           >
-            {videoBase && (
-              <section>
-                <div
-                  className="
-                    overflow-hidden rounded-3xl
-                    border border-slate-200
-                    bg-slate-900
-                    shadow-[0_14px_45px_rgba(15,23,42,0.35)]
-                  "
-                >
-                  <div className="relative">
-                    <div className="pointer-events-none absolute left-4 top-4 z-10 rounded-md bg-black/60 px-2 py-1 text-[10px] text-white/80">
-                      VIDEO • {item.id}
-                    </div>
-
-                    <div className="aspect-video w-full bg-black">
-                      <video
-                        key={item.id}
-                        controls
-                        poster={poster}
-                        preload="metadata"
-                        className="h-full w-full"
-                      >
-                        {webm && <source src={webm} type="video/webm" />}
-                        {mp4 && <source src={mp4} type="video/mp4" />}
-                      </video>
-                    </div>
-                  </div>
-
-                  {video?.label && (
-                    <div className="bg-slate-900 px-5 py-3 text-[11px] text-slate-100/85">
-                      {pickText(video.label, lang)}
-                    </div>
-                  )}
-                </div>
-              </section>
-            )}
             {item.sections.map((s, i) => {
               const bodyText = s.body ? pickText(s.body, lang) : "";
               const bodyLines = bodyText
                 .split("\n")
                 .map((line) => line.trim())
                 .filter(Boolean);
+
+              const sectionVideo = s.video;
+              const videoBase = sectionVideo?.basePath;
+              const poster =
+                sectionVideo?.poster ??
+                (videoBase ? `${videoBase}.png` : undefined);
+              const webm = videoBase ? `${videoBase}.webm` : undefined;
+              const mp4 = videoBase ? `${videoBase}.mp4` : undefined;
 
               return (
                 <section key={i}>
@@ -130,6 +95,28 @@ export function TroubleModal({
                           <li key={idx}>{renderBodyWithInlineCode(line)}</li>
                         ))}
                       </ul>
+                    )}
+                    {videoBase && (
+                      <div className="mb-3 overflow-hidden border border-slate-200 bg-slate-900">
+                        <div className="aspect-video w-full bg-black">
+                          <video
+                            key={`${item.id}-${i}`}
+                            controls
+                            poster={poster}
+                            preload="metadata"
+                            className="h-full w-full"
+                          >
+                            {webm && <source src={webm} type="video/webm" />}
+                            {mp4 && <source src={mp4} type="video/mp4" />}
+                          </video>
+                        </div>
+
+                        {sectionVideo?.label && (
+                          <div className="bg-slate-900 px-4 py-2 text-[11px] text-slate-100/85">
+                            {pickText(sectionVideo.label, lang)}
+                          </div>
+                        )}
+                      </div>
                     )}
 
                     {s.code && (
