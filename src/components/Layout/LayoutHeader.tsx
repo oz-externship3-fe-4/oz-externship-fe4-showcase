@@ -28,7 +28,7 @@ export function LayoutHeader({
   return (
     <header className="mb-5">
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-[35px] font-extrabold select-none">
+        <h2 className="text-[30px] font-bold select-none">
           <ShineText text={title} />
         </h2>
         <div
