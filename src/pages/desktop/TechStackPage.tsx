@@ -4,8 +4,12 @@ import {
 } from "../../components/techstack/techStackConfig";
 import { SkillIconCard } from "../../components/techstack/SkillIconCard";
 import { TechHighlightCard } from "../../components/techstack/TechHighlightCard";
+import { useOutletContext } from "react-router";
+import type { LayoutContext } from "../../components/Layout/Layout";
 
 export default function TechStackPage() {
+  const { lang } = useOutletContext<LayoutContext>();
+
   return (
     <div className="relative flex flex-col h-full pt-2 pb-10">
       <section className="mb-8">
@@ -15,13 +19,12 @@ export default function TechStackPage() {
             justify-items-center
           "
         >
-          {SKILLS.map((skill) => (
-            <SkillIconCard key={skill.name} skill={skill} />
+          {SKILLS.map((skill, index) => (
+            <SkillIconCard key={skill.name} skill={skill} index={index} />
           ))}
         </div>
       </section>
 
-      {/* 하단 대표 기술 카드 */}
       <section
         className="
           grid gap-6
@@ -29,8 +32,8 @@ export default function TechStackPage() {
           xl:grid-cols-4
         "
       >
-        {HIGHLIGHT_TECHS.map(({ key, ...tech }) => (
-          <TechHighlightCard key={key} {...tech} />
+        {HIGHLIGHT_TECHS.map((tech) => (
+          <TechHighlightCard key={tech.key} tech={tech} lang={lang} />
         ))}
       </section>
     </div>

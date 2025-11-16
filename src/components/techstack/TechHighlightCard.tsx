@@ -1,20 +1,22 @@
+import { pickText } from "../../utils/i18n";
 import type { HighlightTech } from "./techStackConfig";
+import type { RetrospectiveLang } from "../../types/retrospective";
 
-type TechHighlightCardProps = Omit<HighlightTech, "key">;
+interface TechHighlightCardProps {
+  tech: HighlightTech;
+  lang: RetrospectiveLang;
+}
 
-export function TechHighlightCard({
-  name,
-  icon,
-  color,
-  desc,
-}: TechHighlightCardProps) {
+export function TechHighlightCard({ tech, lang }: TechHighlightCardProps) {
+  const { name, icon, color, desc } = tech;
   return (
     <div
       className="
+        w-[290px]
         flex flex-col gap-3
         rounded-[26px]
         bg-white/96
-        px-7 py-6
+        px-2 py-10
         border border-white/80
         backdrop-blur-sm
         transition-all duration-300 ease-out
@@ -31,7 +33,9 @@ export function TechHighlightCard({
         </div>
         <h3 className="text-[16px] font-semibold text-slate-900">{name}</h3>
       </div>
-      <p className="text-[13px] leading-relaxed text-slate-600">{desc}</p>
+      <p className="text-[13px] leading-relaxed text-slate-600">
+        {pickText(desc, lang)}
+      </p>
     </div>
   );
 }

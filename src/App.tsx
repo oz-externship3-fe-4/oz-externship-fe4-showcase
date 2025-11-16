@@ -14,6 +14,25 @@ const ProjectProgressPanel = lazy(
   () => import("./pages/desktop/ProjectProgressPanel")
 );
 const TechStackPage = lazy(() => import("./pages/desktop/TechStackPage"));
+const TeamIntroPage = lazy(() => import("./pages/desktop/TeamIntroPage"));
+const HomeLayout = lazy(() => import("./components/Layout/HomeLayout"));
+const RetrospectivePage = lazy(
+  () => import("./pages/desktop/RetrospectivePage")
+);
+const ProjectOverviewPage = lazy(
+  () => import("./pages/desktop/ProjectOverviewPage")
+);
+const TroubleshootingPage = lazy(
+  () => import("./pages/desktop/TroubleshootingPage")
+);
+const DemoShowcasePage = lazy(() => import("./pages/desktop/DemoShowcasePage"));
+const GitConventionPage = lazy(
+  () => import("./pages/desktop/GitConventionPage")
+);
+const DevProcessSection = lazy(
+  () => import("./pages/desktop/DevProcessSection")
+);
+const VisionPage = lazy(() => import("./pages/desktop/VisionPage"));
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -30,23 +49,95 @@ function AnimatedRoutes() {
         <Route
           element={
             <Suspense fallback={<RouteFallback />}>
-              <Layout />
+              <HomeLayout />
             </Suspense>
           }
         >
           <Route
-            path="overview"
+            path="home"
             element={
               <Suspense fallback={<RouteFallback />}>
                 <ProjectProgressPanel />
               </Suspense>
             }
           />
+        </Route>
+        <Route
+          element={
+            <Suspense fallback={<RouteFallback />}>
+              <Layout />
+            </Suspense>
+          }
+        >
           <Route
             path="tech"
             element={
               <Suspense fallback={<RouteFallback />}>
                 <TechStackPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="intro"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <TeamIntroPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="retrospect"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <RetrospectivePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="overview"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <ProjectOverviewPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="troubleshooting"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <TroubleshootingPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="demo"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <DemoShowcasePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="convention"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <GitConventionPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="plan"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <DevProcessSection />
+              </Suspense>
+            }
+          />
+          <Route
+            path="vision"
+            element={
+              <Suspense fallback={<VisionPage />}>
+                <VisionPage />
               </Suspense>
             }
           />
