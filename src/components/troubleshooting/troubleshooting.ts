@@ -15,14 +15,14 @@ export const TROUBLES: TroubleItem[] = [
     title: {
       ko: "모달 내 상세내용이 렌더링 안되는 문제",
       en: "Recruitment detail modal not rendering",
-      jp: "テーマ:求人広告の詳細を見る モーダル内の一部フィールドレンダリングされない問題が発生",
+      jp: "Missing Field Rendering in Recruitment Detail Modal",
     },
     page: {
       ko: "구인 공고 관리 페이지",
       en: "Recruitment admin page",
       jp: "募集管理ページ",
     },
-    owner: { ko: "윤경복", en: "Kyungbok", jp: "キョンボク" },
+    owner: { ko: "윤경복", en: "Kyungbok", jp: "ユン·ギョンボク" },
     tags: ["dto", "runtime-error", "modal", "mapper"],
     sections: [
       {
@@ -34,9 +34,10 @@ export const TROUBLES: TroubleItem[] = [
             "하지만 화면에는 디테일 정보(내용, 컨텐츠, 강의 목록, 지원자 목록)가 렌더링 되지 않고 있었습니다.",
           ].join("\n"),
           en: [
-            "When clicking a recruitment row, the detail modal opens but some sections look empty or do not render.",
-            "List API response is fine and detail API response exists in the Network tab.",
-            "However, detail sections (content, lectures, applicants, etc.) are not visible on the UI.",
+            `When an admin clicked a row in the recruitment list, the detail modal opened,
+but several fields (such as content, lectures, and applicant lists) were not rendered.
+Both list and detail API responses appeared correctly in the Network tab,
+but the modal displayed incomplete data.`,
           ].join("\n"),
           jp: [
             "管理者公告リストで行をクリックすると詳細モーダルがレンダリングされたが、一部フィールドの内容がレンダリングされない問題が発生する",
@@ -54,9 +55,12 @@ export const TROUBLES: TroubleItem[] = [
             "이 에러 때문에 `mapRecruitmentDetailDTO` 전체가 실패하고, 모달 렌더링도 함께 깨져서 화면상 디테일이 안 뜨는 것처럼 보였습니다.",
           ].join("\n"),
           en: [
-            "Code assumed `study_lectures` always exists on `RecruitmentDetailDTO` and called `.map()` directly.",
-            "But the real server response does not include `study_lectures`, so `undefined.map(...)` throws at runtime.",
-            'This breaks `mapRecruitmentDetailDTO` and prevents the modal from rendering, making it look like "no detail data".',
+            `The code assumed that the study_lectures field always existed in RecruitmentDetailDTO
+and directly called .map() without checking for null values.
+However, the API sometimes omitted this field, causing undefined.map(...)
+and triggering a runtime error.
+This crash stopped mapRecruitmentDetailDTO execution,
+preventing the modal from rendering properly.`,
           ].join("\n"),
           jp: [
             "コードでは、'RecruitmentDetailDTO'に'study_lectures'フィールドが常にあると仮定してすぐに'。map()`を呼び出す。",
@@ -68,12 +72,12 @@ export const TROUBLES: TroubleItem[] = [
       {
         heading: {
           ko: "처리 단계1) DTO에서 study_lectures를 옵셔널로 지정하였습니다.",
-          en: "Fix 1) Make study_lectures optional in DTO",
+          en: "Fix 1) Made study_lectures optional in DTO.",
           jp: "処理段階 1) DTOでstudy_lecturesをオプショナルに指定しました。",
         },
         body: {
           ko: "실제 응답에서 항상 내려오지 않는 필드는 DTO에서 옵셔널(?)로 정의해 방어적으로 처리하였습니다.",
-          en: "If a field is not always present in the real response, mark it as optional (`?`) in the DTO.",
+          en: "Defined optional fields (?) defensively for API responses that might not always return them.",
           jp: "実際の応答から常に降りてこないフィールドは、DTOでオプショナル(`?`)と定義し、防御的に処理しました。",
         },
         codeLang: "tsx",
@@ -95,7 +99,7 @@ export interface RecruitmentDetailDTO extends Omit<RecruitmentDTO, "tags"> {
       {
         heading: {
           ko: "처리 단계 2) 매퍼에서 안전하게 map을 호출하였습니다.",
-          en: "Fix 2) Safely call map in the mapper",
+          en: "Fix 2) Added safe mapping logic.",
           jp: "処理段階 2) マップから安全にマップを呼び出しました。",
         },
         body: {
@@ -104,8 +108,8 @@ export interface RecruitmentDetailDTO extends Omit<RecruitmentDTO, "tags"> {
             "이 과정에서 다른 배열 필드(`applications` 등)도 동일한 패턴으로 방어할 수 있다는 것을 깨닫게 되었습니다.",
           ].join("\n"),
           en: [
-            "Since `study_lectures` may be missing, use `?? []` before calling `.map()`.",
-            "You can apply the same pattern to other array fields like `attachments`, `applications`, etc.",
+            "`Used ?? []` as a fallback before `.map()` to avoid undefined errors.",
+            "Applied the same pattern to other array fields (e.g., applications) to improve robustness across the codebase.",
           ].join("\n"),
           jp: [
             "`study_lectures`がないかもしれない状況があるから`?? []`で基本値を与えて。`map()`を呼び出し",
@@ -165,7 +169,7 @@ export const mapRecruitmentDetailDTO = (
     icon: "Network",
     title: {
       ko: "Vercel 배포 시 GitHub Organization 권한 문제",
-      en: "Vercel deploy blocked by GitHub Organization permissions",
+      en: "GitHub Repository Not Linked to Vercel Deployment",
       jp: "テーマ:VERCEL配布時、GitHubと連動しない問題が発生",
     },
     page: {
@@ -173,7 +177,7 @@ export const mapRecruitmentDetailDTO = (
       en: "Deployment / Infra",
       jp: "デプロイ・インフラ",
     },
-    owner: { ko: "윤경복", en: "Kyungbok", jp: "キョンボク" },
+    owner: { ko: "윤경복", en: "Kyungbok", jp: "ユン·ギョンボク" },
     tags: ["vercel", "github", "deployment", "cli", "routing"],
     sections: [
       {
@@ -185,9 +189,10 @@ export const mapRecruitmentDetailDTO = (
             "라우팅 설정이 없어 새로고침 시 404가 뜨는 등 SPA 라우팅 문제도 함께 발생할 수 있음.",
           ].join("\n"),
           en: [
-            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
-            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
-            "Without proper routing config, refreshing on nested routes causes 404 errors (SPA routing issue).",
+            `While deploying the project to Vercel,
+deployment failed due to insufficient GitHub Organization permissions.
+The GitHub repository existed, but Vercel was unable to connect or auto-deploy.
+Additionally, refreshing routes in the deployed SPA returned a 404 error.`,
           ].join("\n"),
           jp: [
             "Vercelでプロジェクトを配布しようとした時、GitHub Organizationの権限問題で接続/配布が滞る問題が発生しました。",
@@ -204,8 +209,8 @@ export const mapRecruitmentDetailDTO = (
             "또한 Vite 기반 SPA를 Vercel에 올릴 때, 별도의 `rewrites`/`base` 설정이 없으면 새로고침 시 404가 발생할 수 있음.",
           ].join("\n"),
           en: [
-            "Vercel does not have sufficient permission to access the GitHub Organization, so repository linking and auto-deploy setup are blocked.",
-            "For a Vite-based SPA, missing `rewrites`/`base` config can also cause 404 errors on refresh.",
+            "Vercel did not have sufficient permission to access the GitHub Organization, blocking repository linking and automatic deployment.",
+            "Furthermore, since the app was a Vite-based SPA, a lack of proper rewrites and base configuration caused 404 errors on refresh.",
           ].join("\n"),
           jp: [
             "VercelでGitHub Organizationにアクセスする権限が十分に与えられていなかったため、 レポジット連動ができなくなったことが確認されました",
@@ -216,12 +221,12 @@ export const mapRecruitmentDetailDTO = (
       {
         heading: {
           ko: "처리 단계 1) vercel.json으로 SPA 라우팅 처리",
-          en: "Step 1) Handle SPA routing via vercel.json",
+          en: "Step 1) Added vercel.json for SPA routing.",
           jp: "処理段階 1) vercel.jsonでSPAルーティング処理",
         },
         body: {
           ko: "Vercel에서 새로고침 시에도 항상 `index.html`로 라우팅되도록 `vercel.json`을 추가했습니다.",
-          en: "Added `vercel.json` so that all routes rewrite to `index.html` for SPA behavior.",
+          en: "Configured rewrites so all routes redirect to index.html, preventing 404 errors on page reload.",
           jp: "`Vercel`で更新時にも常に`「index.html」`にルーティングされるように`「vercel.json」`を追加しました。",
         },
         codeLang: "json",
@@ -233,12 +238,12 @@ export const mapRecruitmentDetailDTO = (
       {
         heading: {
           ko: "처리 단계 2) vite.config.ts에서 base 설정",
-          en: "Step 2) Set base in vite.config.ts",
+          en: "Step 2) Defined base: '/' in vite.config.ts.",
           jp: "処理段階2) vite.config.tsでbase設定",
         },
         body: {
           ko: "배포 경로 기준을 명확히 하기 위해 Vite 설정에 `base: '/'`를 추가했습니다.",
-          en: "To clarify the deployment base path, added `base: '/'` to Vite config.",
+          en: "Clarified deployment base path to avoid asset loading issues.",
           jp: "配布経路の基準を明確にするために、Vie設定に`「base:'/'」`を追加しました。",
         },
         codeLang: "ts",
@@ -265,8 +270,8 @@ export default defineConfig({
             "처음 `npx vercel --prod`를 실행하며, 로그인 · 프로젝트 생성 · GitHub 레포 연결 과정을 순서대로 진행하여 문제를 우회했습니다.",
           ].join("\n"),
           en: [
-            "When blocked by Organization permission issues in the web dashboard, deployment was done directly via CLI.",
-            "On the first `npx vercel --prod` run, went through login, project setup, and GitHub linking to bypass the restriction.",
+            "Bypassed organization permission issues by deploying manually.",
+            "Used npx vercel --prod for login, project creation, and GitHub linking steps.",
           ].join("\n"),
           jp: [
             "VercelウェブでOrganization権限の問題で行き詰まる場合、CLIを通じて直接配布を進める方法があるして進めました。",
@@ -290,7 +295,7 @@ npx vercel --prod
     icon: "ServerCrash",
     title: {
       ko: "리프레시 토큰 실패 시 무한 요청 루프 발생",
-      en: "Infinite request loop caused by failed token refresh",
+      en: "Infinite Request Loop on Refresh Token Failure",
       jp: "テーマ: リフレッシュトークンの発行に失敗した場合、無限要請ループが発生",
     },
     page: {
@@ -298,7 +303,7 @@ npx vercel --prod
       en: "Auth / Login",
       jp: "認証・ログイン",
     },
-    owner: { ko: "윤경복", en: "Kyungbok", jp: "キョンボク" },
+    owner: { ko: "윤경복", en: "Kyungbok", jp: "ユン·ギョンボク" },
     tags: ["axios", "token", "refresh", "auth", "401-loop"],
     sections: [
       {
@@ -310,9 +315,11 @@ npx vercel --prod
             "로그인 페이지로 정상적으로 이동하지 못하고, 네트워크 탭에는 동일한 API가 끝없이 반복 호출되었습니다.",
           ].join("\n"),
           en: [
-            "`originalConfig._retry` 플래그가 적절히 설정되지 않아,",
-            "Refresh 요청이 실패했음에도 같은 인터셉터 로직이 다시 실행되어 동일 요청이 계속 재시도되고 있었습니다.",
-            "또한 catch 블록에서 리프레시 실패 상황을 명확하게 분기하지 않아, 재시도를 멈추지 못하고 무한 루프가 발생했습니다.",
+            `When the Access Token expired,
+the interceptor correctly attempted a Refresh Token request.
+However, when that request itself failed with a 401 error,
+the same request retried infinitely without redirecting to the login page.
+The Network tab showed an endless stream of identical API calls.`,
           ].join("\n"),
           jp: [
             "`Access Token`が満了すると自動的に`Refresh Token`要請を送るように具現しておいたが、",
@@ -330,9 +337,9 @@ npx vercel --prod
             "또한 catch 블록에서 리프레시 실패 상황을 명확하게 분기하지 않아, 재시도를 멈추지 못하고 무한 루프가 발생했습니다.",
           ].join("\n"),
           en: [
-            "`originalConfig._retry` 플래그가 적절히 설정되지 않아,",
-            "Refresh 요청이 실패했음에도 같은 인터셉터 로직이 다시 실행되어 동일 요청이 계속 재시도되고 있었습니다.",
-            "또한 catch 블록에서 리프레시 실패 상황을 명확하게 분기하지 않아, 재시도를 멈추지 못하고 무한 루프가 발생했습니다.",
+            "The `_retry` flag in the interceptor was not set properly.",
+            "As a result, the interceptor retried the same failed request repeatedly.",
+            "Additionally, the catch block did not clearly distinguish refresh token failures, so the loop never terminated.",
           ].join("\n"),
           jp: [
             "`original Config._retry` フラグが適切に設定されていないため、",
@@ -344,12 +351,12 @@ npx vercel --prod
       {
         heading: {
           ko: "처리 단계 1) _retry 플래그로 무한 재요청 방지",
-          en: "Fix 1) Use originalConfig._retry to prevent infinite retry",
+          en: "Fix 1) Used _retry flag to prevent repeated requests.",
           jp: "処理段階 1) _retry フラッグで無限再要請を防止",
         },
         body: {
           ko: "`_retry` 값을 가장 먼저 설정해 동일 요청이 반복되지 않도록 막았습니다.",
-          en: "",
+          en: "Set `_retry` early in the interceptor to stop recursive retries.",
           jp: "`_retry`値を一番先に設定して同一要請が繰り返されないように防ぎました。",
         },
         codeLang: "tsx",
@@ -368,12 +375,12 @@ originalConfig._retry = true;
       {
         heading: {
           ko: "처리 단계 2) 리프레시 실패 시 즉시 로그아웃 처리",
-          en: "Fix 2) Logout immediately on refresh failure",
+          en: "Fix 2) Handled refresh failures explicitly.",
           jp: "処理段階 2) リフレッシュ失敗時にすぐログアウト処理",
         },
         body: {
           ko: "`Refresh Token` 요청이 실패한 경우, 토큰을 즉시 삭제하고 로그인 페이지로 이동하도록 명확하게 분기 처리했습니다.",
-          en: "",
+          en: "On refresh failure, tokens are immediately cleared and the user is redirected to the login page.",
           jp: "リフレッシュトークンのリクエストが失敗した場合、トークンをすぐに削除してログインページに移動するように明確に分岐しました。",
         },
         codeLang: "tsx",
@@ -389,12 +396,12 @@ catch (refreshError) {
       {
         heading: {
           ko: "처리 단계 3) 로그아웃 로직을 공통 함수로 분리",
-          en: "Fix 3) Extract logout logic into standalone function",
+          en: "Fix 3) Abstracted logout logic into a reusable function.",
           jp: "処理段階3) ログアウトロジックを共通関数に分離",
         },
         body: {
           ko: "로그아웃 동작을 여러 곳에서 재사용할 수 있도록 `logout` 함수를 별도로 분리했습니다.",
-          en: "",
+          en: "Created a shared logout() utility for consistent behavior across modules.",
           jp: "ログアウト動作を複数の場所で再利用できるように、`logout` 関数を分離しました。",
         },
         codeLang: "ts",
@@ -412,27 +419,27 @@ export const logout = () => {
     icon: "PieChart",
     title: {
       ko: "React Query 캐싱으로 인한 차트 데이터 미갱신 문제",
-      en: "Infinite redirect on token expire",
+      en: "React Query キャッシングによるチャートデータの未更新問題",
       jp: "トークン失効で無限リダイレクト",
     },
     page: { ko: "대시보드", en: "DashBoard", jp: "ユーザー管理" },
-    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "ホンヨル" },
+    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "キム・ヒョンジン" },
     tags: ["charts", "TanStack Query"],
     sections: [
       {
-        heading: { ko: "문제 상황", en: "Symptom", jp: "症状" },
+        heading: { ko: "문제 상황", en: "Symptom", jp: "問題状況" },
         body: {
           ko: [
             "탈퇴 사유별 월별 추세 차트에서 드롭다운으로 사유를 변경해도 차트가 업데이트되지 않는 문제가 발생했습니다.",
             "초기 렌더링 시에는 데이터가 정상적으로 표시되나, 사유 변경 시 이전 데이터가 그대로 유지되었습니다.",
           ].join("\n"),
           en: [
-            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
-            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+            "In the “Withdrawal Reason Trend by Month” chart, changing the dropdown reason did not update the chart.",
+            "Initial render displayed correctly, but after changing the reason, the previous data persisted.",
           ].join("\n"),
           jp: [
-            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
-            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+            "退会理由別の月別傾向チャートからドロップダウンに理由を変更してもチャートが更新されないという問題が発生しました。",
+            "初期レンダリング時にはデータが正常に表示されますが、事由変更時に以前のデータがそのまま維持されました。",
           ].join("\n"),
         },
         codeLang: "ts",
@@ -447,69 +454,65 @@ const { data: responseData } = useWithdrawalReasonTrend(reasonCode);`,
             "`enabled` 옵션이 있어도 쿼리 키가 변경될 때 자동으로 새 데이터를 페칭하지 않는 경우가 있었습니다.",
           ].join("\n"),
           en: [
-            "Vercel does not have sufficient permission to access the GitHub Organization, so repository linking and auto-deploy setup are blocked.",
-            "For a Vite-based SPA, missing `rewrites`/`base` config can also cause 404 errors on refresh.",
+            "Even though the `queryKey` included `reasonCode`, React Query continued using the previously cached data when the component re-rendered.",
+            "Additionally, even with the enabled option, React Query did not always trigger a new fetch when the query key changed.",
           ].join("\n"),
           jp: [
-            "VercelにGitHub組織への十分な権限が付与されておらず、リポジトリ連携や自動デプロイ設定がブロックされていた。",
-            "また、ViteベースのSPAでは、`rewrites` や `base` 設定がないとリロード時に404が発生することがある。",
+            "`React Query`の`query Key`に`reasonCode`が含まれていますが、コンポーネントがリレンダリングされるときに以前キャッシュされたデータを使用していました。",
+            "enabledオプションがあっても、クエリキーが変更されたときに自動的に新しいデータをフェッチングしない場合がありました。",
           ].join("\n"),
         },
       },
       {
         heading: {
           ko: "시도한 해결방법 1. refetch() 함수를 호출하여 수동으로 데이터 갱신 시도",
-          en: "Step 1) Handle SPA routing via vercel.json",
-          jp: "手順1) vercel.jsonでSPAルーティングを設定",
+          en: "Step 1) Called refetch() manually",
+          jp: "試みた解決方法 1) refetch()関数を呼び出して手動でデータ更新を試みる",
         },
         body: {
           ko: "코드 복잡도가 증가",
-          en: "Added `vercel.json` so that all routes rewrite to `index.html` for SPA behavior.",
-          jp: "`vercel.json` を追加し、リロード時も常に `index.html` にリライトされるようにした。",
+          en: "increased code complexity",
+          jp: "コード複雑度の増加",
         },
       },
       {
         heading: {
           ko: "시도한 해결 방법 2. staleTime을 0으로 설정",
-          en: "Step 2) Set base in vite.config.ts",
-          jp: "手順2) vite.config.tsでbaseを設定",
+          en: "Step 2) Set staleTime to 0",
+          jp: "試みた解決方法 2) staleTimeを0に設定 ",
         },
         body: {
           ko: "불필요한 API 호출 증가",
-          en: "To clarify the deployment base path, added `base: '/'` to Vite config.",
-          jp: "デプロイ時のパス基準を明確にするため、Vite設定に `base: '/'` を追加した。",
+          en: "caused unnecessary API calls",
+          jp: "不要なAPI呼び出しの増加",
         },
       },
       {
         heading: {
           ko: "시도한 해결 방법 3. qurey Key에 추가 dependency 추가",
           en: "Step 3) Deploy via Vercel CLI",
-          jp: "手順3) Vercel CLIで直接デプロイ",
+          jp: "試みた解決方法 3) qurey Keyに追加 dependency追加",
         },
         body: {
           ko: ["근본적인 해결 불가"].join("\n"),
-          en: [
-            "When blocked by Organization permission issues in the web dashboard, deployment was done directly via CLI.",
-          ].join("\n"),
-          jp: [
-            "ダッシュボード側で組織権限の問題によりブロックされたため、CLIから直接デプロイを行った。",
-          ].join("\n"),
+          en: ["did not solve the underlying issue"].join("\n"),
+          jp: ["根本的な解決ができない"].join("\n"),
         },
       },
       {
-        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "症状" },
+        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "最終解決方法" },
         body: {
           ko: [
             "`queryKey`에 `reasonCode`를 명확히 포함시키고, `enabled` 옵션으로 유효한 값일 때만 쿼리가 실행되도록 설정했습니다.",
             "초기 렌더링 시에는 데이터가 정상적으로 표시되나, 사유 변경 시 이전 데이터가 그대로 유지되었습니다.",
           ].join("\n"),
           en: [
-            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
-            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+            "I explicitly included `reasonCode` in the `queryKey`. And used `enabled` to run the query only when reasonCode is valid.",
+            "I allowed React Query to correctly detect reasonCode changes and trigger fresh fetches.",
           ].join("\n"),
           jp: [
-            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
-            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+            "`query Key`にreason Codeを明確に含み、`enabled`オプションで有効な値のときだけクエリが実行されるように設定しました。",
+            "`React Query`が`reason Code`の変更を感知して、自動的に新しいクエリを実行するように構造を改善しました。",
           ].join("\n"),
         },
         codeLang: "ts",
@@ -531,27 +534,29 @@ const { data: responseData } = useWithdrawalReasonTrend(reasonCode);`,
     icon: "PieChart",
     title: {
       ko: "Recharts PieChart의 activeIndex 상태 동기화 문제",
-      en: "Infinite redirect on token expire",
-      jp: "トークン失効で無限リダイレクト",
+      en: "Recharts PieChart activeIndex Desynchronization Issue",
+      jp: "Recharts PieChartのactive Index状態同期化問題",
     },
     page: { ko: "대시보드", en: "DashBoard", jp: "ユーザー管理" },
-    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "ホンヨル" },
+    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "キム・ヒョンジン" },
     tags: ["charts", "Recharts"],
     sections: [
       {
-        heading: { ko: "문제 상황", en: "Symptom", jp: "症状" },
+        heading: { ko: "문제 상황", en: "Issue", jp: "問題状況" },
         body: {
           ko: [
             "도넛 차트와 범례에 모두 `onMouseEnter/onMouseLeave` 이벤트를 설정했지만,마우스를 빠르게 이동하면 `activeIndex` 상태가 꼬이는 문제가 발생했습니다.",
             "차트에서 마우스를 떼어도 여전히 활성화된 상태로 표시되거나, 범례와 차트의 활성화 상태가 일치하지 않았습니다..",
           ].join("\n"),
           en: [
-            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
-            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+            "Both the donut chart and legend had onMouseEnter/onMouseLeave events.",
+            "However, when moving the mouse quickly, the activeIndex state became desynchronized.",
+            "Active slice remained highlighted even after leaving the chart",
+            "Legend and chart active states were mismatched",
           ].join("\n"),
           jp: [
-            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
-            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+            "ドーナツチャートと凡例の両方で`onMouse Enter/onMouse` Leaveイベントを設定しましたが、マウスを素早く移動すると`activeIndex`状態がねじれる問題が発生しました。",
+            "チャートからマウスを離しても、依然としてアクティブな状態で表示されたり、凡例とチャートのアクティブ状態が一致しませんでした。",
           ].join("\n"),
         },
         codeLang: "ts",
@@ -574,69 +579,66 @@ const { data: responseData } = useWithdrawalReasonTrend(reasonCode);`,
             "`React`의 비동기 상태 업데이트 특성상 마지막 상태가 예측 불가능하게 되었습니다.",
           ].join("\n"),
           en: [
-            "Vercel does not have sufficient permission to access the GitHub Organization, so repository linking and auto-deploy setup are blocked.",
-            "For a Vite-based SPA, missing `rewrites`/`base` config can also cause 404 errors on refresh.",
+            "When the mouse moved rapidly between the chart and the legend:`onMouseLeave` from the chart, and `onMouseEnter` from the legend were triggered almost simultaneously, causing racing conditions.",
+            "Due to React’s asynchronous state updates, the final state became unpredictable.",
           ].join("\n"),
           jp: [
-            "VercelにGitHub組織への十分な権限が付与されておらず、リポジトリ連携や自動デプロイ設定がブロックされていた。",
-            "また、ViteベースのSPAでは、`rewrites` や `base` 設定がないとリロード時に404が発生することがある。",
+            "チャート領域と凡例領域の間でマウスが移動する時、「on Mouse Leaveとon Mouse Enter」がほぼ同時に発生し、状態アップデート順序が保障されませんでした。",
+            "Reactの非同期状態アップデートの特性上、最後の状態が予測不可能になりました。",
           ].join("\n"),
         },
       },
       {
         heading: {
           ko: "시도한 해결방법 1. setTimeout으로 setActiveIndex(null) 지연 실행",
-          en: "Step 1) Handle SPA routing via vercel.json",
-          jp: "手順1) vercel.jsonでSPAルーティングを設定",
+          en: "Step 1) Delayed setActiveIndex(null) with setTimeout",
+          jp: "試みた解決方法 1) setTimeoutでsetActive Index(null)遅延実行",
         },
         body: {
           ko: "`UX`가 부자연스러워짐",
-          en: "Added `vercel.json` so that all routes rewrite to `index.html` for SPA behavior.",
-          jp: "`vercel.json` を追加し、リロード時も常に `index.html` にリライトされるようにした。",
+          en: "unnatural `UX`",
+          jp: "`UX`が不自然になる",
         },
       },
       {
         heading: {
           ko: "시도한 해결 방법 2. 별도의 ref를 사용한 debounce 구현",
-          en: "Step 2) Set base in vite.config.ts",
-          jp: "手順2) vite.config.tsでbaseを設定",
+          en: "Step 2) Added debounce using ref",
+          jp: "試みた解決方法 2) 別途の ref を使用した debounce 実装",
         },
         body: {
           ko: "코드 복잡도 과다 증가",
-          en: "To clarify the deployment base path, added `base: '/'` to Vite config.",
-          jp: "デプロイ時のパス基準を明確にするため、Vite設定に `base: '/'` を追加した。",
+          en: "overcomplicated code",
+          jp: "コード複雑度の過多増加",
         },
       },
       {
         heading: {
           ko: "시도한 해결 방법 3. 차트와 범례 중 하나에만 이벤트 적용",
-          en: "Step 3) Deploy via Vercel CLI",
-          jp: "手順3) Vercel CLIで直接デプロイ",
+          en: "Step 3) Applied events to either the chart or legend only",
+          jp: "試みた解決方法 3) チャートと凡例のうち一つだけにイベント適用",
         },
         body: {
           ko: ["사용자 경험 저하"].join("\n"),
-          en: [
-            "When blocked by Organization permission issues in the web dashboard, deployment was done directly via CLI.",
-          ].join("\n"),
-          jp: [
-            "ダッシュボード側で組織権限の問題によりブロックされたため、CLIから直接デプロイを行った。",
-          ].join("\n"),
+          en: ["degraded UX"].join("\n"),
+          jp: ["ユーザー経験の低下"].join("\n"),
         },
       },
       {
-        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "症状" },
+        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "最終解決方法" },
         body: {
           ko: [
             "이벤트 핸들러를 함수로 분리하여 동일한 로직을 적용했습니다.",
             "`activeIndex`를 `Pie` 컴포넌트의 `prop`으로 명시적으로 전달하여 상태와 UI 동기화를 보장했습니다.",
           ].join("\n"),
           en: [
-            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
-            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+            "Unified event handlers to ensure consistent state updates.",
+            "Centralized event handlers to avoid race conditions",
+            "Explicitly passed `activeIndex` to the `Pie` component for reliable UI sync",
           ].join("\n"),
           jp: [
-            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
-            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+            "イベント ハンドラーを関数として分離し、同じロジックを適用しました。",
+            "`active Index`を「Pie」コンポーネントの`prop`と明示的に伝え、状態とUIの同期を保証しました。",
           ].join("\n"),
         },
         codeLang: "ts",
@@ -679,27 +681,26 @@ return (
     icon: "Code",
     title: {
       ko: "TypeScript 타입 안정성 문제 - DTO와 Chart Data 매핑 오류",
-      en: "Infinite redirect on token expire",
-      jp: "トークン失効で無限リダイレクト",
+      en: "TypeScript Type Safety Issue – DTO and Chart Data Mapping Error ",
+      jp: "TypeScriptタイプの安定性問題 - DTOとChart Dataマッピングエラー",
     },
     page: { ko: "대시보드", en: "DashBoard", jp: "ユーザー管理" },
-    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "ホンヨル" },
+    owner: { ko: "김현진", en: "Kim Hyun Jin", jp: "キム・ヒョンジン" },
     tags: ["TypeScript", "Mapping"],
     sections: [
       {
-        heading: { ko: "문제 상황", en: "Symptom", jp: "症状" },
+        heading: { ko: "문제 상황", en: "Issue", jp: "問題状況" },
         body: {
           ko: [
             "`API`에서 받아온 데이터를 차트 형식으로 변환하는 과정에서 런타임 에러가 발생했습니다.",
             "`items` 배열이 `undefined`일 때 `.map()`을 호출하여 애플리케이션이 크래시되었습니다.",
           ].join("\n"),
           en: [
-            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
-            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+            "While converting API response data into chart data, a runtime error occurred because `.map()` was called on an `undefined` items array.",
           ].join("\n"),
           jp: [
-            "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
-            "GitHubリポジトリ自体は存在するが、Vercel側でのプロジェクト作成・リンク時にエラーとなり、自動デプロイが設定できない。",
+            "`API`から受け取ったデータをチャート形式に変換する過程でランタイムエラーが発生しました。",
+            "アイテム配列が`undefined`のとき`.map()`を呼び出してアプリケーションがクラッシュされました。",
           ].join("\n"),
         },
         codeLang: "ts",
@@ -722,57 +723,55 @@ return (
             "타입 정의와 실제 `API` 응답 스펙의 불일치가 문제였습니다.",
           ].join("\n"),
           en: [
-            "Vercel does not have sufficient permission to access the GitHub Organization, so repository linking and auto-deploy setup are blocked.",
-            "For a Vite-based SPA, missing `rewrites`/`base` config can also cause 404 errors on refresh.",
+            "When the backend had no data, it returned items as undefined instead of an empty array",
+            "TypeScript defined `items` as `WithdrawalReasondoughnutItemDTO[]`, but runtime data could be missing",
+            "The mismatch between TypeScript types and actual API behavior caused runtime crashes",
           ].join("\n"),
           jp: [
-            "VercelにGitHub組織への十分な権限が付与されておらず、リポジトリ連携や自動デプロイ設定がブロックされていた。",
-            "また、ViteベースのSPAでは、`rewrites` や `base` 設定がないとリロード時に404が発生することがある。",
+            "バックエンド`API`でデータがない場合、`items`を空の配列の代わりにundefinedに戻していました。",
+            "`TypeScript`タイプ定義は`items:WithdrawalReasondoughnutItemDTO[]`となっていますが、実際のランタイムではオプショナルな値が来ることがありました。",
+            "タイプ定義と実際の`API`応答スペックの不一致が問題でした。",
           ].join("\n"),
         },
       },
       {
         heading: {
           ko: "시도한 해결방법 1. 컴포넌트 레벨에서 if (!data?.items) 체크 ",
-          en: "Step 1) Handle SPA routing via vercel.json",
-          jp: "手順1) vercel.jsonでSPAルーティングを設定",
+          en: "Step 1) Checked if (!data?.items) in the component",
+          jp: "試みた解決方法 1) コンポーネントレベルで if (!data?.items)`チェック",
         },
         body: {
           ko: "모든 컴포넌트에 중복 발생",
-          en: "Added `vercel.json` so that all routes rewrite to `index.html` for SPA behavior.",
-          jp: "`vercel.json` を追加し、リロード時も常に `index.html` にリライトされるようにした。",
+          en: "repetitive boilerplate",
+          jp: "すべてのコンポーネントに重複コードが発生",
         },
       },
       {
         heading: {
           ko: "시도한 해결 방법 2. API 응답을 받은 직후 필터링 ",
-          en: "Step 2) Set base in vite.config.ts",
-          jp: "手順2) vite.config.tsでbaseを設定",
+          en: "Step 2) Filtered data right after API call",
+          jp: "試みた解決方法 2) API応答を受けた直後にフィルタリング",
         },
         body: {
           ko: "타입 안전성 여전히 보장 안 됨",
-          en: "To clarify the deployment base path, added `base: '/'` to Vite config.",
-          jp: "デプロイ時のパス基準を明確にするため、Vite設定に `base: '/'` を追加した。",
+          en: "still lacked type safety",
+          jp: "タイプの安定性が依然として保証されない",
         },
       },
       {
         heading: {
           ko: "시도한 해결 방법 3. DTO 타입을 옵셔널로 변경 → 기존 코드 대량 수정 필요",
-          en: "Step 3) Deploy via Vercel CLI",
-          jp: "手順3) Vercel CLIで直接デプロイ",
+          en: "Step 3) Changed DTO type to optional",
+          jp: "試みた解決方法 3) DTOタイプをオプショナルに変更",
         },
         body: {
           ko: ["기존 코드 대량 수정 필요"].join("\n"),
-          en: [
-            "When blocked by Organization permission issues in the web dashboard, deployment was done directly via CLI.",
-          ].join("\n"),
-          jp: [
-            "ダッシュボード側で組織権限の問題によりブロックされたため、CLIから直接デプロイを行った。",
-          ].join("\n"),
+          en: ["required too many code modifications"].join("\n"),
+          jp: ["既存コードの大量修正が必要"].join("\n"),
         },
       },
       {
-        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "症状" },
+        heading: { ko: "최종 해결 방법", en: "Symptom", jp: "最終解決方法" },
         body: {
           ko: [
             "매핑 함수에서 `Optional chaining (?.)`과 `nullish coalescing (|| [])`을 사용하여 안전한 변환을 보장했습니다.",
@@ -780,8 +779,9 @@ return (
             "타입 안정성과 런타임 안정성을 모두 확보했습니다.",
           ].join("\n"),
           en: [
-            "When trying to deploy to Vercel, deployment is blocked due to GitHub Organization permission issues.",
-            "The GitHub repository exists, but Vercel fails to link or create the project properly, so auto-deploy cannot be set up.",
+            "Used optional chaining (`?.`) + fallback (`|| []`) for safe transformation",
+            "Component handles empty array with a clear user message",
+            "Ensured both runtime safety and TypeScript type safety",
           ].join("\n"),
           jp: [
             "Vercelでプロジェクトをデプロイしようとすると、GitHub組織の権限問題でブロックされる。",
@@ -831,7 +831,7 @@ if (!statistics.chartData || statistics.chartData.length === 0) {
       en: "Shared Components",
       jp: "ユーザー管理",
     },
-    owner: { ko: "서단비", en: "Seo Dan-bi", jp: "ホンヨル" },
+    owner: { ko: "서단비", en: "Seo Dan-bi", jp: "ソ・ダンビ" },
     tags: ["TypeScript", "Toast"],
     sections: [
       {
@@ -935,7 +935,7 @@ if (!statistics.chartData || statistics.chartData.length === 0) {
       en: "Lecture Management Page",
       jp: "ユーザー管理",
     },
-    owner: { ko: "서단비", en: "Seo Dan-bi", jp: "ホンヨル" },
+    owner: { ko: "서단비", en: "Seo Dan-bi", jp: "ソ・ダンビ" },
     tags: ["TypeScript", "State", "debounce"],
     sections: [
       {
@@ -1337,7 +1337,7 @@ const user = detail.user
       jp: "リストのスクロール位置が初期化",
     },
     page: { ko: "구인 공고 관리", en: "Recruit admin", jp: "募集管理" },
-    owner: { ko: "서단비", en: "Seodanbi", jp: "ソダンビ" },
+    owner: { ko: "서단비", en: "Seodanbi", jp: "ソ・ダンビ" },
     tags: ["ux", "router"],
     sections: [
       {
