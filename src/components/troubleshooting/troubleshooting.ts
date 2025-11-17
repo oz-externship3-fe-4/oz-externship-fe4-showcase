@@ -11,7 +11,7 @@ import type { TroubleItem } from "../../types/troubleshooting";
 export const TROUBLES: TroubleItem[] = [
   {
     id: "recruit-detail-modal-missing",
-    icon: "Hammer",
+    icon: "Code",
     title: {
       ko: "모달 내 상세내용이 렌더링 안되는 문제",
       en: "Recruitment detail modal not rendering",
@@ -166,7 +166,7 @@ export const mapRecruitmentDetailDTO = (
   },
   {
     id: "vercel-org-permission-cli-deploy",
-    icon: "Network",
+    icon: "Code",
     title: {
       ko: "Vercel 배포 시 GitHub Organization 권한 문제",
       en: "GitHub Repository Not Linked to Vercel Deployment",
@@ -292,7 +292,7 @@ npx vercel --prod
 
   {
     id: "auth-refresh-infinite-loop",
-    icon: "ServerCrash",
+    icon: "Code",
     title: {
       ko: "리프레시 토큰 실패 시 무한 요청 루프 발생",
       en: "Infinite Request Loop on Refresh Token Failure",
@@ -416,7 +416,7 @@ export const logout = () => {
   },
   {
     id: "charts-query",
-    icon: "PieChart",
+    icon: "Code",
     title: {
       ko: "React Query 캐싱으로 인한 차트 데이터 미갱신 문제",
       en: "React Query キャッシングによるチャートデータの未更新問題",
@@ -531,7 +531,7 @@ const { data: responseData } = useWithdrawalReasonTrend(reasonCode);`,
   },
   {
     id: "charts",
-    icon: "PieChart",
+    icon: "Code",
     title: {
       ko: "Recharts PieChart의 activeIndex 상태 동기화 문제",
       en: "Recharts PieChart activeIndex Desynchronization Issue",

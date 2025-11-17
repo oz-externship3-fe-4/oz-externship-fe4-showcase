@@ -6,14 +6,14 @@ export const TEAM_RETROSPECTIVES: MemberRetrospective[] = [
     name: {
       ko: "윤경복",
       en: "YOON KYUNG BOK",
-      jp: "イ・ウォニ",
+      jp: "ユン·ギョンボク",
     },
     role: "FRONTEND",
     characterImg: "/images/pokemon/bulbasaur.png",
     comment: {
       ko: "함께 버틴 시간, 모두의 성장으로 남았습니다.",
-      en: "We endured together — and grew together.",
-      jp: "「共に乗り越え、共に成長しました。」",
+      en: "The time we went through together became our shared growth.",
+      jp: "緒に耐え抜いた時間、みんなの成長で残りました。",
     },
     message: {
       ko: `이번 프로젝트는 저에게 ‘팀장’이라는 역할을 맡은 새로운 도전이었습니다.
@@ -44,14 +44,14 @@ I hope we all continue to grow into great developers, and I genuinely look forwa
     id: "pikachu",
     name: {
       ko: "이원희",
-      en: "string",
-      jp: "string",
+      en: "Lee Wonhee",
+      jp: "イ・ウォニ",
     },
     role: "FRONTEND",
     characterImg: "/images/pokemon/pikachu.png",
     comment: {
-      ko: "함께 버틴 시간, 모두의 성장으로 남았습니다.",
-      en: "We endured together — and grew together.",
+      ko: "같이 프로젝트 할 수 있어서 좋았습니다",
+      en: "I really enjoyed working on this project together.",
       jp: "「共に乗り越え、共に成長しました。」",
     },
     message: {
@@ -98,15 +98,15 @@ development becomes not only more efficient, but genuinely more enjoyable.`,
     id: "squirtle",
     name: {
       ko: "홍엽",
-      en: "string",
-      jp: "string",
+      en: "Hongyeop",
+      jp: "ホンヨプ",
     },
     role: "FRONTEND",
     characterImg: "/images/pokemon/squirtle.png",
     comment: {
-      ko: "함께 버틴 시간, 모두의 성장으로 남았습니다.",
-      en: "We endured together — and grew together.",
-      jp: "「共に乗り越え、共に成長しました。」",
+      ko: "다같이 성장하는 모습을 보니 행복합니다.",
+      en: "Seeing us grow together makes me truly happy",
+      jp: "みんなで成長する姿を見て幸せです。",
     },
     message: {
       ko: `이번 프로젝트를 통해 제가 가진 강점과 보완할 점을 명확히 알게 되었습니다.
@@ -146,15 +146,15 @@ but also supports the growth of others and contributes to improving the team’s
     id: "eevee",
     name: {
       ko: "서단비",
-      en: "string",
-      jp: "string",
+      en: "Seo Danbi",
+      jp: "ソ・ダンビ",
     },
     role: "FRONTEND",
     characterImg: "/images/pokemon/eevee.png",
     comment: {
-      ko: "함께 버틴 시간, 모두의 성장으로 남았습니다.",
-      en: "We endured together — and grew together.",
-      jp: "「共に乗り越え、共に成長しました。」",
+      ko: "프로젝트는 나혼자서 하는게 아니였다. 같이 성장!",
+      en: "This project wasn’t a one-man journey — it was a shared growth experience.",
+      jp: "プロジェクトはひとり一人でするのではなかった。 一緒に成長！",
     },
     message: {
       ko: `프로젝트를 진행하면서 팀워크의 중요성을 다시금 깊이 느꼈습니다. 
@@ -188,15 +188,15 @@ of TypeScript and the value of close collaboration with the backend team.`,
     id: "yveltal",
     name: {
       ko: "김현진",
-      en: "string",
-      jp: "string",
+      en: "Kim hyeon jin",
+      jp: "キム・ヒョンジン",
     },
     role: "FRONTEND",
     characterImg: "/images/pokemon/3287f802e7f5855a.png",
     comment: {
-      ko: "함께 버틴 시간, 모두의 성장으로 남았습니다.",
-      en: "We endured together — and grew together.",
-      jp: "「共に乗り越え、共に成長しました。」",
+      ko: "다 함께 힘낸 프로젝트 성공적으로 마쳐 행복합니다.",
+      en: "I’m happy that we successfully completed the project we all worked so hard on together.",
+      jp: "皆で頑張ったプロジェクトを成功裏に終え、幸せです。",
     },
     message: {
       ko: `이번 협업 프로젝트를 진행하면서 팀원 간의 소통과 백엔드와의 협력이 얼마나 중요한지 크게 느꼈습니다. 

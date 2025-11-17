@@ -7,7 +7,6 @@ import {
 } from "react-router";
 import { AnimatePresence, MotionConfig } from "framer-motion";
 import { RouteFallback } from "./components/spinner/RouteFallback";
-
 const Home = lazy(() => import("./pages/Home"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
 const ProjectProgressPanel = lazy(
@@ -33,6 +32,7 @@ const DevProcessSection = lazy(
   () => import("./pages/desktop/DevProcessSection")
 );
 const VisionPage = lazy(() => import("./pages/desktop/VisionPage"));
+const TeamLinksPage = lazy(() => import("./pages/desktop/TeamLinksPage"));
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -136,8 +136,16 @@ function AnimatedRoutes() {
           <Route
             path="vision"
             element={
-              <Suspense fallback={<VisionPage />}>
+              <Suspense fallback={<RouteFallback />}>
                 <VisionPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="links"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <TeamLinksPage />
               </Suspense>
             }
           />
