@@ -24,6 +24,9 @@ import {
   ApplicationManageSection,
   RecruitAdminManageSection,
 } from "../../components/projectOverview/sections";
+import { HorizontalScrollGuide } from "../../components/Layout/HorizontalScrollGuide.tsx";
+import { useOutletContext } from "react-router";
+import type { LayoutContext } from "../../components/Layout/Layout.tsx";
 
 const SECTIONS = [
   { id: "overview", label: "개요", Component: OverviewIntroSection },
@@ -47,7 +50,11 @@ const SECTIONS = [
   },
   { id: "review", label: "리뷰", Component: AdminReviewManageSection },
   { id: "app", label: "지원관리", Component: ApplicationManageSection },
-  { id: "recruit", label: "구인공고", Component: RecruitAdminManageSection },
+  {
+    id: "recruitmanagement",
+    label: "구인공고",
+    Component: RecruitAdminManageSection,
+  },
 ];
 
 export default function ProjectOverviewPage() {
@@ -55,6 +62,7 @@ export default function ProjectOverviewPage() {
   const [containerWidth, setContainerWidth] = useState(0);
   const wheelLockRef = useRef(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const { lang } = useOutletContext<LayoutContext>();
 
   const clampIndex = useCallback((next: number) => {
     if (next < 0) return 0;
@@ -138,6 +146,7 @@ export default function ProjectOverviewPage() {
           </div>
         ))}
       </motion.div>
+      <HorizontalScrollGuide pageLabel="PROJECT OVERVIEW" lang={lang} />
     </div>
   );
 }

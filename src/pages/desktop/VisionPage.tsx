@@ -12,6 +12,9 @@ import {
   FutureVisionSection,
   VisionRoadmapSection,
 } from "../../components/vision";
+import { HorizontalScrollGuide } from "../../components/Layout/HorizontalScrollGuide.tsx";
+import { useOutletContext } from "react-router";
+import type { LayoutContext } from "../../components/Layout/Layout.tsx";
 
 const VISION_SECTIONS = [
   { id: "growth", label: "성장", Component: VisionGrowthSection },
@@ -24,6 +27,7 @@ export default function VisionPage() {
   const [containerWidth, setContainerWidth] = useState(0);
   const wheelLockRef = useRef(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const { lang } = useOutletContext<LayoutContext>();
 
   const clampIndex = useCallback((next: number) => {
     if (next < 0) return 0;
@@ -100,6 +104,7 @@ export default function VisionPage() {
           </div>
         ))}
       </motion.div>
+      <HorizontalScrollGuide pageLabel="VISION" lang={lang} />
     </div>
   );
 }
