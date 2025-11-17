@@ -20,7 +20,7 @@ export const PHASES: { id: PhaseId; label: LocalizedText }[] = [
   {
     id: "init",
     label: {
-      ko: "계획",
+      ko: "초기",
       en: "Planning",
       jp: "初期",
     },
@@ -30,7 +30,7 @@ export const PHASES: { id: PhaseId; label: LocalizedText }[] = [
     label: {
       ko: "와이어프레임",
       en: "Wireframing",
-      jp: "ワイヤーフレーム",
+      jp: "ワイヤフレーム",
     },
   },
   {
@@ -46,7 +46,7 @@ export const PHASES: { id: PhaseId; label: LocalizedText }[] = [
     label: {
       ko: "개발완료",
       en: "Development Complete",
-      jp: "機能実装完了",
+      jp: "開発完了",
     },
   },
   {
