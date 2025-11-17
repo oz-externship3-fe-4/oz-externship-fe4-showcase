@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useHoverGsap } from "../../hooks/animations/useHoverGsap";
 import { useNavigate } from "react-router";
 
-const TARGET_DATE = "2025-11-17T00:00:00+09:00";
+const TARGET_DATE = "2025-11-17T17:00:00+09:00";
 
 const softPaintBg = `
   radial-gradient(circle at 0% 0%,

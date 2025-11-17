@@ -9,17 +9,18 @@ const FOLDER_GRADIENT: Record<FolderColor, { from: string; to: string }> = {
 export interface FolderIconProps {
   label: string;
   color: FolderColor;
+  href?: string;
 }
 
-export function FolderIcon({ label, color }: FolderIconProps) {
+export function FolderIcon({ label, color, href }: FolderIconProps) {
   const gradientId = `folder-grad-${color}-${label.replace(/\s+/g, "-")}`;
   const { from, to } = FOLDER_GRADIENT[color];
 
-  return (
-    <div className="flex flex-col items-center gap-2">
+  const content = (
+    <div className="flex flex-col items-center gap-2 cursor-pointer">
       <svg
         viewBox="0 0 160 120"
-        className="h-[150px] w-[210px] md:h-[200px] md:w-[210px] drop-shadow-[0_10px_25px_rgba(15,23,42,0.06)]"
+        className="h-[150px] w-[210px] md:h-[200px] md:w-[210px] drop-shadow-[0_10px_25px_rgba(15,23,42,0.06)] transition-transform hover:scale-[1.03]"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -40,5 +41,13 @@ export function FolderIcon({ label, color }: FolderIconProps) {
 
       <span className="text-xl font-extrabold text-slate-800">{label}</span>
     </div>
+  );
+
+  return href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {content}
+    </a>
+  ) : (
+    content
   );
 }

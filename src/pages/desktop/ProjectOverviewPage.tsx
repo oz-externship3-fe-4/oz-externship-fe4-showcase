@@ -62,12 +62,6 @@ export default function ProjectOverviewPage() {
     return next;
   }, []);
 
-  const goTo = (next: number) => {
-    setActiveIndex((prev) =>
-      clampIndex(typeof next === "number" ? next : prev)
-    );
-  };
-
   useEffect(() => {
     const measure = () => {
       if (!containerRef.current) return;
@@ -144,41 +138,6 @@ export default function ProjectOverviewPage() {
           </div>
         ))}
       </motion.div>
-
-      <div
-        className="
-          absolute right-6 top-1/2 -translate-y-1/2
-          flex flex-col gap-2
-        "
-      >
-        {SECTIONS.map(({ id, label }, idx) => {
-          const isActive = idx === activeIndex;
-          return (
-            <button
-              key={id}
-              onClick={() => goTo(idx)}
-              className={`
-                w-10 h-12
-                rounded-l-full
-                flex flex-col items-center justify-center
-                text-[10px]
-                transition-all
-                cursor-pointer
-                ${
-                  isActive
-                    ? "bg-amber-400 text-white shadow-[0_10px_25px_rgba(253,224,71,0.5)]"
-                    : "bg-white/80 text-slate-500 hover:bg-amber-50 hover:text-black"
-                }
-              `}
-            >
-              <span className="font-bold leading-none">
-                {String(idx + 1).padStart(2, "0")}
-              </span>
-              <span className="text-[8px] leading-none mt-0.5">{label}</span>
-            </button>
-          );
-        })}
-      </div>
     </div>
   );
 }

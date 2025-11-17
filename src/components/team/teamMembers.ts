@@ -11,7 +11,7 @@ export const TEAM_MEMBERS = [
     role: {
       ko: "FRONTEND",
       en: "FRONTEND",
-      jp: "フロントエンド",
+      jp: "フロントエンド·デベロッパー",
     },
     github: "https://github.com/Justin-SJ-Hong",
     email: "madwolves98@gmail.com",
@@ -660,12 +660,12 @@ msw連動及びapi連動`,
     name: {
       ko: "윤경복",
       en: "Y. KYUNG BOK",
-      jp: "イ・ウォニ",
+      jp: "ユン·ギョンボク",
     },
     role: {
       ko: "FRONTEND",
       en: "FRONTEND",
-      jp: "フロントエンド開発者",
+      jp: "フロントエンド·デベロッパー",
     },
     github: "https://github.com/KYUNG-BOK",
     email: "kyeongbok_0627@kakao.com",
@@ -980,7 +980,7 @@ js-cookieベースのAPIインターセプターおよびプロテクトルー�
     role: {
       ko: "FRONTEND",
       en: "FRONTEND",
-      jp: "フロントエンド開発者",
+      jp: "フロントエンド·デベロッパー",
     },
     github: "https://github.com/ozwonhee",
     email: "wonhee@example.com",
@@ -1208,7 +1208,7 @@ API連動部分:ページUIを任された部分をそのまま連動
     role: {
       ko: "FRONTEND",
       en: "FRONTEND",
-      jp: "フロントエンド開発者",
+      jp: "フロントエンド·デベロッパー",
     },
     github: "https://github.com/danbi-seo",
     email: "sdb0504@naver.com / tjeksqlz@gmail.com",
