@@ -8,6 +8,7 @@ import ResumeModal from "../../components/team/ResumeModal";
 import type { LayoutContext } from "../../components/Layout/Layout";
 import { useOutletContext } from "react-router";
 import type { ResumeLang } from "../../types/resume";
+import { HorizontalScrollGuide } from "../../components/Layout/HorizontalScrollGuide.tsx";
 
 export default function TeamIntroPage() {
   const { lang } = useOutletContext<LayoutContext>();
@@ -46,6 +47,20 @@ export default function TeamIntroPage() {
       wheelLockRef.current = false;
     }, 450);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" || e.key === "PageDown") {
+        setActiveIndex((prev) => prev + 1);
+      }
+      if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        setActiveIndex((prev) => prev - 1);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     const total = TEAM_MEMBERS.length;
@@ -100,7 +115,7 @@ export default function TeamIntroPage() {
           ))}
         </div>
       </div>
-
+      <HorizontalScrollGuide pageLabel="VISION" lang={lang} />
       <ResumeModal
         open={!!selectedMember}
         member={selectedMember}
