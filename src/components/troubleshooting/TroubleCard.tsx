@@ -34,8 +34,8 @@ export function TroubleCard({
 }) {
   const Icon = ICONS[item.icon ?? "Circle"];
 
-  const ownerName = pickText(item.owner, lang);
-  const style = OWNER_STYLES[ownerName] ?? OWNER_STYLES["윤경복"];
+  const ownerKoName = item.owner.ko ?? "default";
+  const style = OWNER_STYLES[ownerKoName];
   return (
     <button
       onClick={onClick}
