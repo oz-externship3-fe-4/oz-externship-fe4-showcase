@@ -40,7 +40,7 @@ export default function HomeLayout() {
             <BackFloatingButton visible={true} onClick={() => navigate("/")} />
 
             <div className="h-full overflow-hidden overflow-y-auto scrollbar-hide relative z-10">
-              <Outlet />
+              <Outlet context={{ lang, setLang }} />
             </div>
           </div>
         </section>

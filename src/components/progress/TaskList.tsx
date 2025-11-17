@@ -1,15 +1,15 @@
-// src/components/progress/TaskList.tsx
-
 import { Check } from "lucide-react";
 import { TASKS, type Task, PHASE_THEMES } from "./progressConfig";
 import { TaskIcon } from "./TaskIcon";
+import type { RetrospectiveLang } from "../../types/retrospective";
 
 interface TaskListProps {
   completedIds: string[];
   onToggle: (taskId: string) => void;
+  lang: RetrospectiveLang;
 }
 
-export function TaskList({ completedIds, onToggle }: TaskListProps) {
+export function TaskList({ completedIds, onToggle, lang }: TaskListProps) {
   return (
     <div className="flex flex-col gap-5">
       {TASKS.map((task: Task) => {
@@ -31,7 +31,6 @@ export function TaskList({ completedIds, onToggle }: TaskListProps) {
             "
             style={{ background: cardBg }}
           >
-            {/* 왼쪽 아이콘 */}
             <div
               className="flex h-14 w-14 items-center justify-center rounded-full"
               style={{ backgroundColor: theme.iconBg }}
@@ -39,17 +38,15 @@ export function TaskList({ completedIds, onToggle }: TaskListProps) {
               <TaskIcon phaseId={task.phaseId} />
             </div>
 
-            {/* 텍스트 */}
             <div className="flex-1 flex flex-col">
               <span className="text-[11px] font-medium text-slate-400">
-                {task.weekLabel}
+                {task.weekLabel[lang]}
               </span>
               <span className="mt-1 text-[15px] font-semibold text-slate-900">
-                {task.title}
+                {task.title[lang]}
               </span>
             </div>
 
-            {/* ✅ 항상 V, 색만 바뀜 */}
             <div
               className="
                 flex h-14 w-14 items-center justify-center rounded-full
@@ -71,7 +68,7 @@ export function TaskList({ completedIds, onToggle }: TaskListProps) {
               <Check
                 className="h-7 w-7"
                 style={{
-                  color: done ? "#ffffff" : "rgba(148,163,253,0.9)", // 미완료도 선명한 V
+                  color: done ? "#ffffff" : "rgba(148,163,253,0.9)",
                 }}
               />
             </div>

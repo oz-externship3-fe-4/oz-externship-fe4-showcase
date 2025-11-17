@@ -7,8 +7,11 @@ import {
 } from "../../components/progress/progressConfig";
 import { PhaseStepper } from "../../components/progress/PhaseStepper";
 import { TaskList } from "../../components/progress/TaskList";
+import { useOutletContext } from "react-router";
+import type { LayoutContext } from "../../components/Layout/HomeLayout";
 
 export default function ProjectProgressPanel() {
+  const { lang } = useOutletContext<LayoutContext>();
   const [completedIds, setCompletedIds] = useState<string[]>([]);
 
   const completedPhaseIds = useMemo<PhaseId[]>(
@@ -37,8 +40,8 @@ export default function ProjectProgressPanel() {
       "
       style={{ background: softPaintBg }}
     >
-      <PhaseStepper completedPhaseIds={completedPhaseIds} />
-      <TaskList completedIds={completedIds} onToggle={toggleTask} />
+      <PhaseStepper completedPhaseIds={completedPhaseIds} lang={lang} />
+      <TaskList completedIds={completedIds} onToggle={toggleTask} lang={lang} />
     </div>
   );
 }

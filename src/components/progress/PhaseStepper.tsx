@@ -2,12 +2,14 @@ import { useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 import gsap from "gsap";
 import { PHASES, type PhaseId } from "./progressConfig";
+import type { RetrospectiveLang } from "../../types/retrospective";
 
 interface PhaseStepperProps {
   completedPhaseIds: PhaseId[];
+  lang: RetrospectiveLang;
 }
 
-export function PhaseStepper({ completedPhaseIds }: PhaseStepperProps) {
+export function PhaseStepper({ completedPhaseIds, lang }: PhaseStepperProps) {
   const baseLineElementRef = useRef<HTMLDivElement | null>(null);
   const progressLineElementRef = useRef<HTMLDivElement | null>(null);
   const stepSquareElementRefs = useRef<HTMLDivElement[]>([]);
@@ -148,7 +150,7 @@ export function PhaseStepper({ completedPhaseIds }: PhaseStepperProps) {
             >
               <Check className="h-7 w-7 text-[#FFC94A]" />
             </div>
-            <span>{phase.label}</span>
+            <span>{phase.label[lang]}</span>
           </div>
         ))}
       </div>

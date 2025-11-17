@@ -1,3 +1,5 @@
+import type { RetrospectiveLang } from "../../types/retrospective";
+
 export type PhaseId =
   | "init"
   | "wireframe"
@@ -5,51 +7,128 @@ export type PhaseId =
   | "integration"
   | "presentation";
 
+type LocalizedText = Record<RetrospectiveLang, string>;
+
 export type Task = {
   id: string;
   phaseId: PhaseId;
-  weekLabel: string;
-  title: string;
+  weekLabel: LocalizedText;
+  title: LocalizedText;
 };
 
-export const PHASES: { id: PhaseId; label: string }[] = [
-  { id: "init", label: "초기" },
-  { id: "wireframe", label: "와이어프레임" },
-  { id: "dev", label: "개발중" },
-  { id: "integration", label: "개발완료" },
-  { id: "presentation", label: "발표준비" },
+export const PHASES: { id: PhaseId; label: LocalizedText }[] = [
+  {
+    id: "init",
+    label: {
+      ko: "계획",
+      en: "Planning",
+      jp: "初期",
+    },
+  },
+  {
+    id: "wireframe",
+    label: {
+      ko: "와이어프레임",
+      en: "Wireframing",
+      jp: "ワイヤーフレーム",
+    },
+  },
+  {
+    id: "dev",
+    label: {
+      ko: "개발중",
+      en: "In Development",
+      jp: "開発中",
+    },
+  },
+  {
+    id: "integration",
+    label: {
+      ko: "개발완료",
+      en: "Development Complete",
+      jp: "機能実装完了",
+    },
+  },
+  {
+    id: "presentation",
+    label: {
+      ko: "발표준비",
+      en: "Prepare Presentation",
+      jp: "発表準備",
+    },
+  },
 ];
 
 export const TASKS: Task[] = [
   {
     id: "week1-spec",
     phaseId: "init",
-    weekLabel: "개발 1주차 · 10/14–17",
-    title: "화면정의서 작성, 업무분장",
+    weekLabel: {
+      ko: "개발 1주차 · 10/14–17",
+      en: "Week 1 · Oct 14–17",
+      jp: "開発1週目 · 10/14–17",
+    },
+    title: {
+      ko: "화면정의서 작성, 업무분장",
+      en: "Screen definition and task allocation",
+      jp: "画面定義書、業務分担",
+    },
   },
   {
     id: "week2-common",
     phaseId: "wireframe",
-    weekLabel: "개발 2주차 · 10/20–24",
-    title: "공통 컴포넌트 제작",
+    weekLabel: {
+      ko: "개발 2주차 · 10/20–24",
+      en: "Week 2 · Oct 20–24",
+      jp: "開発2週目 · 10/20–24",
+    },
+    title: {
+      ko: "공통 컴포넌트 제작",
+      en: "Develop shared components",
+      jp: "共通コンポーネント製作",
+    },
   },
   {
     id: "week3-ui",
     phaseId: "dev",
-    weekLabel: "개발 3주차 · 10/27–31",
-    title: "각 페이지 UI 제작",
+    weekLabel: {
+      ko: "개발 3주차 · 10/27–31",
+      en: "Week 3 · Oct 27–31",
+      jp: "開発3週目 · 10/27–31",
+    },
+    title: {
+      ko: "각 페이지 UI 제작",
+      en: "Build page UIs",
+      jp: "各ページUI制作",
+    },
   },
   {
     id: "week4-api",
     phaseId: "integration",
-    weekLabel: "개발 4주차 · 11/03–07",
-    title: "각 페이지 기능 구현 및 API 연동",
+    weekLabel: {
+      ko: "개발 4주차 · 11/03–07",
+      en: "Week 4 · Nov 3–7",
+      jp: "開発4週目 · 11/03–07",
+    },
+    title: {
+      ko: "각 페이지 기능 구현 및 API 연동",
+      en: "Implement page functionalities and integrate APIs",
+      jp: "各ページ機能の旧型とAPIの連動",
+    },
   },
   {
     id: "week5-present",
     phaseId: "presentation",
-    weekLabel: "개발 5주차 · 11/10–14",
-    title: "발표 준비, 포트폴리오 페이지 제작",
+    weekLabel: {
+      ko: "개발 5주차 · 11/10–14",
+      en: "Week 5 · Nov 10–14",
+      jp: "開発5週目 · 11/10–14",
+    },
+    title: {
+      ko: "발표 준비, 포트폴리오 페이지 제작",
+      en: "Prepare presentation and build portfolio page",
+      jp: "発表準備、ポートフォリオページ制作",
+    },
   },
 ];
 
