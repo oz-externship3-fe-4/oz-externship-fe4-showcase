@@ -9,6 +9,8 @@ import { GithubIcon } from "lucide-react";
 const FRONTEND_DEPLOY_URL = "https://admin.ozcoding.site/";
 const TEAM_GITHUB_URL =
   "https://github.com/OZ-Coding-School/oz_externship_fe_03_team4";
+const POPOL_GITHUB_URL =
+  "https://github.com/oz-externship3-fe-4/oz-externship-fe4-showcase";
 
 export default function TeamLinksPage() {
   const { lang } = useOutletContext<LayoutContext>();
@@ -30,6 +32,12 @@ export default function TeamLinksPage() {
           label="프로젝트 GitHub"
           color="pink"
           href={TEAM_GITHUB_URL}
+          icon={<GithubIcon size={50} className="text-slate-700 opacity-80" />}
+        />
+        <FolderIcon
+          label="포트폴리오 GitHub"
+          color="green"
+          href={POPOL_GITHUB_URL}
           icon={<GithubIcon size={50} className="text-slate-700 opacity-80" />}
         />
       </div>
