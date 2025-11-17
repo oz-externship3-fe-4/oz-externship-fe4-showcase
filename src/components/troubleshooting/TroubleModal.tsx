@@ -85,12 +85,12 @@ export function TroubleModal({
                       shadow-[0_10px_35px_rgba(15,23,42,0.04)]
                     "
                   >
-                    <h4 className="mb-2 text-[18px] font-bold text-slate-800">
+                    <h4 className="mb-2 text-[24px] font-bold text-slate-800">
                       {pickText(s.heading, lang)}
                     </h4>
 
                     {bodyLines.length > 0 && (
-                      <ul className="mt-1 list-disc space-y-1 pl-4 text-[16px] leading-relaxed text-slate-700">
+                      <ul className="mt-1 list-disc space-y-1 pl-4 text-[18px] leading-relaxed text-slate-700">
                         {bodyLines.map((line, idx) => (
                           <li key={idx}>{renderBodyWithInlineCode(line)}</li>
                         ))}
