@@ -4,6 +4,34 @@ import { pickText } from "../../utils/i18n";
 import { TEAM_MEMBERS } from "../team/teamMembers";
 import type { TroubleItem } from "../../types/troubleshooting";
 
+const BADGE_LABEL: Record<string, { ko: string; en: string; jp: string }> = {
+  "TEAM LEADER": {
+    ko: "Team Leader",
+    en: "Team Leader",
+    jp: "Team Leader",
+  },
+  "DESIGN LEAD": {
+    ko: "Design Lead",
+    en: "Design Lead",
+    jp: "Design Lead",
+  },
+  "EN TRANSLATOR": {
+    ko: "EN Translator",
+    en: "EN Translator",
+    jp: "EN Translator",
+  },
+  "JP TRANSLATOR": {
+    ko: "JP Translator",
+    en: "JP Translator",
+    jp: "JP Translator",
+  },
+  "COMMUNICATION LEAD": {
+    ko: "Communication Lead",
+    en: "Communication Lead",
+    jp: "Communication Lead",
+  },
+};
+
 const LANG_LABEL: Record<TS_Lang, string> = {
   ko: "한국어",
   en: "English",
@@ -15,6 +43,7 @@ type TroubleHeaderProps = {
   lang: TS_Lang;
   setLang?: (lang: TS_Lang) => void;
 };
+
 export function TroubleHeader({ owner, lang, setLang }: TroubleHeaderProps) {
   const ownerName = pickText(owner, lang);
   const avatarInitial = ownerName.trim().charAt(0) || "?";
@@ -24,9 +53,19 @@ export function TroubleHeader({ owner, lang, setLang }: TroubleHeaderProps) {
     (m) => pickText(m.name, "ko") === ownerKoName
   );
 
-  type MaybeLeader = { badge?: string };
-  const leaderBadge = (matchedMember as MaybeLeader | undefined)?.badge;
-  const isLeader = !!leaderBadge;
+  type MaybeWithBadge = { badge?: string };
+  const rawBadge = (matchedMember as MaybeWithBadge | undefined)?.badge;
+
+  const badgeLabel =
+    rawBadge &&
+    pickText(
+      BADGE_LABEL[rawBadge] ?? {
+        ko: rawBadge,
+        en: rawBadge,
+        jp: rawBadge,
+      },
+      lang
+    );
 
   return (
     <header
@@ -65,7 +104,7 @@ export function TroubleHeader({ owner, lang, setLang }: TroubleHeaderProps) {
               FRONTEND
             </p>
 
-            {isLeader && (
+            {badgeLabel && (
               <span
                 className="
                   inline-flex items-center
@@ -75,7 +114,7 @@ export function TroubleHeader({ owner, lang, setLang }: TroubleHeaderProps) {
                   shadow-[0_4px_10px_rgba(16,185,129,0.18)]
                 "
               >
-                TEAM LEADER
+                {badgeLabel}
               </span>
             )}
           </div>

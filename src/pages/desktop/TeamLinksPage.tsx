@@ -56,12 +56,13 @@ export default function TeamLinksPage() {
     rounded-3xl bg-white
     px-8 pb-5 pt-16
     shadow-[0_18px_60px_rgba(15,23,42,0.12)]
-    w-[230px]
+    w-60
     h-[280px]
     transform-gpu
     transition-all duration-300
     hover:-translate-y-3 hover:scale-[1.02]
     hover:shadow-[0_26px_80px_rgba(15,23,42,0.22)]
+    select-none
   "
               style={{
                 isolation: "isolate",
@@ -70,7 +71,7 @@ export default function TeamLinksPage() {
             >
               <div
                 className="
-                  absolute -top-5
+                  absolute -top-10
                   left-1/2 -translate-x-1/2
                   flex h-24 w-28 items-center justify-center
                   pointer-events-none select-none

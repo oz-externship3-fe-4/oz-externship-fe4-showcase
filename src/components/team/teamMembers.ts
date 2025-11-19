@@ -16,6 +16,7 @@ export const TEAM_MEMBERS = [
     github: "https://github.com/Justin-SJ-Hong",
     email: "madwolves98@gmail.com",
     characterImg: "/images/pokemon/squirtle.png",
+    badge: "EN TRANSLATOR",
     description: {
       ko: `공통 컴포넌트 
 버튼, 네비게이션, 첨부파일, 지원내역
@@ -239,6 +240,7 @@ export const TEAM_MEMBERS = [
     },
     github: "https://github.com/djskyt",
     email: "jjsk953563@gmail.com",
+    badge: "JP TRANSLATOR",
     characterImg: "/images/pokemon/3287f802e7f5855a.png",
     description: {
       ko: `공통 컴포넌트
@@ -982,9 +984,10 @@ js-cookieベースのAPIインターセプターおよびプロテクトルー�
       en: "FRONTEND",
       jp: "フロントエンド·デベロッパー",
     },
-    github: "https://github.com/ozwonhee",
-    email: "wonhee@example.com",
+    github: "https://github.com/paul8729621",
+    email: "paul872@naver.com",
     characterImg: "/images/pokemon/pikachu.png",
+    badge: "COMMUNICATION LEAD",
     description: {
       ko: `공통 컴포넌트
 KPI 카드, 테이블, 리스트 제작
@@ -1213,6 +1216,7 @@ API連動部分:ページUIを任された部分をそのまま連動
     github: "https://github.com/danbi-seo",
     email: "sdb0504@naver.com / tjeksqlz@gmail.com",
     characterImg: "/images/pokemon/eevee.png",
+    badge: "DESIGN LEAD",
     imageOffsetY: 20,
     description: {
       ko: `공통 컴포넌트 : 토스트 알림창 , 뱃지 , 

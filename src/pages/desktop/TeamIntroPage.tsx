@@ -115,7 +115,7 @@ export default function TeamIntroPage() {
           ))}
         </div>
       </div>
-      <HorizontalScrollGuide pageLabel="VISION" lang={lang} />
+      <HorizontalScrollGuide pageLabel="TEAM" lang={lang} />
       <ResumeModal
         open={!!selectedMember}
         member={selectedMember}
