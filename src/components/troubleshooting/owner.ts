@@ -11,7 +11,7 @@ export type OwnerStyle = {
 export const OWNER_STYLES: Record<OwnerKoName | "default", OwnerStyle> = {
   윤경복: {
     cardBg: "bg-white/90",
-    frameBg: "bg-[linear-gradient(135deg,#ffffff,#f5f8ff,#edf5ff)]",
+    frameBg: "bg-[linear-gradient(135deg,#ffffff,#f5f8ff,#d5e8ff)]",
     iconColor: "text-slate-800",
   },
   이원희: {
@@ -21,7 +21,7 @@ export const OWNER_STYLES: Record<OwnerKoName | "default", OwnerStyle> = {
   },
   홍엽: {
     cardBg: "bg-white/90",
-    frameBg: "bg-[linear-gradient(135deg,#ffffff,#f6f9ff,#edf3ff)]",
+    frameBg: "bg-[linear-gradient(135deg,#ffffff,#fff3fb,#f6e1ff)]",
     iconColor: "text-slate-800",
   },
   서단비: {
